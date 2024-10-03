@@ -34,19 +34,28 @@ class Game:
                 self.board[i][j] = words[curr]
                 curr += 1
 
-    def print_board(self):
+    def print_board_color(self):
         RED = "\033[31m"
         BLUE = "\033[34m"
+        DEFAULT = "\033[0m"
         line = ""
 
         for row in self.board:
             for col in row:
                 if col.color == "blue":
-                    line = line + BLUE + col.word + " "
+                    line += BLUE + col.word + " "
                 elif col.color == "red":
-                    line = line + RED + col.word + " "
+                    line += RED + col.word + " "
+            print(line + DEFAULT) #adding default resets to normal color afterwards for following prints
+            line = ""
+
+    def print_board_plain(self):
+        line = ""
+
+        for row in self.board:
+            for col in row:
+                line += col.word + " "
             print(line)
-            # print("\n")
             line = ""
 
 class Card:
@@ -62,12 +71,14 @@ class Card:
 
 def main():
     codenames = Game(5, 5)
+
     board_words = codenames.get_random_strings()
+    card_list = codenames.create_cards(board_words)
 
-    board_words = codenames.create_cards(board_words)
-    codenames.init_board(board_words)
+    codenames.init_board(card_list)
 
-    codenames.print_board()
+    codenames.print_board_color()
+    codenames.print_board_plain()
 
 if __name__ == "__main__":
     main()
