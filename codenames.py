@@ -185,7 +185,7 @@ class Game():
                     turn_complete = True
                     self.playing = False
                 else:
-                    if num_guesses < 2:
+                    if num_guesses < 2 and turn_complete == False:
                         guess_again = input("Would you like to guess another word? ")
                         print()
                     
@@ -198,13 +198,14 @@ class Game():
                             else:
                                 self.turn = "Red"
                     else:
-                        print("You have now guessed twice. Your turn is over \n")
-                        turn_complete = True
+                        if turn_complete == False:
+                            print("You have now guessed twice. Your turn is over \n")
+                            turn_complete = True
 
-                        if self.turn == "Red":
-                            self.turn = "Blue"
-                        else:
-                            self.turn = "Red"
+                            if self.turn == "Red":
+                                self.turn = "Blue"
+                            else:
+                                self.turn = "Red"
 
 def main():
     game = Game(2, 2)
