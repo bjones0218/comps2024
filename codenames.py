@@ -59,20 +59,21 @@ class Board:
     def print_board_color(self):
         RED = "\033[31m"
         BLUE = "\033[34m"
-        GREEN = "\033[32m"
+        BOLD = "\u001b[1m"
         DEFAULT = "\033[0m"
+        STRIKE = "\33[9m"
         line = ""
 
         for row in self.board:
             for col in row:
                 if col.color == "blue":
                     if col.guessed == True:
-                        line += GREEN + col.word + " "
+                        line += STRIKE + BOLD + BLUE + col.word + DEFAULT + " "
                     else:
                         line += BLUE + col.word + " "
                 elif col.color == "red":
                     if col.guessed == True:
-                        line += GREEN + col.word + " "
+                        line += STRIKE + BOLD + RED + col.word + DEFAULT + " " 
                     else:
                         line += RED + col.word + " "
 
@@ -82,13 +83,19 @@ class Board:
 
     def print_board_plain(self):
         line = ""
-        GREEN = "\033[32m"
         DEFAULT = "\033[0m"
+        BOLD = "\u001b[1m"
+        RED = "\033[31m"
+        BLUE = "\033[34m"
+        STRIKE = "\33[9m"
 
         for row in self.board:
             for col in row:
                 if col.guessed == True:
-                    line += GREEN + col.word + " " + DEFAULT
+                    if col.color == "red":
+                        line += STRIKE + BOLD + RED + col.word + DEFAULT + " "
+                    else:
+                        line += STRIKE + BOLD + BLUE + col.word + DEFAULT + " "
                 else:
                     line += col.word + " "
 
@@ -208,7 +215,7 @@ class Game():
                                 self.turn = "Red"
 
 def main():
-    game = Game(2, 2)
+    game = Game(5,5)
     game.start_game()
 
 if __name__ == "__main__":
