@@ -1,7 +1,7 @@
 import requests
 
-# Set up the BabelNet API endpoint and your API key
-API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f'  # Replace with your actual API key
+# Set up the BabelNet API endpoint and API key
+API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' 
 BASE_URL = 'https://babelnet.io/v6/getSynsetIds'
 
 # Function to get synsets for a given word
@@ -23,7 +23,7 @@ def get_synsets(word, lang='EN'):
         print(f"Error: Unable to fetch data. Status code: {response.status_code}")
         return None
 
-# Get synsets for the word 'boat'
+# Get synsets for the word
 synsets = get_synsets('boat')
 
 # Print the synsets
