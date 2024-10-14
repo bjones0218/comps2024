@@ -50,17 +50,19 @@ def get_outgoing_edges(synsetId):
 		# retrieving Edges data
 		for result in edges:
 			if result['language'] == 'EN':
-				target = result.get('target')
-				language = result.get('language')
+				target = result.get('target') #Target synset
+				language = result.get('language') 
 
 				# retrieving BabelPointer data
 				pointer = result['pointer']
-				relation = pointer.get('name')
-				group = pointer.get('relationGroup')
+				relation = pointer.get('name') # hypernym hyponym etc
+				type = pointer.get('shortName') #is-a, part-of, etc.
+				group = pointer.get('relationGroup') #HYPERNYM, HYPONYM, etc.
 
 				print(language \
 				+ "\t" + str(target) \
 				+ "\t" + str(relation) \
+				+ "\t" + str(type) \
 				+ "\t" + str(group))
 		
 		return edges
@@ -68,8 +70,9 @@ def get_outgoing_edges(synsetId):
 		print(f"Error: Unable to fetch data. Status code: {response.status_code}")
 		return None
 
+word = "knight"
 # Get synsets for the word
-synsets = get_synsets('boat')
+synsets = get_synsets(word)
 
 if synsets:
 	for synset in synsets:
@@ -78,7 +81,7 @@ if synsets:
 
 # Print the synsets
 if synsets:
-    print(f"Found {len(synsets)} synsets for the word 'boat':")
+    print(f"Found {len(synsets)} synsets for the word '" + word + "':")
     for synset in synsets:
         print(synset)
 else:
