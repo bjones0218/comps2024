@@ -1,6 +1,12 @@
 import random
 import os
 
+# TODO: NOTES TO FIX: 
+# Can't give a clue that's on the board
+# Yes and no implementation stuff so you are restricted
+
+
+
 class Card:
     def __init__(self, word, color):
         self.word = word
