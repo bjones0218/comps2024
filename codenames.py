@@ -3,6 +3,7 @@ import os
 
 # TODO: NOTES TO FIX: 
 # Can't give a clue that's on the board
+# Only one word clues allowed
 # Yes and no implementation stuff so you are restricted
 
 
