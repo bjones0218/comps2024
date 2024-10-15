@@ -1,6 +1,12 @@
 import random
 import os
 
+# TODO: NOTES TO FIX: 
+# Can't give a clue that's on the board
+# Yes and no implementation stuff so you are restricted
+
+
+
 class Card:
     def __init__(self, word, color):
         self.word = word
@@ -22,6 +28,8 @@ class Board:
 
     def __init__(self, cols, rows):
         self.num_words = cols * rows
+        self.cols = cols
+        self.rows = rows
         self.word_list_file = "word_list.txt"
         self.valid_words = set()
         self.board = [["" for _ in range(cols)] for _ in range(rows)]
@@ -62,24 +70,58 @@ class Board:
         BOLD = "\u001b[1m"
         DEFAULT = "\033[0m"
         STRIKE = "\33[9m"
-        line = ""
+        
 
+        longest_word = self.get_longest_word()
+
+        row_sep = ""
+        for _ in range((longest_word + 3) * self.cols + 1):
+            row_sep += "-"
+        
         for row in self.board:
+            line = "|"
+            print(row_sep)
             for col in row:
+                extra_space_length = longest_word + 2 - len(col.word)
+                before_space = ""
+                after_space = ""
+                if extra_space_length % 2 == 0:
+                    for _ in range(int(extra_space_length/2)):
+                        before_space += " "
+                        after_space += " "
+                else:
+                    for _ in range(int((extra_space_length-1)/2)):
+                        before_space += " "
+                        after_space += " "
+                    before_space += " "
+
                 if col.color == "blue":
                     if col.guessed == True:
-                        line += STRIKE + BOLD + BLUE + col.word + DEFAULT + " "
+                        line += before_space + STRIKE + BOLD + BLUE + col.word + DEFAULT + after_space + "|"
                     else:
-                        line += BLUE + col.word + " "
+                        line += before_space + BLUE + col.word + DEFAULT + after_space + "|"
                 elif col.color == "red":
                     if col.guessed == True:
-                        line += STRIKE + BOLD + RED + col.word + DEFAULT + " " 
+                        line += before_space + STRIKE + BOLD + RED + col.word + DEFAULT + after_space + "|"
                     else:
-                        line += RED + col.word + " "
+                        line += before_space + RED + col.word + DEFAULT + after_space + "|"
 
             print(line + DEFAULT) #adding default resets to normal color afterwards for following prints
             line = ""
+        print(row_sep)
         print()
+
+    # Returns a tuple of the lenght of the longest word in the board, and the longest row in the board
+    def get_longest_word(self):
+        longest_word = 0
+        for row in self.board:
+            current_row = 0
+            for card in row:
+                current_row += len(card.get_word())
+                if len(card.get_word()) > longest_word:
+                    longest_word = len(card.get_word())
+        return longest_word
+
 
     def print_board_plain(self):
         line = ""
@@ -89,18 +131,39 @@ class Board:
         BLUE = "\033[34m"
         STRIKE = "\33[9m"
 
+        longest_word = self.get_longest_word()
+
+        row_sep = ""
+        for _ in range((longest_word + 3) * self.cols + 1):
+            row_sep += "-"
+
         for row in self.board:
+            line = "|"
+            print(row_sep)
             for col in row:
+                extra_space_length = longest_word + 2 - len(col.word)
+                before_space = ""
+                after_space = ""
+                if extra_space_length % 2 == 0:
+                    for _ in range(int(extra_space_length/2)):
+                        before_space += " "
+                        after_space += " "
+                else:
+                    for _ in range(int((extra_space_length-1)/2)):
+                        before_space += " "
+                        after_space += " "
+                    before_space += " "
                 if col.guessed == True:
                     if col.color == "red":
-                        line += STRIKE + BOLD + RED + col.word + DEFAULT + " "
+                        line += before_space + STRIKE + BOLD + RED + col.word + DEFAULT + after_space + "|"
                     else:
-                        line += STRIKE + BOLD + BLUE + col.word + DEFAULT + " "
+                        line += before_space + STRIKE + BOLD + BLUE + col.word + DEFAULT + after_space + "|"
                 else:
-                    line += col.word + " "
+                    line += before_space + col.word + after_space + "|"
 
             print(line + DEFAULT)
             line = ""
+        print(row_sep)
         print()
 
 class Game():
