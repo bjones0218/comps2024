@@ -201,17 +201,18 @@ class Game():
             ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
             print()
 
-            if not (ready.lower() == "yes"):
-                while ready.lower() != "yes":
-                    ready = input("When ready, please enter yes: ") 
-                    print()
-                self.board.print_board_color()
-                clue = input("When ready, please enter your clue: ")
-                print()
-            else:
-                self.board.print_board_color()
-                clue = input("When ready, please enter your clue: ")
-                print()
+            while ready.lower() != "yes":
+                ready = input("When ready, please enter yes: ") 
+                print()               
+
+            #clear terminal
+            if os.name == 'nt': #For Windows
+                os.system('cls')
+            else:  # For macOS and Linux
+                os.system('clear')
+            self.board.print_board_color()
+            clue = input("When ready, please enter your clue: ")
+            print()
             
             while self.check_clue(clue) != 0:
                 clue_status = self.check_clue(clue)
@@ -237,6 +238,12 @@ class Game():
             turn_complete = False
             num_guesses = 0
             while not turn_complete:
+                #clear terminal
+                if os.name == 'nt': #For Windows
+                    os.system('cls')
+                else:  # For macOS and Linux
+                    os.system('clear')
+
                 print("The clue your teammate gave is " + clue + "\n")
                 self.board.print_board_plain()
 
@@ -252,9 +259,16 @@ class Game():
                 guessed_card = self.board.board[guess_location[0]][guess_location[1]]
                 guessed_card.guessed = True
 
+                #clear terminal
+                if os.name == 'nt': #For Windows
+                    os.system('cls')
+                else:  # For macOS and Linux
+                    os.system('clear')
+
                 if guessed_card.color == "red":
                     self.red_words_left -= 1
                     print("You guessed a red word. \n")
+                    self.board.print_board_plain()
                     if self.turn == "Blue" and self.red_words_left != 0:
                         print("You guessed the other team's word. Your turn is now over. \n")
                         turn_complete = True
@@ -262,6 +276,7 @@ class Game():
                 else:
                     self.blue_words_left -= 1
                     print("You guessed a blue word. \n")
+                    self.board.print_board_plain()
                     if self.turn == "Red" and self.blue_words_left != 0:
                             print("You guessed the other team's word. Your turn is now over. \n")
                             turn_complete = True
@@ -277,11 +292,12 @@ class Game():
                     self.playing = False
                 else:
                     if num_guesses < 2 and turn_complete == False:
-                        guess_again = input("Would you like to guess another word? (Enter \"yes\" if so) ")
+                        guess_again = input("Would you like to guess another word? (Enter \"yes\" if so): ")
                         print()
                     
                         if guess_again.lower() == "yes":
                             turn_complete = False
+
                         else:
                             turn_complete = True
                             if self.turn == "Red":
@@ -290,7 +306,7 @@ class Game():
                                 self.turn = "Red"
                     else:
                         if turn_complete == False:
-                            print("You have now guessed twice. Your turn is over \n")
+                            print("You have now guessed twice. Your turn is over. \n")
                             turn_complete = True
 
                             if self.turn == "Red":
@@ -299,7 +315,7 @@ class Game():
                                 self.turn = "Red"
 
 def main():
-    game = Game(3,3)
+    game = Game(5,5)
     game.start_game()
 
 if __name__ == "__main__":
