@@ -2,9 +2,7 @@ import random
 import os
 
 # TODO: NOTES TO FIX: 
-# Can't give a clue that's on the board
-# Only one word clues allowed
-# Yes and no implementation stuff so you are restricted
+
 
 
 
@@ -184,6 +182,15 @@ class Game():
         
         self.blue_words_left = self.board.num_words // 2
 
+    # Returns a number based on what is wrong with the clue
+    def check_clue(self, clue):
+        if " " in clue:
+            return 1
+        elif clue.upper() in self.board.valid_words:
+            return 2
+        else:
+            return 0
+
     def start_game(self):
         self.playing = True
 
@@ -192,11 +199,11 @@ class Game():
         while self.playing:
 
             #cluegiver stage
-            ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter yes when ready: ")
+            ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
             print()
 
-            if not (ready.lower() == "yes" or ready.lower() == "y"):
-                while 'y' not in ready:
+            if not (ready.lower() == "yes"):
+                while ready.lower() != "yes":
                     ready = input("When ready, please enter yes: ") 
                     print()
                 self.board.print_board_color()
@@ -206,6 +213,20 @@ class Game():
                 self.board.print_board_color()
                 clue = input("When ready, please enter your clue: ")
                 print()
+            
+            while self.check_clue(clue) != 0:
+                clue_status = self.check_clue(clue)
+                if clue_status == 1:
+                    clue = input("Please ensure that your clue is one word: ")
+                    print()
+                elif clue_status == 2:
+                    clue = input("Please ensure that your clue is not a word on the board: ")
+                    print()
+                else: 
+                    # This shouldn't happen
+                    clue = input("When ready, please enter your clue: ")
+                    print()
+
 
             #clear terminal
             if os.name == 'nt': #For Windows
@@ -257,10 +278,10 @@ class Game():
                     self.playing = False
                 else:
                     if num_guesses < 2 and turn_complete == False:
-                        guess_again = input("Would you like to guess another word? ")
+                        guess_again = input("Would you like to guess another word? (Enter \"yes\" if so) ")
                         print()
                     
-                        if guess_again.lower() == "yes" or guess_again.lower() == "y":
+                        if guess_again.lower() == "yes":
                             turn_complete = False
                         else:
                             turn_complete = True
@@ -279,7 +300,7 @@ class Game():
                                 self.turn = "Red"
 
 def main():
-    game = Game(5,5)
+    game = Game(3,3)
     game.start_game()
 
 if __name__ == "__main__":
