@@ -2,33 +2,86 @@ import requests
 
 # Set up the BabelNet API endpoint and API key
 API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' 
-BASE_URL = 'https://babelnet.io/v6/getSynsetIds'
+
 
 # Function to get synsets for a given word
-def get_synsets(word, lang='EN'):
-    # Prepare parameters for the API request
-    params = {
-        'lemma': word,
-        'searchLang': lang,
-        'key': API_KEY
+def get_synsets(word: str, lang='EN'):
+	SERVICE_URL = 'https://babelnet.io/v6/getSynsetIds'
+
+	# Prepare parameters for the API request
+	params = {
+		'lemma': word,
+		'searchLang': lang,
+		'key': API_KEY
     }
 
-    # Make the request to BabelNet
-    response = requests.get(BASE_URL, params=params)
+	# Make the request to BabelNet
+	response = requests.get(SERVICE_URL, params=params)
     
-    if response.status_code == 200:
-        synsets = response.json()  # Parse the JSON response
-        return synsets
-    else:
-        print(f"Error: Unable to fetch data. Status code: {response.status_code}")
-        return None
+	if response.status_code == 200:
+		synsets = response.json()  # Parse the JSON response
+		return synsets
+	else:
+		print(f"Error: Unable to fetch data. Status code: {response.status_code}")
+		return None
+    
+def map_synsets_to_words(words: list) -> dict:
+	word_synsets = dict()
 
+	for word in words:
+		curr_synsets = get_synsets(word)
+		word_synsets[word] = curr_synsets
+
+	return word_synsets
+
+def get_outgoing_edges(synsetId):
+	SERVICE_URL = 'https://babelnet.io/v9/getOutgoingEdges'
+
+	params = {
+		'id' : synsetId,
+		'key'  : API_KEY
+	}
+
+	response = requests.get(SERVICE_URL, params=params)
+
+	if response.status_code == 200:
+		edges = response.json()
+
+		# retrieving Edges data
+		for result in edges:
+			if result['language'] == 'EN':
+				target = result.get('target') #Target synset
+				language = result.get('language') 
+
+				# retrieving BabelPointer data
+				pointer = result['pointer']
+				relation = pointer.get('name') # hypernym hyponym etc
+				type = pointer.get('shortName') #is-a, part-of, etc.
+				group = pointer.get('relationGroup') #HYPERNYM, HYPONYM, etc.
+
+				print(language \
+				+ "\t" + str(target) \
+				+ "\t" + str(relation) \
+				+ "\t" + str(type) \
+				+ "\t" + str(group))
+		
+		return edges
+	else:
+		print(f"Error: Unable to fetch data. Status code: {response.status_code}")
+		return None
+
+word = "knight"
 # Get synsets for the word
-synsets = get_synsets('boat')
+synsets = get_synsets(word)
+
+if synsets:
+	for synset in synsets:
+		print(synset['id'] + "woohoo")
+		get_outgoing_edges(synset['id'])
 
 # Print the synsets
 if synsets:
-    print(f"Found {len(synsets)} synsets for the word 'boat':")
+    print(f"Found {len(synsets)} synsets for the word '" + word + "':")
     for synset in synsets:
         print(synset)
 else:

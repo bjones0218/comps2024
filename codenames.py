@@ -5,6 +5,7 @@ import os
 
 
 
+
 class Card:
     def __init__(self, word, color):
         self.word = word
