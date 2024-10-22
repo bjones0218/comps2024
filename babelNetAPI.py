@@ -34,9 +34,8 @@ def map_synsets_to_words(words: list) -> dict:
 
 	return word_synsets
 
-def get_outgoing_edges(synsetId):
+def get_outgoing_edges(synsetId, edgeNum, edgeType):
 	SERVICE_URL = 'https://babelnet.io/v9/getOutgoingEdges'
-
 	params = {
 		'id' : synsetId,
 		'key'  : API_KEY
@@ -47,7 +46,37 @@ def get_outgoing_edges(synsetId):
 	if response.status_code == 200:
 		edges = response.json()
 
+		# if edgeNum == 0:
+		# 	hypernyms = [
+		# 		relation for relation in edges['relations']
+		# 		if relation['relationType'] == 'HYPERNYM']
+
+		# 	for result in hypernyms:
+		# 		if result['language'] == 'EN':
+		# 			target = result.get('target') #Target synset
+		# 			language = result.get('language') 
+
+		# 			# retrieving BabelPointer data
+		# 			pointer = result['pointer']
+		# 			relation = pointer.get('name') # hypernym hyponym etc
+		# 			type = pointer.get('shortName') #is-a, part-of, etc.
+		# 			group = pointer.get('relationGroup') #HYPERNYM, HYPONYM, etc.
+
+		# 			print(language \
+		# 			+ "\t" + str(target) \
+		# 			+ "\t" + str(relation) \
+		# 			+ "\t" + str(type) \
+		# 			+ "\t" + str(group))
+			
+
 		# retrieving Edges data
+
+		#CRETAE ARRAY WHERE EVERYTHING IS STORED, TALK WITH BLAKE ABOUT HOW
+
+		#IF EDGE NUM IS 0, COPY THE ENTIRE EDGES TO ARRAY
+		synsetArray = []
+
+
 		for result in edges:
 			if result['language'] == 'EN':
 				target = result.get('target') #Target synset
@@ -59,25 +88,51 @@ def get_outgoing_edges(synsetId):
 				type = pointer.get('shortName') #is-a, part-of, etc.
 				group = pointer.get('relationGroup') #HYPERNYM, HYPONYM, etc.
 
+				#Gets all synsets from initial edge
+				if edgeNum == 0:
+					synsetArray.append(result)
+					print("HYPERNYM GROUP WITH EDGE 0")
+					edgeOne = get_outgoing_edges(target, 1, type)
+					synsetArray.extend(edgeOne)
+				#Gets only hypernyms for first edge
+				elif edgeNum == 1:
+					if group == 'HYPERNYM':
+						synsetArray.append(result)
+						print("same edge type")
+						edgeTwo = get_outgoing_edges(target, 2, type)
+						synsetArray.extend(edgeTwo)
+				#Gets same types of words for second edges
+				elif edgeNum == 2:
+					if type == edgeType:
+						synsetArray.append(result)
+						print("same edge type")
+						edgeThree = get_outgoing_edges(target, 3, type)
+						synsetArray.extend(edgeThree)
+				#Stops at third edge but must be same type
+				elif edgeNum == 3:
+					if type == edgeType:
+						synsetArray.append(result)
+						print("same edge type")
+
 				print(language \
 				+ "\t" + str(target) \
 				+ "\t" + str(relation) \
 				+ "\t" + str(type) \
 				+ "\t" + str(group))
 		
-		return edges
+		return synsetArray
 	else:
 		print(f"Error: Unable to fetch data. Status code: {response.status_code}")
 		return None
 
-word = "knight"
+word = "boat"
 # Get synsets for the word
 synsets = get_synsets(word)
 
 if synsets:
 	for synset in synsets:
 		print(synset['id'] + "woohoo")
-		get_outgoing_edges(synset['id'])
+		get_outgoing_edges(synset['id'], 0, "")
 
 # Print the synsets
 if synsets:
