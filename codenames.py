@@ -168,7 +168,7 @@ class Game():
     playing = False
     turn = "Red"
 
-    def __init__(self, board_cols,  board_rows):
+    def __init__(self, board_cols, board_rows):
         self.board = Board(board_cols, board_rows)
         board_words = self.board.get_random_strings()
         card_list = self.board.create_cards(board_words)
@@ -191,6 +191,21 @@ class Game():
             return 0
 
     def start_game(self):
+        #clear terminal
+        if os.name == 'nt': #For Windows
+            os.system('cls')
+        else:  # For macOS and Linux
+            os.system('clear')
+
+
+        print("Welcome to our implementation of Codenames")
+        print()
+        print("This program was created by Blake Jones, Marc Eidelhoch, Luke Wharton and Sam Zacks")
+        print()
+        print("Red Team will go first:")
+        print()
+
+
         self.playing = True
 
         ready = ""
@@ -203,7 +218,7 @@ class Game():
 
             while ready.lower() != "yes":
                 ready = input("When ready, please enter yes: ") 
-                print()               
+                print()
 
             #clear terminal
             if os.name == 'nt': #For Windows
@@ -211,20 +226,16 @@ class Game():
             else:  # For macOS and Linux
                 os.system('clear')
             self.board.print_board_color()
-            clue = input("When ready, please enter your clue: ")
+            clue = input(self.turn + " Team please enter your clue: ")
             print()
             
             while self.check_clue(clue) != 0:
                 clue_status = self.check_clue(clue)
                 if clue_status == 1:
-                    clue = input("Please ensure that your clue is one word: ")
+                    clue = input(self.turn + " Team, please ensure that your clue is one word: ")
                     print()
                 elif clue_status == 2:
-                    clue = input("Please ensure that your clue is not a word on the board: ")
-                    print()
-                else: 
-                    # This shouldn't happen
-                    clue = input("When ready, please enter your clue: ")
+                    clue = input(self.turn + " Team, please ensure that your clue is not a word on the board: ")
                     print()
 
 
@@ -244,14 +255,14 @@ class Game():
                 else:  # For macOS and Linux
                     os.system('clear')
 
-                print("The clue your teammate gave is " + clue + "\n")
                 self.board.print_board_plain()
+                print("The clue your teammate gave is \"" + clue + "\"\n")
 
-                guess = input(self.turn + "Team's Guesser, what word would you like to guess: ").upper()
+                guess = input(self.turn + " Team's Guesser, what word would you like to guess: ").upper()
                 print()
                 if guess not in self.board.valid_words:
                     while guess not in self.board.valid_words:
-                        guess = input(self.turn + "Team's Guesser, please enter a word on the board: ").upper()
+                        guess = input(self.turn + " Team's Guesser, please enter a word on the board: ").upper()
                         print()
                     
                 num_guesses += 1
@@ -267,20 +278,25 @@ class Game():
 
                 if guessed_card.color == "red":
                     self.red_words_left -= 1
-                    print("You guessed a red word. \n")
                     self.board.print_board_plain()
                     if self.turn == "Blue" and self.red_words_left != 0:
                         print("You guessed the other team's word. Your turn is now over. \n")
                         turn_complete = True
                         self.turn = "Red"
+                    else:
+                        print("Well done, you guessed correctly!")
+                        print()
                 else:
                     self.blue_words_left -= 1
-                    print("You guessed a blue word. \n")
                     self.board.print_board_plain()
+                    print("You guessed a blue word. \n")
                     if self.turn == "Red" and self.blue_words_left != 0:
-                            print("You guessed the other team's word. Your turn is now over. \n")
-                            turn_complete = True
-                            self.turn = "Blue"
+                        print("You guessed the other team's word. Your turn is now over. \n")
+                        turn_complete = True
+                        self.turn = "Blue"
+                    else:
+                        print("Well done, you guessed correctly")
+                        print()
                 
                 if self.red_words_left == 0:
                     print("Red Team wins!")
@@ -292,8 +308,12 @@ class Game():
                     self.playing = False
                 else:
                     if num_guesses < 2 and turn_complete == False:
-                        guess_again = input("Would you like to guess another word? (Enter \"yes\" if so): ")
+                        guess_again = input(self.turn + " Team, would you like to guess another word? (Enter \"yes\" if so, \"no\" if not): ")
                         print()
+
+                        while guess_again != "no" and guess_again != "yes":
+                            guess_again = input(self.turn + " Team, would you like to guess another word? (Enter \"yes\" if so, \"no\" if not): ")
+                            print()
                     
                         if guess_again.lower() == "yes":
                             turn_complete = False
@@ -306,7 +326,7 @@ class Game():
                                 self.turn = "Red"
                     else:
                         if turn_complete == False:
-                            print("You have now guessed twice. Your turn is over. \n")
+                            print(self.turn + " Team, you have now guessed twice. Your turn is over. \n")
                             turn_complete = True
 
                             if self.turn == "Red":
@@ -315,7 +335,7 @@ class Game():
                                 self.turn = "Red"
 
 def main():
-    game = Game(5,5)
+    game = Game(3,3)
     game.start_game()
 
 if __name__ == "__main__":
