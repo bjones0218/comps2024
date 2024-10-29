@@ -54,7 +54,6 @@ def get_outgoing_edges(synsetId, edgeNum, edgeType):
 		#IF EDGE NUM IS 0, COPY THE ENTIRE EDGES TO ARRAY
 		synsetArray = []
 
-
 		for result in edges:
 			if result['language'] == 'EN':
 				target = result.get('target') #Target synset
