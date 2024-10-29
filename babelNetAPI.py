@@ -1,7 +1,8 @@
 import requests
 
 # Set up the BabelNet API endpoint and API key
-API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' 
+API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
+# API_KEY = '3a8b4b6b-59c4-491c-a1ed-e1d7d74a634b' #Luke Key
 
 
 # Function to get synsets for a given word
