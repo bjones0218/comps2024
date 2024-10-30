@@ -3,9 +3,9 @@ import json
 
 # Set up the BabelNet API endpoint and API key
 # API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
-# API_KEY = '3a8b4b6b-59c4-491c-a1ed-e1d7d74a634b' #Luke Key
+API_KEY = '3a8b4b6b-59c4-491c-a1ed-e1d7d74a634b' #Luke Key
 # API_KEY = 'f316c32c-f2af-46d3-9112-a809c5e4138d' #Marc Key
-API_KEY = 'c51ec8b8-c993-47c9-86aa-b78e9a4a0cf8' #Sam Key
+# API_KEY = 'c51ec8b8-c993-47c9-86aa-b78e9a4a0cf8' #Sam Key
 
 
 # Function to get synsets for a given word
@@ -38,7 +38,7 @@ def map_synsets_to_words(words: list) -> dict:
 
 	return word_synsets
 
-def get_outgoing_edges(synsetId, edgeNum, edgeType):
+def get_outgoing_edges(synsetId, edgeNum, edgeType, edgesSoFar):
 	SERVICE_URL = 'https://babelnet.io/v9/getOutgoingEdges'
 	params = {
 		'id' : synsetId,
@@ -51,9 +51,6 @@ def get_outgoing_edges(synsetId, edgeNum, edgeType):
 		edges = response.json()
 		# retrieving Edges data
 
-		#CRETAE ARRAY WHERE EVERYTHING IS STORED, TALK WITH BLAKE ABOUT HOW
-
-		#IF EDGE NUM IS 0, COPY THE ENTIRE EDGES TO ARRAY
 		synsetArray = []
 
 		for result in edges:
@@ -65,32 +62,37 @@ def get_outgoing_edges(synsetId, edgeNum, edgeType):
 				type = pointer.get('shortName') #is-a, part-of, etc.
 				group = pointer.get('relationGroup') #HYPERNYM, HYPONYM, etc.
 
-				if pointer.get('isAutomatic') == False:
+				if pointer.get('isAutomatic') == False and target not in edgesSoFar:
 					#Gets all synsets from initial edge
 					if edgeNum == 0:
 						synsetArray.append(result)
-						# print("EDGE 0")
-						edgeOne = get_outgoing_edges(target, 1, type)
+						edgesSoFar.add(target)
+
+						edgeOne = get_outgoing_edges(target, 1, type, edgesSoFar)
 						synsetArray.extend(edgeOne)
+
 						with open('edgesdata'+ str(edgeNum) +'.json', 'w') as edges_stuff:
-							json.dump(result, edges_stuff)	
+							json.dump(result, edges_stuff)
 					#Gets only hypernyms for second edge
 					elif edgeNum == 1:
 						if group == 'HYPERNYM' and (type == 'subclass_of' or type == 'is-a'):
 							synsetArray.append(result)
+							edgesSoFar.add(target)
+
 							with open('edgesdata'+ str(edgeNum) +'.json', 'w') as edges_stuff:
 								json.dump(result, edges_stuff)	
-							# print("Level 1 hypernym")
-							edgeTwo = get_outgoing_edges(target, 2, type)
+								
+							edgeTwo = get_outgoing_edges(target, 2, type, edgesSoFar)
 							synsetArray.extend(edgeTwo)
 					#Gets same types of words for third edges
 					elif edgeNum == 2:
 						if type == edgeType:
 							synsetArray.append(result)
+							edgesSoFar.add(target)
+
 							with open('edgesdata'+ str(edgeNum) +'.json', 'w') as edges_stuff:
-								json.dump(result, edges_stuff)	
-							# print("same edge type level 2")
-		# print(len(synsetArray))
+								json.dump(result, edges_stuff)
+
 		return synsetArray
 	else:
 		print(f"Error: Unable to fetch data. Status code: {response.status_code}")
@@ -163,15 +165,28 @@ for synset in synsets:
 
 singleWordLabels = {}
 
+edgesFoundSet = set()
 if synset_we_want:
-	# for synset in synsets:
-		# print(synset['id'] + "woohoo")
-	array = get_outgoing_edges(synset_we_want['id'], 0, "")
+	array = get_outgoing_edges(synset_we_want['id'], 0, "", edgesFoundSet)
 	print("The length of edge array: " + str(len(array)))
-	# singleWordLabels = get_single_word_clues(array, singleWordLabels)
+
+# with open('synsetArray.json', 'w') as f:
+#     for item in array:
+#         json.dump(item, f)
+# with open("synsetArray.txt", 'r') as f:
+#         lines = f.readlines()
+
+
+# for line in lines:
+# 	data.append(json.loads(line))
+
+singleWordLabels = get_single_word_clues(array, singleWordLabels)
+
 
 # print("The len of single word labels: " + str(len(singleWordLabels)))
-with open('synsetArray.txt', 'w') as f:
-    for item in array:
-        f.write(str(item) + '\n')
+
+
+with open('singleWordLabels.txt', 'w') as lf:
+	for key, value in singleWordLabels.items():
+		lf.write(key, ":", str(value) + '\n')
 
