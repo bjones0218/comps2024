@@ -1,7 +1,8 @@
 import requests
+import json
 
 # Set up the BabelNet API endpoint and API key
-# API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
+API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
 # API_KEY = '3a8b4b6b-59c4-491c-a1ed-e1d7d74a634b' #Luke Key
 # API_KEY = 'f316c32c-f2af-46d3-9112-a809c5e4138d' #Marc Key
 # API_KEY = 'c51ec8b8-c993-47c9-86aa-b78e9a4a0cf8' #Sam Key
@@ -71,26 +72,24 @@ def get_outgoing_edges(synsetId, edgeNum, edgeType):
 						# print("EDGE 0")
 						edgeOne = get_outgoing_edges(target, 1, type)
 						synsetArray.extend(edgeOne)
-					#Gets only hypernyms for first edge
+						with open('edgesdata'+ str(edgeNum) +'.json', 'w') as edges_stuff:
+							json.dump(result, edges_stuff)	
+					#Gets only hypernyms for second edge
 					elif edgeNum == 1:
-						if group == 'HYPERNYM':
+						if group == 'HYPERNYM' and (type == 'subclass_of' or type == 'is-a'):
 							synsetArray.append(result)
+							with open('edgesdata'+ str(edgeNum) +'.json', 'w') as edges_stuff:
+								json.dump(result, edges_stuff)	
 							# print("Level 1 hypernym")
 							edgeTwo = get_outgoing_edges(target, 2, type)
 							synsetArray.extend(edgeTwo)
-							added = True
-					#Gets same types of words for second edges
-					# elif edgeNum == 2:
-					# 	if type == edgeType:
-					# 		synsetArray.append(result)
-					# 		# print("same edge type level 2")
-					# 		edgeThree = get_outgoing_edges(target, 3, type)
-					# 		synsetArray.extend(edgeThree)
-					# #Stops at third edge but must be same type
-					# elif edgeNum == 3:
-					# 	if type == edgeType:
-					# 		synsetArray.append(result)
-					# 		# print("same edge type level 3")
+					#Gets same types of words for third edges
+					elif edgeNum == 2:
+						if type == edgeType:
+							synsetArray.append(result)
+							with open('edgesdata'+ str(edgeNum) +'.json', 'w') as edges_stuff:
+								json.dump(result, edges_stuff)	
+							# print("same edge type level 2")
 		# print(len(synsetArray))
 		return synsetArray
 	else:
@@ -168,8 +167,11 @@ if synset_we_want:
 	# for synset in synsets:
 		# print(synset['id'] + "woohoo")
 	array = get_outgoing_edges(synset_we_want['id'], 0, "")
-	print("The length of edge array: " + len(array))
-	singleWordLabels = get_single_word_clues(array, singleWordLabels)
+	print("The length of edge array: " + str(len(array)))
+	# singleWordLabels = get_single_word_clues(array, singleWordLabels)
 
-print("The len of single word labels: " + len(singleWordLabels))
+# print("The len of single word labels: " + str(len(singleWordLabels)))
+with open('synsetArray.txt', 'w') as f:
+    for item in array:
+        f.write(str(item) + '\n')
 
