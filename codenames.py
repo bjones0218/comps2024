@@ -2,6 +2,7 @@ import random
 import os
 
 # TODO: NOTES TO FIX: 
+# IF YOU DONT SAY YES BUT WANT TO GUESS AGAIN WEIRD THINGS AHPPEN 
 
 
 
