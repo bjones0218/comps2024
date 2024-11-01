@@ -3,7 +3,7 @@ import json
 
 # Set up the BabelNet API endpoint and API key
 # API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
-API_KEY = '3a8b4b6b-59c4-491c-a1ed-e1d7d74a634b' #Luke Key
+# API_KEY = '3a8b4b6b-59c4-491c-a1ed-e1d7d74a634b' #Luke Key
 # API_KEY = 'f316c32c-f2af-46d3-9112-a809c5e4138d' #Marc Key
 # API_KEY = 'c51ec8b8-c993-47c9-86aa-b78e9a4a0cf8' #Sam Key
 
@@ -188,5 +188,5 @@ singleWordLabels = get_single_word_clues(array, singleWordLabels)
 
 with open('singleWordLabels.txt', 'w') as lf:
 	for key, value in singleWordLabels.items():
-		lf.write(key, ":", str(value) + '\n')
+		lf.write(key + " : " + str(value) + '\n')
 
