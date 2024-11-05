@@ -7,6 +7,13 @@ import json
 # API_KEY = 'f316c32c-f2af-46d3-9112-a809c5e4138d' #Marc Key
 # API_KEY = 'c51ec8b8-c993-47c9-86aa-b78e9a4a0cf8' #Sam Key
 
+from pymongo import MongoClient
+
+CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
+client = MongoClient(CONNECTION_STRING)
+codenames_db = client["codenames_db"]  
+codenames_clues_collection = codenames_db["codenames_clues"]
+
 
 # Function to get synsets for a given word
 def get_synsets(word: str, lang='EN'):
@@ -185,8 +192,17 @@ singleWordLabels = get_single_word_clues(array, singleWordLabels)
 
 # print("The len of single word labels: " + str(len(singleWordLabels)))
 
+existing_entry = codenames_clues_collection.find_one({"codenames_word": word})
+if existing_entry:
+    codenames_clues_collection.update_one(
+        {"codenames_word": word},
+        {"$set": {"single_word_clues": singleWordLabels}}
+    )
+else:
+    codenames_clues_collection.insert_one({
+        "codenames_word": word,
+        "single_word_clues": singleWordLabels
+    })
+print(f"Clues for '{word}' have been stored in the database.")
 
-with open('singleWordLabels.txt', 'w') as lf:
-	for key, value in singleWordLabels.items():
-		lf.write(key + " : " + str(value) + '\n')
 
