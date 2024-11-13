@@ -98,20 +98,20 @@ def get_single_word_clues(synsetArray, singleWordLabels):
 		if senses:
 			split_main_sense = main_sense.full_lemma.split("_")
 
-			if len(split_main_sense) == 1 and split_main_sense[0] not in singleWordLabels and split_main_sense[0].isalpha():
+			if len(split_main_sense) == 1 and split_main_sense[0] not in singleWordLabels and split_main_sense[0].isalpha() and split_main_sense[0].isascii():
 				singleWordLabels[split_main_sense[0]] = W1
 			else:
 				for word in split_main_sense:
-					if word not in singleWordLabels and word.isalpha():
+					if word not in singleWordLabels and word.isalpha() and word.isascii():
 						singleWordLabels[word] = W2
 			
 			for sense in senses:
 				split_other_sense = sense.full_lemma.split("_")
-				if len(split_other_sense) == 1 and split_other_sense[0] not in singleWordLabels and split_other_sense[0].isalpha():
+				if len(split_other_sense) == 1 and split_other_sense[0] not in singleWordLabels and split_other_sense[0].isalpha() and split_other_sense[0].isascii():
 					singleWordLabels[split_other_sense[0]] = W3
 				else:
 					for word in split_other_sense:
-						if word not in singleWordLabels and word.isalpha():
+						if word not in singleWordLabels and word.isalpha() and word.isascii():
 							singleWordLabels[word] = W4
 	return singleWordLabels
 
