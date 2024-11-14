@@ -62,8 +62,8 @@ def get_outgoing_edges(synsetId, edgeNum, edgeType, edgesSoFar):
 						synsetArray.extend(edgeOne)
 					# Gets only hypernyms for second edge
 					elif edgeNum == 1:
-
-						if group == BabelPointer.ANY_HYPERNYM: # and (type == 'subclass_of' or type == 'is-a')
+						# print("look here the group: " + group)
+						if group.ordinal == 0: # and (type == 'subclass_of' or type == 'is-a')
 
 							synsetArray.append((result, 1))
 							edgesSoFar.add(target)
@@ -131,7 +131,7 @@ print("the length of single word labels: " + str(len(singleWordLabels)))
 
 with open('words.txt', 'w') as f:
     for word, score in singleWordLabels.items():
-        f.write(word + " : " + str(score))
+        f.write(word + " : " + str(score) + '\n')
 
 
 # existing_entry = codenames_clues_collection.find_one({"codenames_word": word})
