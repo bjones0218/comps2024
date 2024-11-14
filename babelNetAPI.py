@@ -55,7 +55,7 @@ def get_outgoing_edges(synsetId, edgeNum, edgeType, edgesSoFar):
 				if pointer.is_automatic == False and target not in edgesSoFar:
 					#Gets all synsets from initial edge
 					if edgeNum == 0:
-						synsetArray.append(result)
+						synsetArray.append((result, 0))
 						edgesSoFar.add(target)
 
 						edgeOne = get_outgoing_edges(target, 1, rel_type, edgesSoFar)
@@ -65,7 +65,7 @@ def get_outgoing_edges(synsetId, edgeNum, edgeType, edgesSoFar):
 
 						if group == BabelPointer.ANY_HYPERNYM: # and (type == 'subclass_of' or type == 'is-a')
 
-							synsetArray.append(result)
+							synsetArray.append((result, 1))
 							edgesSoFar.add(target)
 								
 							edgeTwo = get_outgoing_edges(target, 2, rel_type, edgesSoFar)
@@ -73,7 +73,7 @@ def get_outgoing_edges(synsetId, edgeNum, edgeType, edgesSoFar):
 					#Gets same types of words for third edges
 					elif edgeNum == 2:
 						if rel_type == edgeType:
-							synsetArray.append(result)
+							synsetArray.append((result, 2))
 							edgesSoFar.add(target)
 		return synsetArray
 
@@ -86,9 +86,9 @@ def get_single_word_clues(synsetArray, singleWordLabels):
 	W4 = 1.2
 
 	for synset in synsetArray:
-		synsetId = synset.target
+		synsetId = synset[0].target
 		if type(synsetId) == str:
-			synsetId = BabelSynsetID(synset.target)
+			synsetId = BabelSynsetID(synset[0].target)
 
 		by = bn.get_synset(synsetId)
 
@@ -99,20 +99,20 @@ def get_single_word_clues(synsetArray, singleWordLabels):
 			split_main_sense = main_sense.full_lemma.split("_")
 
 			if len(split_main_sense) == 1 and split_main_sense[0] not in singleWordLabels and split_main_sense[0].isalpha() and split_main_sense[0].isascii():
-				singleWordLabels[split_main_sense[0]] = W1
+				singleWordLabels[split_main_sense[0]] = (W1, synset[1])
 			else:
 				for word in split_main_sense:
 					if word not in singleWordLabels and word.isalpha() and word.isascii():
-						singleWordLabels[word] = W2
+						singleWordLabels[word] = (W2, synset[1])
 			
 			for sense in senses:
 				split_other_sense = sense.full_lemma.split("_")
 				if len(split_other_sense) == 1 and split_other_sense[0] not in singleWordLabels and split_other_sense[0].isalpha() and split_other_sense[0].isascii():
-					singleWordLabels[split_other_sense[0]] = W3
+					singleWordLabels[split_other_sense[0]] = (W3, synset[1])
 				else:
 					for word in split_other_sense:
 						if word not in singleWordLabels and word.isalpha() and word.isascii():
-							singleWordLabels[word] = W4
+							singleWordLabels[word] = (W4, synset[1])
 	return singleWordLabels
 
 word = "boat"
