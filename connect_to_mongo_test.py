@@ -1,6 +1,16 @@
 from pymongo import MongoClient
 import datetime
 
+
+# NOTES: TO DUMP A DB
+# run the command: mongodump --uri="mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2" which will dump all data from all collections
+# THIS SHOULD BE DONE ONCE WE HAVE FILLED IN THE DB
+# 
+
+# TO RESTORE A DB
+# run the command: mongorestore dump (as long as dump is in this directory, if not you have to give the path)
+
+
 # This is a document created by Marc Eidelhoch to give a basic example of how to use MongoDB
 # This example is based on being a store owner
 
@@ -77,4 +87,6 @@ print(suppliers_collection.find_one({"supplier_name": "New Navy"}))
 
 
 print(client.list_database_names())
+
+
 

@@ -25,6 +25,7 @@ def get_synsets(word: str, lang='EN'):
 
 	return synsets
 
+
 # Takes in a list of words, gets the synsets for the word and stores the synsets in a dictionary 
 # where the given word is the key
 def map_synsets_to_words(words: list) -> dict:
@@ -38,8 +39,6 @@ def map_synsets_to_words(words: list) -> dict:
 
 # For a given synset id, gets the outgoing edges, the type and the level of the edge
 def get_outgoing_edges(synsetId, edgeNum, edgeType, edgesSoFar):
-
-	# Gets the synset from the synset ID
 	if type(synsetId) == str:
 		synsetId = BabelSynsetID(synsetId)
 
@@ -51,7 +50,6 @@ def get_outgoing_edges(synsetId, edgeNum, edgeType, edgesSoFar):
 		synsetArray = []
 		for result in edges:
 			if result.language == Language.EN:
-				
 				target = result.target
 				pointer = result.pointer
 				rel_type = pointer.short_name
