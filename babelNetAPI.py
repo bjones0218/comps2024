@@ -1,33 +1,32 @@
 import requests
+import json
+import babelnet as bn
+from babelnet.language import Language
+from babelnet import BabelSynsetID
+from babelnet.data.relation import BabelPointer
 
 # Set up the BabelNet API endpoint and API key
-# API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
+API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
 # API_KEY = '3a8b4b6b-59c4-491c-a1ed-e1d7d74a634b' #Luke Key
 # API_KEY = 'f316c32c-f2af-46d3-9112-a809c5e4138d' #Marc Key
 # API_KEY = 'c51ec8b8-c993-47c9-86aa-b78e9a4a0cf8' #Sam Key
 
+# from pymongo import MongoClient
 
-# Function to get synsets for a given word
+# CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
+# client = MongoClient(CONNECTION_STRING)
+# codenames_db = client["codenames_db"]  
+# codenames_clues_collection = codenames_db["codenames_clues"]
+
+
+# Takes a word as input and returns the babelnet synsets for that word
 def get_synsets(word: str, lang='EN'):
-	SERVICE_URL = 'https://babelnet.io/v6/getSynsetIds'
+	synsets = bn.get_synsets(word, from_langs=[Language.EN])
 
-	# Prepare parameters for the API request
-	params = {
-		'lemma': word,
-		'searchLang': lang,
-		'key': API_KEY
-    }
+	return synsets
 
-	# Make the request to BabelNet
-	response = requests.get(SERVICE_URL, params=params)
-    
-	if response.status_code == 200:
-		synsets = response.json()  # Parse the JSON response
-		return synsets
-	else:
-		print(f"Error: Unable to fetch data. Status code: {response.status_code}")
-		return None
-    
+# Takes in a list of words, gets the synsets for the word and stores the synsets in a dictionary 
+# where the given word is the key
 def map_synsets_to_words(words: list) -> dict:
 	word_synsets = dict()
 
@@ -37,65 +36,53 @@ def map_synsets_to_words(words: list) -> dict:
 
 	return word_synsets
 
-def get_outgoing_edges(synsetId, edgeNum, edgeType):
-	SERVICE_URL = 'https://babelnet.io/v9/getOutgoingEdges'
-	params = {
-		'id' : synsetId,
-		'key'  : API_KEY
-	}
+# For a given synset id, gets the outgoing edges, the type and the level of the edge
+def get_outgoing_edges(synsetId, edgeNum, edgeType, edgesSoFar):
 
-	response = requests.get(SERVICE_URL, params=params)
+	# Gets the synset from the synset ID
+	if type(synsetId) == str:
+		synsetId = BabelSynsetID(synsetId)
 
-	if response.status_code == 200:
-		edges = response.json()
-		# retrieving Edges data
+	by = bn.get_synset(synsetId)
 
-		#CRETAE ARRAY WHERE EVERYTHING IS STORED, TALK WITH BLAKE ABOUT HOW
+	if by:
+		edges = by.outgoing_edges()
 
-		#IF EDGE NUM IS 0, COPY THE ENTIRE EDGES TO ARRAY
 		synsetArray = []
-
 		for result in edges:
-			if result['language'] == 'EN':
-				target = result.get('target') #Target synset
+			if result.language == Language.EN:
+				
+				target = result.target
+				pointer = result.pointer
+				rel_type = pointer.short_name
+				group = pointer.relation_group
 
-				# retrieving BabelPointer data
-				pointer = result['pointer']
-				type = pointer.get('shortName') #is-a, part-of, etc.
-				group = pointer.get('relationGroup') #HYPERNYM, HYPONYM, etc.
-
-				if pointer.get('isAutomatic') == False:
+				if pointer.is_automatic == False and target not in edgesSoFar:
 					#Gets all synsets from initial edge
 					if edgeNum == 0:
-						synsetArray.append(result)
-						# print("EDGE 0")
-						edgeOne = get_outgoing_edges(target, 1, type)
+						synsetArray.append((result, 0))
+						edgesSoFar.add(target)
+
+						edgeOne = get_outgoing_edges(target, 1, rel_type, edgesSoFar)
 						synsetArray.extend(edgeOne)
-					#Gets only hypernyms for first edge
+					# Gets only hypernyms for second edge
 					elif edgeNum == 1:
-						if group == 'HYPERNYM':
-							synsetArray.append(result)
-							# print("Level 1 hypernym")
-							edgeTwo = get_outgoing_edges(target, 2, type)
+						# print("look here the group: " + group)
+						if group.ordinal == 0: # and (type == 'subclass_of' or type == 'is-a')
+
+							synsetArray.append((result, 1))
+							edgesSoFar.add(target)
+								
+							edgeTwo = get_outgoing_edges(target, 2, rel_type, edgesSoFar)
 							synsetArray.extend(edgeTwo)
-							added = True
-					#Gets same types of words for second edges
-					# elif edgeNum == 2:
-					# 	if type == edgeType:
-					# 		synsetArray.append(result)
-					# 		# print("same edge type level 2")
-					# 		edgeThree = get_outgoing_edges(target, 3, type)
-					# 		synsetArray.extend(edgeThree)
-					# #Stops at third edge but must be same type
-					# elif edgeNum == 3:
-					# 	if type == edgeType:
-					# 		synsetArray.append(result)
-					# 		# print("same edge type level 3")
-		# print(len(synsetArray))
+					#Gets same types of words for third edges
+					elif edgeNum == 2:
+						if rel_type == edgeType:
+							synsetArray.append((result, 2))
+							edgesSoFar.add(target)
 		return synsetArray
-	else:
-		print(f"Error: Unable to fetch data. Status code: {response.status_code}")
-		return None
+
+	return None
 	
 def get_single_word_clues(synsetArray, singleWordLabels):
 	W1 = 1.0
@@ -104,72 +91,110 @@ def get_single_word_clues(synsetArray, singleWordLabels):
 	W4 = 1.2
 
 	for synset in synsetArray:
-		SYNSET_INFO_URL = 'https://babelnet.io/v9/getSynset'
-		synsetParams = {
-			'id' : synset['target'],
-			'key'  : API_KEY
-		}
-		synsetResponse = requests.get(SYNSET_INFO_URL, params=synsetParams)
+		synsetId = synset[0].target
+		if type(synsetId) == str:
+			synsetId = BabelSynsetID(synset[0].target)
 
-		if synsetResponse.status_code == 200:
-			senses = synsetResponse.json()
-			senses = senses.get('senses', [])
+		by = bn.get_synset(synsetId)
+
+		main_sense = by.main_sense(Language.EN)
+		senses = by.senses(Language.EN)
 
 		if senses:
-			main_sense = senses[0]  # The first sense is usually considered the main sense
-			other_senses = senses[1:]  # The rest are other senses
+			split_main_sense = main_sense.full_lemma.split("_")
 
-			split_main_sense = main_sense.get('properties', {}).get('fullLemma').split("_")
-
-			if len(split_main_sense) == 1 and split_main_sense[0] not in singleWordLabels:
-				singleWordLabels[split_main_sense[0]] = W1
+			if len(split_main_sense) == 1 and split_main_sense[0] not in singleWordLabels and split_main_sense[0].isalpha() and split_main_sense[0].isascii():
+				singleWordLabels[split_main_sense[0]] = (W1, synset[1])
 			else:
 				for word in split_main_sense:
-					if word not in singleWordLabels:
-						singleWordLabels[word] = W2
+					if word not in singleWordLabels and word.isalpha() and word.isascii():
+						singleWordLabels[word] = (W2, synset[1])
 			
-			for sense in other_senses:
-				split_other_sense = sense.get('properties', {}).get('fullLemma').split("_")
-				if len(split_other_sense) == 1 and split_other_sense[0] not in singleWordLabels:
-					singleWordLabels[split_other_sense[0]] = W3
+			for sense in senses:
+				split_other_sense = sense.full_lemma.split("_")
+				if len(split_other_sense) == 1 and split_other_sense[0] not in singleWordLabels and split_other_sense[0].isalpha() and split_other_sense[0].isascii():
+					singleWordLabels[split_other_sense[0]] = (W3, synset[1])
 				else:
 					for word in split_other_sense:
-						if word not in singleWordLabels:
-							singleWordLabels[word] = W4
-
-			# Extract and print main sense
-			# main_sense_lemma = main_sense.get('properties', {}).get('fullLemma')
-			# main_sense_language = main_sense.get('properties', {}).get('language')
-			# main_sense_source = main_sense.get('source')
-
-			# print(f"Main Sense:\nLemma: {main_sense_lemma}\nLanguage: {main_sense_language}\nSource: {main_sense_source}\n")
-
-			# Extract and print other senses
-			# print("Other Senses:")
-			# for sense in other_senses:
-			# 	lemma = sense.get('properties', {}).get('fullLemma')
-			# 	language = sense.get('properties', {}).get('language')
-			# 	source = sense.get('source')
-			# 	print(f"Lemma: {lemma}\tLanguage: {language}\tSource: {source}\n")
+						if word not in singleWordLabels and word.isalpha() and word.isascii():
+							singleWordLabels[word] = (W4, synset[1])
 	return singleWordLabels
 
+
+
+def detect(clue, team):
+	lambda_f = 2 # WILL CHANGE PROB
+	lambda_d = 2 # WILL CHANGE PROB
+
+	freq_val = lambda_f * freq(clue)
+	good_words_val = 0
+	# HERE WE NEED TO GET TEAM WORDS
+	for good_word in team_words:
+		good_words_val = good_words_val + 1 - dist(clue, word)
+	bad_words_val = 0
+	for bad_word in other_team_words:
+		current_val = 1 - dist(clue, bad_word)
+		if current_val > bad_words_val:
+			bad_words_val = current_val
+	dict_val = lambda_d * (good_words_val - bad_words_val)
+
+	return freq_val + dict_val
+
+
+
+def freq(word):
+	# Calculate document frequency of word which was done in paper from what number of cleaned wikipedia articles the word was found in
+	# Empirically calculated alpha to be 1/1667 in paper
+	alpha = 1/1667
+	frequency = get_frequency(word)
+	if (1/frequency) >= alpha:
+		return -(1/frequency)
+	else:
+		return -1
+
+def get_frequency(word):
+	# Queries the database of frequencies of words and returns the value
+	# Need to figure out how to access wikipedia info
+
+def dist(word1, word2):
+	# This is the cosine distance between the dict to vec word embeddings for each word
+	# Need to figure out how to access dict to vec
+
+	return distance
+
+
+
+
 word = "boat"
+
 # Get synsets for the word
 synsets = get_synsets(word)
 
-synset_we_want = None
-for synset in synsets:
-	if synset['id'] == 'bn:00011674n':
-		synset_we_want = synset
-
 singleWordLabels = {}
 
-if synset_we_want:
-	# for synset in synsets:
-		# print(synset['id'] + "woohoo")
-	array = get_outgoing_edges(synset_we_want['id'], 0, "")
-	print("The length of edge array: " + len(array))
-	singleWordLabels = get_single_word_clues(array, singleWordLabels)
+edgesFoundSet = set()
 
-print("The len of single word labels: " + len(singleWordLabels))
+for synset in synsets:
+	array = get_outgoing_edges(synset.id, 0, "", edgesFoundSet)
+	singleWordLabels = get_single_word_clues(array, singleWordLabels)
+print("the length of single word labels: " + str(len(singleWordLabels)))
+
+with open('words.txt', 'w') as f:
+    for word, score in singleWordLabels.items():
+        f.write(word + " : " + str(score) + '\n')
+
+
+# existing_entry = codenames_clues_collection.find_one({"codenames_word": word})
+# if existing_entry:
+#     codenames_clues_collection.update_one(
+#         {"codenames_word": word},
+#         {"$set": {"single_word_clues": singleWordLabels}}
+#     )
+# else:
+#     codenames_clues_collection.insert_one({
+#         "codenames_word": word,
+#         "single_word_clues": singleWordLabels
+#     })
+# print(f"Clues for '{word}' have been stored in the database.")
+
 
