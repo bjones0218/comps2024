@@ -4,6 +4,7 @@ import babelnet as bn
 from babelnet.language import Language
 from babelnet import BabelSynsetID
 from babelnet.data.relation import BabelPointer
+from pymongo import MongoClient
 
 # Set up the BabelNet API endpoint and API key
 API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
@@ -11,12 +12,15 @@ API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
 # API_KEY = 'f316c32c-f2af-46d3-9112-a809c5e4138d' #Marc Key
 # API_KEY = 'c51ec8b8-c993-47c9-86aa-b78e9a4a0cf8' #Sam Key
 
-# from pymongo import MongoClient
 
-# CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
-# client = MongoClient(CONNECTION_STRING)
-# codenames_db = client["codenames_db"]  
-# codenames_clues_collection = codenames_db["codenames_clues"]
+CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
+client = MongoClient(CONNECTION_STRING)
+codenames_db = client["codenames_db"]  
+
+if codenames_db["codenames_clues"] is not None:
+    codenames_db.drop_collection("codenames_clues")
+
+codenames_clues_collection = codenames_db["codenames_clues"]
 
 
 # Takes a word as input and returns the babelnet synsets for that word
@@ -120,79 +124,73 @@ def get_single_word_clues(synsetArray, singleWordLabels):
 
 
 
-def detect(clue, team):
-	lambda_f = 2 # WILL CHANGE PROB
-	lambda_d = 2 # WILL CHANGE PROB
+# def detect(clue, team):
+# 	lambda_f = 2 # WILL CHANGE PROB
+# 	lambda_d = 2 # WILL CHANGE PROB
 
-	freq_val = lambda_f * freq(clue)
-	good_words_val = 0
-	# HERE WE NEED TO GET TEAM WORDS
-	for good_word in team_words:
-		good_words_val = good_words_val + 1 - dist(clue, word)
-	bad_words_val = 0
-	for bad_word in other_team_words:
-		current_val = 1 - dist(clue, bad_word)
-		if current_val > bad_words_val:
-			bad_words_val = current_val
-	dict_val = lambda_d * (good_words_val - bad_words_val)
+# 	freq_val = lambda_f * freq(clue)
+# 	good_words_val = 0
+# 	# HERE WE NEED TO GET TEAM WORDS
+# 	for good_word in team_words:
+# 		good_words_val = good_words_val + 1 - dist(clue, word)
+# 	bad_words_val = 0
+# 	for bad_word in other_team_words:
+# 		current_val = 1 - dist(clue, bad_word)
+# 		if current_val > bad_words_val:
+# 			bad_words_val = current_val
+# 	dict_val = lambda_d * (good_words_val - bad_words_val)
 
-	return freq_val + dict_val
-
-
-
-def freq(word):
-	# Calculate document frequency of word which was done in paper from what number of cleaned wikipedia articles the word was found in
-	# Empirically calculated alpha to be 1/1667 in paper
-	alpha = 1/1667
-	frequency = get_frequency(word)
-	if (1/frequency) >= alpha:
-		return -(1/frequency)
-	else:
-		return -1
-
-def get_frequency(word):
-	# Queries the database of frequencies of words and returns the value
-	# Need to figure out how to access wikipedia info
-
-def dist(word1, word2):
-	# This is the cosine distance between the dict to vec word embeddings for each word
-	# Need to figure out how to access dict to vec
-
-	return distance
+# 	return freq_val + dict_val
 
 
 
+# def freq(word):
+# 	# Calculate document frequency of word which was done in paper from what number of cleaned wikipedia articles the word was found in
+# 	# Empirically calculated alpha to be 1/1667 in paper
+# 	alpha = 1/1667
+# 	frequency = get_frequency(word)
+# 	if (1/frequency) >= alpha:
+# 		return -(1/frequency)
+# 	else:
+# 		return -1
 
-word = "boat"
+# def get_frequency(word):
+# 	# Queries the database of frequencies of words and returns the value
+# 	# Need to figure out how to access wikipedia info
 
+# def dist(word1, word2):
+# 	# This is the cosine distance between the dict to vec word embeddings for each word
+# 	# Need to figure out how to access dict to vec
+# 	# return distance
+
+with open("word_list.txt", 'r') as file:
+            lines = file.readlines()
 # Get synsets for the word
-synsets = get_synsets(word)
 
-singleWordLabels = {}
+for line in lines:
+	line = line.strip()
 
-edgesFoundSet = set()
+	synsets = get_synsets(line)
 
-for synset in synsets:
-	array = get_outgoing_edges(synset.id, 0, "", edgesFoundSet)
-	singleWordLabels = get_single_word_clues(array, singleWordLabels)
-print("the length of single word labels: " + str(len(singleWordLabels)))
+	singleWordLabels = {}
 
-with open('words.txt', 'w') as f:
-    for word, score in singleWordLabels.items():
-        f.write(word + " : " + str(score) + '\n')
+	edgesFoundSet = set()
 
+	for synset in synsets:
+		array = get_outgoing_edges(synset.id, 0, "", edgesFoundSet)
+		singleWordLabels = get_single_word_clues(array, singleWordLabels)
 
-# existing_entry = codenames_clues_collection.find_one({"codenames_word": word})
-# if existing_entry:
-#     codenames_clues_collection.update_one(
-#         {"codenames_word": word},
-#         {"$set": {"single_word_clues": singleWordLabels}}
-#     )
-# else:
-#     codenames_clues_collection.insert_one({
-#         "codenames_word": word,
-#         "single_word_clues": singleWordLabels
-#     })
-# print(f"Clues for '{word}' have been stored in the database.")
+	existing_entry = codenames_clues_collection.find_one({"codenames_word": line})
+	if existing_entry:
+		codenames_clues_collection.update_one(
+			{"codenames_word": line},
+			{"$set": {"single_word_clues": singleWordLabels}}
+		)
+	else:
+		codenames_clues_collection.insert_one({
+			"codenames_word": line,
+			"single_word_clues": singleWordLabels
+		})
+	print(f"Clues for '{line}' have been stored in the database.")
 
 
