@@ -7,8 +7,6 @@ from babelnet.data.relation import BabelPointer
 from pymongo import MongoClient
 
 
-
-
 # Set up the BabelNet API endpoint and API key
 API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
 # API_KEY = '3a8b4b6b-59c4-491c-a1ed-e1d7d74a634b' #Luke Key
@@ -19,9 +17,11 @@ API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
 CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
 client = MongoClient(CONNECTION_STRING)
 codenames_db = client["codenames_db"]  
+
+if codenames_db["codenames_clues"] is not None:
+    codenames_db.drop_collection("codenames_clues")
+
 codenames_clues_collection = codenames_db["codenames_clues"]
-
-
 
 
 # Takes a word as input and returns the babelnet synsets for that word
@@ -125,36 +125,21 @@ def get_single_word_clues(synsetArray, singleWordLabels):
 
 
 
-word = "boat"
+	for synset in synsets:
+		array = get_outgoing_edges(synset.id, 0, "", edgesFoundSet)
+		singleWordLabels = get_single_word_clues(array, singleWordLabels)
 
-# Get synsets for the word
-synsets = get_synsets(word)
-
-singleWordLabels = {}
-
-edgesFoundSet = set()
-
-for synset in synsets:
-	array = get_outgoing_edges(synset.id, 0, "", edgesFoundSet)
-	singleWordLabels = get_single_word_clues(array, singleWordLabels)
-print("the length of single word labels: " + str(len(singleWordLabels)))
-
-with open('words.txt', 'w') as f:
-    for word, score in singleWordLabels.items():
-        f.write(word + " : " + str(score) + '\n')
-
-
-# existing_entry = codenames_clues_collection.find_one({"codenames_word": word})
-# if existing_entry:
-#     codenames_clues_collection.update_one(
-#         {"codenames_word": word},
-#         {"$set": {"single_word_clues": singleWordLabels}}
-#     )
-# else:
-#     codenames_clues_collection.insert_one({
-#         "codenames_word": word,
-#         "single_word_clues": singleWordLabels
-#     })
-# print(f"Clues for '{word}' have been stored in the database.")
+	existing_entry = codenames_clues_collection.find_one({"codenames_word": line})
+	if existing_entry:
+		codenames_clues_collection.update_one(
+			{"codenames_word": line},
+			{"$set": {"single_word_clues": singleWordLabels}}
+		)
+	else:
+		codenames_clues_collection.insert_one({
+			"codenames_word": line,
+			"single_word_clues": singleWordLabels
+		})
+	print(f"Clues for '{line}' have been stored in the database.")
 
 
