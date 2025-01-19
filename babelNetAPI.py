@@ -6,6 +6,7 @@ from babelnet import BabelSynsetID
 from babelnet.data.relation import BabelPointer
 from pymongo import MongoClient
 
+
 # Set up the BabelNet API endpoint and API key
 API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
 # API_KEY = '3a8b4b6b-59c4-491c-a1ed-e1d7d74a634b' #Luke Key
@@ -123,58 +124,6 @@ def get_single_word_clues(synsetArray, singleWordLabels):
 	return singleWordLabels
 
 
-
-# def detect(clue, team):
-# 	lambda_f = 2 # WILL CHANGE PROB
-# 	lambda_d = 2 # WILL CHANGE PROB
-
-# 	freq_val = lambda_f * freq(clue)
-# 	good_words_val = 0
-# 	# HERE WE NEED TO GET TEAM WORDS
-# 	for good_word in team_words:
-# 		good_words_val = good_words_val + 1 - dist(clue, word)
-# 	bad_words_val = 0
-# 	for bad_word in other_team_words:
-# 		current_val = 1 - dist(clue, bad_word)
-# 		if current_val > bad_words_val:
-# 			bad_words_val = current_val
-# 	dict_val = lambda_d * (good_words_val - bad_words_val)
-
-# 	return freq_val + dict_val
-
-
-
-# def freq(word):
-# 	# Calculate document frequency of word which was done in paper from what number of cleaned wikipedia articles the word was found in
-# 	# Empirically calculated alpha to be 1/1667 in paper
-# 	alpha = 1/1667
-# 	frequency = get_frequency(word)
-# 	if (1/frequency) >= alpha:
-# 		return -(1/frequency)
-# 	else:
-# 		return -1
-
-# def get_frequency(word):
-# 	# Queries the database of frequencies of words and returns the value
-# 	# Need to figure out how to access wikipedia info
-
-# def dist(word1, word2):
-# 	# This is the cosine distance between the dict to vec word embeddings for each word
-# 	# Need to figure out how to access dict to vec
-# 	# return distance
-
-with open("word_list.txt", 'r') as file:
-            lines = file.readlines()
-# Get synsets for the word
-
-for line in lines:
-	line = line.strip()
-
-	synsets = get_synsets(line)
-
-	singleWordLabels = {}
-
-	edgesFoundSet = set()
 
 	for synset in synsets:
 		array = get_outgoing_edges(synset.id, 0, "", edgesFoundSet)
