@@ -4,6 +4,8 @@ import babelnet as bn
 from babelnet.language import Language
 from babelnet import BabelSynsetID
 from babelnet.data.relation import BabelPointer
+from scipy.spatial.distance import cosine
+
 
 # Set up the BabelNet API endpoint and API key
 API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
@@ -11,12 +13,16 @@ API_KEY = 'f0e09cff-8d83-4c31-94eb-65f86fa0e43f' #Blake Key
 # API_KEY = 'f316c32c-f2af-46d3-9112-a809c5e4138d' #Marc Key
 # API_KEY = 'c51ec8b8-c993-47c9-86aa-b78e9a4a0cf8' #Sam Key
 
-# from pymongo import MongoClient
+from pymongo import MongoClient
 
-# CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
-# client = MongoClient(CONNECTION_STRING)
-# codenames_db = client["codenames_db"]  
-# codenames_clues_collection = codenames_db["codenames_clues"]
+CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
+client = MongoClient(CONNECTION_STRING)
+codenames_db = client["codenames_db"]  
+codenames_clues_collection = codenames_db["codenames_clues"]
+dict2vec_db = client["dict2vec"]
+dict2vec_collection = dict2vec_db["dict2vec_collection"]
+
+
 
 
 # Takes a word as input and returns the babelnet synsets for that word
@@ -154,9 +160,14 @@ def get_frequency(word):
 	# Queries the database of frequencies of words and returns the value
 	# Need to figure out how to access wikipedia info
 
+	return frequency
+
 def dist(word1, word2):
 	# This is the cosine distance between the dict to vec word embeddings for each word
-	# Need to figure out how to access dict to vec
+
+	vec1 = dict2vec_collection.find_one({"word": word1}).get("vector")
+	vec2 = dict2vec_collection.find_one({"word": word2}).get("vector")
+	distance = cosine(vec1, vec2)
 
 	return distance
 
