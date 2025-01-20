@@ -71,3 +71,6 @@ print(detect("weird", ["germany", "car", "change", "glove", "needle", "robin", "
 print(detect("and", ["germany", "car", "change", "glove", "needle", "robin", "belt",
 "board", "africa", "gold"], ["germany", "car", "change", "glove", "needle", "robin", "belt",
 "board", "africa", "gold"]))
+print(detect("and", ["germany", "car", "change", "glove", "needle", "robin", "belt",
+"board", "africa", "gold"], ["germany", "car", "change", "glove", "needle", "robin", "belt",
+"board", "africa", "gold"]))
