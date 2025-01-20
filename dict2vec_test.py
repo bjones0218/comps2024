@@ -2,6 +2,8 @@ from pymongo import MongoClient
 from scipy.spatial.distance import cosine
 
 
+# https://github.com/tca19/dict2vec
+
 CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
 
 client = MongoClient(CONNECTION_STRING)
