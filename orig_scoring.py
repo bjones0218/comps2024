@@ -27,7 +27,7 @@ def original_scoring(clue, team):
 
 	return clue_score
 		
-					
+
 def origional_scoring_max(clue, words):
 	cur_max = 0
 	for word in words:
