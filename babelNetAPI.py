@@ -123,6 +123,86 @@ def get_single_word_clues(synsetArray, singleWordLabels):
 							singleWordLabels[word] = (W4, synset[1])
 	return singleWordLabels
 
+def original_scoring(clue, team):
+	lambda_b = 1
+	lambda_r = 0.5
+	blue_words = []
+	red_words = []
+	cur_score= 0
+	if team == "B":
+		#find all words on blue board where clue is candidate clue
+		for word in blue_words:
+			#check mongoDB and retrieve data if candidate clue exists
+			cur_score += 1/((mongoResult[1][1]+1) *mongoResult[1][0])
+		max_red = origional_scoring_max(clue, red_words)
+		clue_score = lambda_b*cur_score - lambda_r*max_red
+	elif team == "R":
+		#find all words on blue board where clue is candidate clue
+		for word in red_words:
+			#check mongoDB and retrieve data if candidate clue exists
+			cur_score += 1/((mongoResult[1][1]+1) *mongoResult[1][0])
+		max_blue = origional_scoring_max(clue, blue_words)
+		clue_score = lambda_r*cur_score - lambda_b*max_blue
+
+	return clue_score
+		
+					
+def origional_scoring_max(clue, words):
+	cur_max = 0
+	for word in words:
+		#check mongoDB and retrieve data if candidate clue exists
+		cur_score += 1/((mongoResult[1][1]+1) *mongoResult[1][0])
+		if cur_score > cur_max:
+			cur_max = cur_score
+	return cur_max
+	
+
+
+def detect(clue, team):
+	lambda_f = 2 # WILL CHANGE PROB
+	lambda_d = 2 # WILL CHANGE PROB
+
+	freq_val = lambda_f * freq(clue)
+	good_words_val = 0
+	# HERE WE NEED TO GET TEAM WORDS
+	for good_word in team_words:
+		good_words_val = good_words_val + 1 - dist(clue, word)
+	bad_words_val = 0
+	for bad_word in other_team_words:
+		current_val = 1 - dist(clue, bad_word)
+		if current_val > bad_words_val:
+			bad_words_val = current_val
+	dict_val = lambda_d * (good_words_val - bad_words_val)
+
+	return freq_val + dict_val
+
+
+
+def freq(word):
+	# Calculate document frequency of word which was done in paper from what number of cleaned wikipedia articles the word was found in
+	# Empirically calculated alpha to be 1/1667 in paper
+	alpha = 1/1667
+	frequency = get_frequency(word)
+	if (1/frequency) >= alpha:
+		return -(1/frequency)
+	else:
+		return -1
+
+def get_frequency(word):
+	# Queries the database of frequencies of words and returns the value
+	# Need to figure out how to access wikipedia info
+	return word
+
+def dist(word1, word2):
+	# This is the cosine distance between the dict to vec word embeddings for each word
+	# Need to figure out how to access dict to vec
+
+	return distance
+
+
+
+
+
 
 with open("word_list.txt", 'r') as file:
     lines = file.readlines()
@@ -136,6 +216,7 @@ for line in lines:
 	singleWordLabels = {}
 
 	edgesFoundSet = set()
+
 
 	for synset in synsets:
 		array = get_outgoing_edges(synset.id, 0, "", edgesFoundSet)
