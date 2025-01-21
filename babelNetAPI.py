@@ -202,14 +202,21 @@ def dist(word1, word2):
 
 
 
-word = "boat"
 
+
+with open("word_list.txt", 'r') as file:
+    lines = file.readlines()
+	
 # Get synsets for the word
-synsets = get_synsets(word)
+for line in lines:
+	line = line.strip()
 
-singleWordLabels = {}
+	synsets = get_synsets(line)
 
-edgesFoundSet = set()
+	singleWordLabels = {}
+
+	edgesFoundSet = set()
+
 
 	for synset in synsets:
 		array = get_outgoing_edges(synset.id, 0, "", edgesFoundSet)
