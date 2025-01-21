@@ -58,13 +58,3 @@ def dist(word1: str, word2: str) -> float:
 	return distance
 
 
-
-print(detect("europe", ["germany", "car", "change", "glove", "needle", "robin", "belt",
-"board", "africa", "gold"], ["pipe", "kid", "key", "boom", "satellite", "tap", "nurse", "pyramid", "rock", "bark"]))
-print(detect("spin", ["germany", "car", "change", "glove", "needle", "robin", "belt", "board", "africa", "gold"], 
-			 ["pipe", "kid", "key", "boom", "satellite", "tap", "nurse", "pyramid", "rock", "bark"]))
-print(detect("weird", ["germany", "car", "change", "glove", "needle", "robin", "belt", "board", "africa", "gold"], 
-			 ["pipe", "kid", "key", "boom", "satellite", "tap", "nurse", "pyramid", "rock", "bark"]))
-print(detect("and", ["germany", "car", "change", "glove", "needle", "robin", "belt", "board", "africa", "gold"], 
-			 ["pipe", "kid", "key", "boom", "satellite", "tap", "nurse", "pyramid", "rock", "bark"]))
-print(detect("and", ["germany", "car", "change", "glove", "needle", "robin", "belt", "board", "africa", "gold"], ["pipe", "kid", "key", "boom", "satellite", "tap", "nurse", "pyramid", "rock", "bark"]))

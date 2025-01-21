@@ -19,6 +19,6 @@ with open("dict2vec-300d.vec", "r") as vector_file:
 		word = temp[0]
 		vector_vals = [float(num) for num in temp[1: 301]]
 		vector = tuple(vector_vals)
-		dict2vec_collection.insert_one({"word": word, "vector": vector})
+		dict2vec_collection.insert_one({"word": word.upper(), "vector": vector})
 
 

@@ -14,28 +14,28 @@ def original_scoring(clue, good_words, bad_words):
 	
 	#find all words on good board where clue is candidate clue and calculates score
 	for word in good_words:
-		cur_dict = words_collection.find_one({"codenames_word":word})
+		cur_dict = words_collection.find_one({"codenames_word": word})
 		if (cur_dict):
 			cur_weights = cur_dict.get('single_word_clues').get(clue)
 			if cur_weights:
-				print(clue, cur_weights)
+				#print(clue, cur_weights)
 				cur_score += 1/((cur_weights[1]+1) * cur_weights[0])
-				print(cur_score)
-	max_bad = origional_scoring_max(clue, bad_words)
+				#print(cur_score)
+	max_bad = original_scoring_max(clue, bad_words)
 	clue_score = lambda_good*cur_score - lambda_bad*max_bad
 	
 
 	return clue_score
 		
 # finds max negative score to penalize original scoring function with			
-def origional_scoring_max(clue, bad_words):
+def original_scoring_max(clue, bad_words):
 	cur_max = 0
 	for word in bad_words:
 		cur_dict = words_collection.find_one({"codenames_word":word})
 		if (cur_dict):
 			cur_weights = cur_dict.get('single_word_clues').get(clue)
 			if cur_weights:
-				print(clue, cur_weights)
+				#print(clue, cur_weights)
 				cur_score = 1/((cur_weights[1]+1) * cur_weights[0])
 				if cur_score > cur_max:
 					cur_max = cur_score

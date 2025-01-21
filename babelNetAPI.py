@@ -107,20 +107,20 @@ def get_single_word_clues(synsetArray, singleWordLabels):
 			split_main_sense = main_sense.full_lemma.split("_")
 
 			if len(split_main_sense) == 1 and split_main_sense[0] not in singleWordLabels and split_main_sense[0].isalpha() and split_main_sense[0].isascii():
-				singleWordLabels[split_main_sense[0]] = (W1, synset[1])
+				singleWordLabels[split_main_sense[0].upper()] = (W1, synset[1])
 			else:
 				for word in split_main_sense:
 					if word not in singleWordLabels and word.isalpha() and word.isascii():
-						singleWordLabels[word] = (W2, synset[1])
+						singleWordLabels[word.upper()] = (W2, synset[1])
 			
 			for sense in senses:
 				split_other_sense = sense.full_lemma.split("_")
 				if len(split_other_sense) == 1 and split_other_sense[0] not in singleWordLabels and split_other_sense[0].isalpha() and split_other_sense[0].isascii():
-					singleWordLabels[split_other_sense[0]] = (W3, synset[1])
+					singleWordLabels[split_other_sense[0].upper()] = (W3, synset[1])
 				else:
 					for word in split_other_sense:
 						if word not in singleWordLabels and word.isalpha() and word.isascii():
-							singleWordLabels[word] = (W4, synset[1])
+							singleWordLabels[word.upper()] = (W4, synset[1])
 	return singleWordLabels
 
 
@@ -141,6 +141,8 @@ for line in lines:
 	for synset in synsets:
 		array = get_outgoing_edges(synset.id, 0, "", edgesFoundSet)
 		singleWordLabels = get_single_word_clues(array, singleWordLabels)
+		print(singleWordLabels)
+		
 
 	existing_entry = codenames_clues_collection.find_one({"codenames_word": line})
 	if existing_entry:
