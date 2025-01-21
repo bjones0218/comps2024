@@ -137,12 +137,9 @@ for line in lines:
 
 	edgesFoundSet = set()
 
-
 	for synset in synsets:
 		array = get_outgoing_edges(synset.id, 0, "", edgesFoundSet)
 		singleWordLabels = get_single_word_clues(array, singleWordLabels)
-		print(singleWordLabels)
-		
 
 	existing_entry = codenames_clues_collection.find_one({"codenames_word": line})
 	if existing_entry:
