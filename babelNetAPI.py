@@ -124,6 +124,18 @@ def get_single_word_clues(synsetArray, singleWordLabels):
 	return singleWordLabels
 
 
+with open("word_list.txt", 'r') as file:
+    lines = file.readlines()
+	
+# Get synsets for the word
+for line in lines:
+	line = line.strip()
+
+	synsets = get_synsets(line)
+
+	singleWordLabels = {}
+
+	edgesFoundSet = set()
 
 	for synset in synsets:
 		array = get_outgoing_edges(synset.id, 0, "", edgesFoundSet)
