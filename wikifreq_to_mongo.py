@@ -18,4 +18,4 @@ with open("enwiki-2023-04-13.txt", "r") as wiki_freq_file:
 		temp = line.split(" ")
 		word = temp[0]
 		num_occurances = int(temp[1])
-		dict2vec_collection.insert_one({"word": word, "count": num_occurances})
+		dict2vec_collection.insert_one({"word": word.upper(), "count": num_occurances})
