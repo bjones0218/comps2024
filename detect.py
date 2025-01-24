@@ -36,25 +36,37 @@ def freq(word: str) -> float:
 	# Empirically calculated alpha to be 1/1667 in paper
 	alpha = 1/1667 # This might have to change if we arent getting enough common words and I think it should change
 	frequency = get_frequency(word)
-	if (1/frequency) >= alpha:
-		return -(1/frequency)
-	else:
+	if frequency == 0: # Word is way too rare so penalize a lot
 		return -1
+	else: 
+		if (1/frequency) >= alpha: # Word is too rare
+			return -(1/frequency)
+		else: # Word is too common
+			return -1
 
 def get_frequency(word):
 	# Queries the database of frequencies of words and returns the value
 
-	num_occurances = wiki_freq_collection.find_one({"word": word}).get("count")
+	wiki_freq_db_obj = wiki_freq_collection.find_one({"word": word})
+	if wiki_freq_db_obj:
+		return wiki_freq_db_obj.get("count")
+	else:
+		return 0
 
-	return num_occurances
 
 def dist(word1: str, word2: str) -> float:
 	# This is the cosine distance between the dict to vec word embeddings for each word
 
-	vec1 = dict2vec_collection.find_one({"word": word1}).get("vector")
-	vec2 = dict2vec_collection.find_one({"word": word2}).get("vector")
-	distance = cosine(vec1, vec2)
 
-	return distance
+	vec1_obj = dict2vec_collection.find_one({"word": word1})
+	vec2_obj = dict2vec_collection.find_one({"word": word2})
+
+	if vec1_obj and vec2_obj:
+		vec1 = vec1_obj.get("vector")
+		vec2 = vec2_obj.get("vector")
+		return cosine(vec1, vec2)
+	else:
+		return 2
+
 
 
