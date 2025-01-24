@@ -14,7 +14,7 @@ dict2vec_collection = dict2vec_db["dict2vec_collection"]
 
 
 word_1 = "man"
-vec1 = dict2vec_collection.find_one({"word": "boat"}).get("vector")
+vec1 = dict2vec_collection.find_one({"word": "BOAT"}).get("vector")
 
 max_dist = 0
 min_dist = .5
