@@ -5,68 +5,59 @@ from pymongo import MongoClient
 CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
 client = MongoClient(CONNECTION_STRING)
 
-dict2vec_db = client["dict2vec"]
-dict2vec_collection = dict2vec_db["dict2vec_collection"]
+freq_and_vec_db2 = client["freq_and_vec2"]
 
-wiki_freq_db = client["wiki_freq"]
-wiki_freq_collection = wiki_freq_db["wiki_freq_collection"]
+freq_and_vec_collection2 = freq_and_vec_db2["freq_and_vec_collection2"]
 
-def detect(clue: str, good_words: list, bad_words: list) -> float:
+def get_good_word_obj_dv(good_words):
+	return {word: freq_and_vec_collection2.find_one({"word": word}) for word in good_words}
+
+def get_bad_word_obj_dv(bad_words):
+	return {word: freq_and_vec_collection2.find_one({"word": word}) for word in bad_words}
+
+
+# SHOULD MAYBE OPTIMIZE THIS TO TAKE IN ALL OF THE CANDIDATE CLUES
+def detect(clue: str, good_words_obj_dv: dict, bad_words_obj_dv: dict) -> float:
 	lambda_f = 2 # We will have to figre out good values for this
 	lambda_d = 2 # And this
 
-	freq_val = lambda_f * freq(clue) # Penalizes overly frequent words more and very rare words more
+	clue_db_obj = freq_and_vec_collection2.find_one({"word": clue})
+	if clue_db_obj:
+		clue_vec = clue_db_obj.get("vector")
+		frequency = clue_db_obj.get("count")
+	else:
+		clue_vec = None
+		frequency = 0
 
-	good_words_val = 0
-	for good_word in good_words:
-		good_words_val = good_words_val + 1 - dist(clue, good_word)
-	bad_words_val = 0
-	for bad_word in bad_words:
-		current_val = 1 - dist(clue, bad_word)
-		if current_val > bad_words_val:
-			bad_words_val = current_val
-	dict_val = lambda_d * (good_words_val - bad_words_val)
+	alpha = 1/1667 # NEEDS TO CHANGE
 
-	return freq_val + dict_val
-
-
-
-def freq(word: str) -> float:
-	# Calculate document frequency of word which was done in paper from what number of cleaned wikipedia articles the word was found in
-	# Empirically calculated alpha to be 1/1667 in paper
-	alpha = 1/1667 # This might have to change if we arent getting enough common words and I think it should change
-	frequency = get_frequency(word)
 	if frequency == 0: # Word is way too rare so penalize a lot
-		return -1
+		freq_val = -1
 	else: 
 		if (1/frequency) >= alpha: # Word is too rare
-			return -(1/frequency)
+			freq_val = -(1/frequency)
 		else: # Word is too common
-			return -1
+			freq_val = -1
 
-def get_frequency(word):
-	# Queries the database of frequencies of words and returns the value
+	freq_score = lambda_f * freq_val # Penalizes overly frequent words more and very rare words more
 
-	wiki_freq_db_obj = wiki_freq_collection.find_one({"word": word})
-	if wiki_freq_db_obj:
-		return wiki_freq_db_obj.get("count")
-	else:
-		return 0
+	good_word_distances = [1 - dist(clue_vec, good_word.get("vector")) for good_word in good_words_obj_dv.values()]
+	# print(good_word_distances)
+	bad_word_distances = [1 - dist(clue_vec, bad_word.get("vector")) for bad_word in bad_words_obj_dv.values()]
+	# print(bad_word_distances)
+	good_words_val = sum(good_word_distances)
+	bad_words_val = max(bad_word_distances)
+
+	dict_val = lambda_d * (good_words_val - bad_words_val)
+
+	return freq_score + dict_val
 
 
-def dist(word1: str, word2: str) -> float:
+def dist(word1_vec: list, word2_vec: list) -> float:
 	# This is the cosine distance between the dict to vec word embeddings for each word
-
-
-	vec1_obj = dict2vec_collection.find_one({"word": word1})
-	vec2_obj = dict2vec_collection.find_one({"word": word2})
-
-	if vec1_obj and vec2_obj:
-		vec1 = vec1_obj.get("vector")
-		vec2 = vec2_obj.get("vector")
-		return cosine(vec1, vec2)
+	if word1_vec and word2_vec:
+		return cosine(word1_vec, word2_vec)
 	else:
 		return 2
-
 
 

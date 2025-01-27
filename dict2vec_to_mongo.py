@@ -5,20 +5,23 @@ CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSele
 
 client = MongoClient(CONNECTION_STRING)
 
-dict2vec_db = client["dict2vec"]
+freq_and_vec_db = client["freq_and_vec"]
 
-if dict2vec_db["dict2vec_collection"] is not None:
-    dict2vec_db.drop_collection("dict2vec_collection")
+if freq_and_vec_db["freq_and_vec"] is not None:
+    freq_and_vec_db.drop_collection("freq_and_vec_collection")
 
-dict2vec_collection = dict2vec_db["dict2vec_collection"]
+freq_and_vec_collection = freq_and_vec_db["freq_and_vec_collection"]
 
+count = 0
 with open("dict2vec-300d.vec", "r") as vector_file:
 	next(vector_file) # skip first line
 	for line in vector_file:
-		temp = line.split(" ")
-		word = temp[0]
-		vector_vals = [float(num) for num in temp[1: 301]]
-		vector = tuple(vector_vals)
-		dict2vec_collection.insert_one({"word": word.upper(), "vector": vector})
+		# temp = line.split(" ")
+		# word = temp[0]
+		# vector_vals = [float(num) for num in temp[1: 301]]
+		# vector = tuple(vector_vals)
+		# freq_and_vec_collection.insert_one({"word": word.upper(), "vector": vector, "count": 0})
+		# print("INSERTED:", word)
+		count += 1
 
-
+print(count)
