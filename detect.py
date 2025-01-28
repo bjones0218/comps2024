@@ -21,6 +21,9 @@ def detect(clue: str, good_words_obj_dv: dict, bad_words_obj_dv: dict) -> float:
 	lambda_f = 2 # We will have to figre out good values for this
 	lambda_d = 2 # And this
 
+
+	# print(clue)
+
 	clue_db_obj = freq_and_vec_collection2.find_one({"word": clue})
 	if clue_db_obj:
 		clue_vec = clue_db_obj.get("vector")
@@ -29,7 +32,7 @@ def detect(clue: str, good_words_obj_dv: dict, bad_words_obj_dv: dict) -> float:
 		clue_vec = None
 		frequency = 0
 
-	alpha = 1/1667 # NEEDS TO CHANGE
+	alpha = 1/300000 # NEEDS TO CHANGE
 
 	if frequency == 0: # Word is way too rare so penalize a lot
 		freq_val = -1

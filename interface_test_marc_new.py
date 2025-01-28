@@ -48,6 +48,7 @@ if __name__ == "__main__":
 	print(bad_words)
 
 	all_possible_combos = list(combinations(good_words, r=2))
+	print(len(all_possible_combos))
 
 	good_words_obj_cc = get_good_word_obj_bbn(good_words)
 	bad_words_obj_cc = get_bad_word_obj_bbn(bad_words)
@@ -62,10 +63,24 @@ if __name__ == "__main__":
 		word1_candidates = {key for key in list(codenames_clues_collection.find_one({"codenames_word": word_choice[0]}).get("single_word_clues").keys())}
 		word2_candidates = {key for key in list(codenames_clues_collection.find_one({"codenames_word": word_choice[1]}).get("single_word_clues").keys())}
 
+		# print(list(word1_candidates)[0:10])
+		# print(list(word2_candidates)[0:10])
 
 		intersection = list(word1_candidates & word2_candidates)
+		score_list_that_answers_all_questions = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
+		score_list = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
 
-		score_list = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
+		score_list2 = score_list.copy()
+		score_list3 = score_list.copy()
+		score_list2.sort(key= lambda x: x[1], reverse=True)
+		score_list3.sort(key= lambda x: x[2], reverse=True)
+		print("SORTED BY ORIG:", score_list2[0:5])
+		print("SORTED BY DETECT:", score_list3[0:5])
+		print("--------------")
+		score_list4 = score_list_that_answers_all_questions.copy()
+		score_list4.sort(key=lambda x: x[1], reverse=True)
+		print(score_list4[0:5])
+		#print(sorted(score_list2, key=lambda x: x[1], reverse = True)[0:5])
 
 		# GET THE TOP 5 FOR EACH WORD
 		all_max_scores.append((word_choice, sorted(score_list, key=lambda x: x[1], reverse = True)[0:5]))
