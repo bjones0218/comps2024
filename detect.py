@@ -4,9 +4,7 @@ from pymongo import MongoClient
 
 CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
 client = MongoClient(CONNECTION_STRING)
-
 freq_and_vec_db2 = client["freq_and_vec2"]
-
 freq_and_vec_collection2 = freq_and_vec_db2["freq_and_vec_collection2"]
 
 def get_good_word_obj_dv(good_words):
@@ -21,6 +19,9 @@ def detect(clue: str, good_words_obj_dv: dict, bad_words_obj_dv: dict) -> float:
 	lambda_f = 2 # We will have to figre out good values for this
 	lambda_d = 2 # And this
 
+	client = MongoClient(CONNECTION_STRING)
+	freq_and_vec_db2 = client["freq_and_vec2"]
+	freq_and_vec_collection2 = freq_and_vec_db2["freq_and_vec_collection2"]
 
 	# print(clue)
 
