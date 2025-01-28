@@ -14,7 +14,7 @@ def get_bad_word_obj_bbn(bad_words):
 
 def get_score(clue_obj):
 	if clue_obj:
-		return 1 / (clue_obj[0] * (clue_obj[1] + 1)) + 1
+		return 1 / (clue_obj[0] * (clue_obj[1] + 1))
 	else: 
 		return 0
 
@@ -38,6 +38,7 @@ def original_scoring(clue, good_words_obj_bbn: dict, bad_words_obj_bbn: dict):
 	good_score_array = [get_score(good_word_obj.get('single_word_clues').get(clue)) for good_word_obj in good_words_obj_bbn.values()]
 	# good_score_array = [1 / ((good_word_obj.get('single_word_clues').get(clue)[0] * good_word_obj.get('single_word_clues').get(clue)[1]) + 1) if good_word_obj.get('single_word_clues').get(clue) else 0 for good_word_obj in good_words_obj_bbn.values()]
 	good_score = sum(good_score_array)
+	print(clue, good_score)
 	# good_score = 0
 
 
