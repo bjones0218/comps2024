@@ -43,6 +43,25 @@ def get_score(clue_obj):
 	else: 
 		return 0
 	
+# SMALLER VALUE MEANS CLOSER SO IF WE MAKE IT NEGATIVE AND THEN ADD TO DETECT AND ORIG FURTHER WORDS ARE PUNISHED MORE
+def additional_closeness(clue, connecting_words, good_words_dv_obj):
+	clue_db_obj = freq_and_vec_collection2.find_one({"word": clue})
+	if clue_db_obj:
+		clue_vec = clue_db_obj.get("vector")
+	else:
+		clue_vec = None
+
+	word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
+	word2_vec = good_words_dv_obj.get(connecting_words[1]).get("vector")
+
+	score = dist(clue_vec, word1_vec) + dist(clue_vec, word2_vec)
+	# print(dist(clue_vec, word1_vec))
+	# print(dist(clue_vec, word2_vec))
+
+
+	return -score
+
+
 
 def original_scoring(clue, good_words_obj_bbn: dict, bad_words_obj_bbn: dict):
 	lambda_good = 1
@@ -156,6 +175,9 @@ if __name__ == "__main__":
 	good_words_obj_dvf = get_good_word_obj_dv(good_words)
 	bad_words_obj_dvf = get_bad_word_obj_dv(bad_words)
 
+
+
+
 	# word1_candidates2 = {key for key in list(codenames_clues_collection.find_one({"codenames_word": "GRACE"}).get("single_word_clues").keys())}
 	# word2_candidates2 = {key for key in list(codenames_clues_collection.find_one({"codenames_word": "ANGEL"}).get("single_word_clues").keys())}
 
@@ -184,6 +206,14 @@ if __name__ == "__main__":
 	for word_choice in all_possible_combos:
 		print(word_choice)
 
+		# print(good_words)
+		# print(bad_words)
+
+		# print(additional_closeness("DOG", word_choice, good_words_obj_dvf))
+		# print(additional_closeness("JACKET", word_choice, good_words_obj_dvf))
+		# print(additional_closeness("RAMPAGE", word_choice, good_words_obj_dvf))
+		# print(additional_closeness("SYNTHESIS", word_choice, good_words_obj_dvf))
+
 		word1_candidates = {key for key in list(codenames_clues_collection.find_one({"codenames_word": word_choice[0]}).get("single_word_clues").keys())}
 		word2_candidates = {key for key in list(codenames_clues_collection.find_one({"codenames_word": word_choice[1]}).get("single_word_clues").keys())}
 
@@ -200,17 +230,21 @@ if __name__ == "__main__":
 			intersection_set.discard(angry_word)
 		
 
+		all_board_words = good_words + bad_words
+		print(all_board_words)
 		# ALSO WE NEED TO GET RID OF ANYTHIGN THAT CONTAINS A BOARD WORd
 
-		for board_word_good in good_words:
-			intersection_set.discard(board_word_good)
+		intersection_set_2 = {candidate_clue for candidate_clue in intersection_set if not any(board_word in candidate_clue or board_word == candidate_clue for board_word in all_board_words)}
 
-		for board_word_bad in bad_words:
-			intersection_set.discard(board_word_bad)
+		# for board_word_good in good_words:
+		# 	intersection_set.discard(board_word_good)
 
-		intersection = list(intersection_set)
+		# for board_word_bad in bad_words:
+		# 	intersection_set.discard(board_word_bad)
 
-		score_list = [(candidate_clue, .5 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 3 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
+		intersection = list(intersection_set_2)
+
+		score_list = [(candidate_clue, .5 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf) + 3 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf), .5 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf), 3 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf)) for candidate_clue in intersection]
 
 		# score_list_that_answers_all_questions = [(candidate_clue, .1 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 3 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
 		# score_list = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
