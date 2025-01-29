@@ -199,6 +199,9 @@ if __name__ == "__main__":
 		for angry_word in angry_words:
 			intersection_set.discard(angry_word)
 		
+
+		# ALSO WE NEED TO GET RID OF ANYTHIGN THAT CONTAINS A BOARD WORd
+
 		for board_word_good in good_words:
 			intersection_set.discard(board_word_good)
 
@@ -207,7 +210,7 @@ if __name__ == "__main__":
 
 		intersection = list(intersection_set)
 
-		score_list = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 3 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
+		score_list = [(candidate_clue, .5 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 3 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
 
 		# score_list_that_answers_all_questions = [(candidate_clue, .1 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 3 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
 		# score_list = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
