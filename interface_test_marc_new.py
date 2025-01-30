@@ -55,12 +55,27 @@ def additional_closeness(clue, connecting_words, good_words_dv_obj):
 	word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
 	word2_vec = good_words_dv_obj.get(connecting_words[1]).get("vector")
 
-	score = dist(clue_vec, word1_vec) + dist(clue_vec, word2_vec)
+	score = dist(clue_vec, word1_vec)**2 + dist(clue_vec, word2_vec)**2
 	# print(dist(clue_vec, word1_vec))
 	# print(dist(clue_vec, word2_vec))
 
 
-	return -score
+	return 4/score
+
+def additional_badness(clue, bad_words_dv_obj):
+	#print(bad_words_dv_obj)
+	#bad_score_array = [bad_word_obj for bad_word_obj in bad_words_dv_obj]
+	clue_db_obj = freq_and_vec_collection2.find_one({"word": clue})
+	if clue_db_obj:
+		clue_vec = clue_db_obj.get("vector")
+	else:
+		clue_vec = None
+	bad_score_array = [dist(clue_vec,bad_words_dv_obj.get(bad_word_obj).get("vector")) for bad_word_obj in bad_words_dv_obj]
+
+	# bad_score_array = [1 / ((bad_word_obj.get('single_word_clues').get(clue)[0] * bad_word_obj.get('single_word_clues').get(clue)[1]) + 1) if bad_word_obj.get('single_word_clues').get(clue) else 0 for bad_word_obj in bad_words_obj_bbn.values()]
+	bad_score = max(bad_score_array)
+
+	return 2/bad_score
 
 
 
@@ -176,7 +191,9 @@ if __name__ == "__main__":
 	good_words_obj_dvf = get_good_word_obj_dv(good_words)
 	bad_words_obj_dvf = get_bad_word_obj_dv(bad_words)
 
+	# print(additional_badness("AFRICA", bad_words_obj_dvf))
 
+	# None[0]
 
 
 	# word1_candidates2 = {key for key in list(codenames_clues_collection.find_one({"codenames_word": "GRACE"}).get("single_word_clues").keys())}
@@ -245,7 +262,13 @@ if __name__ == "__main__":
 
 		intersection = list(intersection_set_2)
 
-		score_list = [(candidate_clue, .2 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf) + 6 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf), .2 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf), 6 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf)) for candidate_clue in intersection]
+
+# .2 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf) 
+		#score_list = [(candidate_clue, .2 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf) + 4 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf), .2 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf), 4 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf)) for candidate_clue in intersection]
+		score_list = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf) + additional_closeness(candidate_clue, word_choice, good_words_obj_dvf)) for candidate_clue in intersection]
+		#score_list = [(candidate_clue, additional_closeness(candidate_clue, word_choice, good_words_obj_dvf)) for candidate_clue in intersection]
+
+
 
 		# score_list_that_answers_all_questions = [(candidate_clue, .1 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 3 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
 		# score_list = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
