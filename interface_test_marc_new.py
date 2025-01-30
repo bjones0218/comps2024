@@ -44,6 +44,7 @@ def get_score(clue_obj):
 		return 0
 	
 # SMALLER VALUE MEANS CLOSER SO IF WE MAKE IT NEGATIVE AND THEN ADD TO DETECT AND ORIG FURTHER WORDS ARE PUNISHED MORE
+# WE MAYBE WANT TO MAKE IT SO IT ENCOURAGES BOTH TO BE CLOSE TO EACH OTHER NOT JUST ONE BEING REALLY CLOSE
 def additional_closeness(clue, connecting_words, good_words_dv_obj):
 	clue_db_obj = freq_and_vec_collection2.find_one({"word": clue})
 	if clue_db_obj:
@@ -231,7 +232,7 @@ if __name__ == "__main__":
 		
 
 		all_board_words = good_words + bad_words
-		print(all_board_words)
+		# print(all_board_words)
 		# ALSO WE NEED TO GET RID OF ANYTHIGN THAT CONTAINS A BOARD WORd
 
 		intersection_set_2 = {candidate_clue for candidate_clue in intersection_set if not any(board_word in candidate_clue or board_word == candidate_clue for board_word in all_board_words)}
@@ -244,7 +245,7 @@ if __name__ == "__main__":
 
 		intersection = list(intersection_set_2)
 
-		score_list = [(candidate_clue, .5 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf) + 3 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf), .5 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf), 3 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf)) for candidate_clue in intersection]
+		score_list = [(candidate_clue, .2 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf) + 6 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf), .2 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf), 6 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf)) for candidate_clue in intersection]
 
 		# score_list_that_answers_all_questions = [(candidate_clue, .1 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 3 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
 		# score_list = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
@@ -260,9 +261,11 @@ if __name__ == "__main__":
 		# print(sorted(score_list2, key=lambda x: x[1], reverse = True)[0:5])
 
 		# GET THE TOP 5 FOR EACH WORD
-		top_25 = score_list[0:25]
-		all_max_scores.append((word_choice, top_25[0:5]))
-		top_scores.append((word_choice, top_25[0]))
+		print(score_list[0:5])
+		all_max_scores.append((word_choice, score_list[0:5]))
+		top_scores.append((word_choice, score_list[0]))
+
+		# STILL END UP WITH THINGS LIKE "SPINAL" AS A CLUE FOR "SPINE" AND STUFF LIKE THAT WHICH WE NEED TO FIX
 
 	
 	print(all_max_scores)
