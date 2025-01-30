@@ -298,33 +298,3 @@ if __name__ == "__main__":
 	print(top_scores)
 	print(f"The best clue is {top_scores[0][1][0]} with a score of {top_scores[0][1][1]} which connects the words {top_scores[0]}")
 	print(time.time() - start_time)
-	#print(word_choices)
-	#print(sorted(score_list, key=lambda x: x[1], reverse = True)[0:10])
-	# MIGHT ACTUALLY MAKE MORE SENSE TO NOT EVEN DO IT BECAUSE OF THE TIME REQUIRED TO HIT THE DB EACH TIME SINCE IT MIGHT NOT ACTUALLY CUT DOWN A LOT OF WORDS BECAUSE THEY COME OUT IN THE INTERSECTION
-	#new_intersection = [word for word in intersection if get_frequency(word) > 30]
-
-	#print(new_intersection)
-	#print(len(new_intersection))
-
-	# intersection2 = [(word, good_words, bad_words) for word in intersection]
-
-	# #This does the multiprocessing stuff
-	# with Pool(initializer= open_mongo_connection) as pool:
-	# 	try:
-	# 		#map score onto the tuples in new_intersection reading each as the args.
-	# 		with_scores = pool.starmap(score, intersection2)
-
-			
-	# 		# with_scores = [(word, score(word, good_words, bad_words)) for word in new_intersection]
-	# 		sorted_list_with_scores = sorted(with_scores, key=lambda x: x[1])
-	# 		print(sorted_list_with_scores)
-
-	# 		end_time = time.time()
-	# 		num_mins = (end_time - start_time)/60
-
-	# 		print(f"--- {num_mins} minutes ---")
-	# 	finally:
-    #         # Close worker connections after pool is done
-	# 		pool.close()
-	# 		pool.join()
-	# 		close_mongo_connection() 
