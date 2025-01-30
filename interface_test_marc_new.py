@@ -21,7 +21,6 @@ def get_random_strings():
 	return random.sample(lines, 25)
 
 def split_words(words, good_words, bad_words):
-
 	unvisited = set(range(len(words)))
 	for i in range(len(words)):
 		index = random.choice(list(unvisited))
@@ -44,6 +43,26 @@ def get_score(clue_obj):
 	else: 
 		return 0
 	
+# SMALLER VALUE MEANS CLOSER SO IF WE MAKE IT NEGATIVE AND THEN ADD TO DETECT AND ORIG FURTHER WORDS ARE PUNISHED MORE
+# WE MAYBE WANT TO MAKE IT SO IT ENCOURAGES BOTH TO BE CLOSE TO EACH OTHER NOT JUST ONE BEING REALLY CLOSE
+def additional_closeness(clue, connecting_words, good_words_dv_obj):
+	clue_db_obj = freq_and_vec_collection2.find_one({"word": clue})
+	if clue_db_obj:
+		clue_vec = clue_db_obj.get("vector")
+	else:
+		clue_vec = None
+
+	word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
+	word2_vec = good_words_dv_obj.get(connecting_words[1]).get("vector")
+
+	score = dist(clue_vec, word1_vec) + dist(clue_vec, word2_vec)
+	# print(dist(clue_vec, word1_vec))
+	# print(dist(clue_vec, word2_vec))
+
+
+	return -score
+
+
 
 def original_scoring(clue, good_words_obj_bbn: dict, bad_words_obj_bbn: dict):
 	lambda_good = 1
@@ -90,9 +109,6 @@ def detect(clue: str, good_words_obj_dv: dict, bad_words_obj_dv: dict) -> float:
 	lambda_f = 2 # We will have to figre out good values for this
 	lambda_d = 2 # And this
 
-	client = MongoClient(CONNECTION_STRING)
-	freq_and_vec_db2 = client["freq_and_vec2"]
-	freq_and_vec_collection2 = freq_and_vec_db2["freq_and_vec_collection2"]
 
 	# print(clue)
 
@@ -104,15 +120,15 @@ def detect(clue: str, good_words_obj_dv: dict, bad_words_obj_dv: dict) -> float:
 		clue_vec = None
 		frequency = 0
 
-	alpha = 1/1800000
+	alpha = 1800000
 
-	if frequency == 0: # Word is way too rare so penalize a lot
+	if frequency < alpha: # Word is too rare
+		if frequency < 30: # WORD IS WAYYYYY TOO RARE
+			freq_val = -2
+		else:
+			freq_val = -(30/frequency)
+	else: # Word is too common
 		freq_val = -1
-	else: 
-		if (1/frequency) >= alpha: # Word is too rare
-			freq_val = -(1/frequency)
-		else: # Word is too common
-			freq_val = -1
 
 	freq_score = lambda_f * freq_val # Penalizes overly frequent words more and very rare words more
 
@@ -153,13 +169,15 @@ if __name__ == "__main__":
 	# bad_words = ['WITCH', 'WHALE', 'RULER', 'OLYMPUS', 'DEGREE', 'SPINE', 'CRANE', 'SHAKESPEARE', 'NET', 'BATTERY', 'TRIP', 'WHIP']
 
 	all_possible_combos = list(combinations(good_words, r=2))
-	print(len(all_possible_combos))
 
 	good_words_obj_cc = get_good_word_obj_bbn(good_words)
 	bad_words_obj_cc = get_bad_word_obj_bbn(bad_words)
 	
 	good_words_obj_dvf = get_good_word_obj_dv(good_words)
 	bad_words_obj_dvf = get_bad_word_obj_dv(bad_words)
+
+
+
 
 	# word1_candidates2 = {key for key in list(codenames_clues_collection.find_one({"codenames_word": "GRACE"}).get("single_word_clues").keys())}
 	# word2_candidates2 = {key for key in list(codenames_clues_collection.find_one({"codenames_word": "ANGEL"}).get("single_word_clues").keys())}
@@ -178,10 +196,24 @@ if __name__ == "__main__":
 	# print(score_list5[0:5])
 
 
+	# I THINK OUR INTERSECTION IS TOO GENERAL!!!!!!!
+	# BECAUSE WE GET TOO MANY OF THE SAME THINGS
+
+	# WE NEED SOMETHING SOMEWHERE OR ARE MISSING SOMETHING THAT EMPHASIZES CLOSENESS TO THE TWO WORDS THAT IT IS TRYING TO CONNECT
+	# THIS SHOULD BE THE INTERSECTION BUT THE INTERSECTION IS SO GENERAL THAT IT RUNS INTO PROBLEMS
+
 	all_max_scores = []
+	top_scores = []
 	for word_choice in all_possible_combos:
 		print(word_choice)
-		print(get_score([1.2, 2]))
+
+		# print(good_words)
+		# print(bad_words)
+
+		# print(additional_closeness("DOG", word_choice, good_words_obj_dvf))
+		# print(additional_closeness("JACKET", word_choice, good_words_obj_dvf))
+		# print(additional_closeness("RAMPAGE", word_choice, good_words_obj_dvf))
+		# print(additional_closeness("SYNTHESIS", word_choice, good_words_obj_dvf))
 
 		word1_candidates = {key for key in list(codenames_clues_collection.find_one({"codenames_word": word_choice[0]}).get("single_word_clues").keys())}
 		word2_candidates = {key for key in list(codenames_clues_collection.find_one({"codenames_word": word_choice[1]}).get("single_word_clues").keys())}
@@ -191,32 +223,57 @@ if __name__ == "__main__":
 		# print(list(word1_candidates)[0:10])
 		# print(list(word2_candidates)[0:10])
 
-		intersection = list(word1_candidates & word2_candidates)
+		intersection_set = word1_candidates & word2_candidates
 		# NOTE: These are called angry words because they make me angry (⩺_⩹)
-		angry_words = ["WBM", "WAYBACK", "WAYBACKMACHINE", "ISBN", "ISBNS", "EISBN", "ESBN", "WAYBACKED"]
+		# NOTE: SHOULD FIND MORE EFFICIENT WAY TO DO THIS (prob keeping it in a set until I remove the things I don't want)
+		angry_words = ["WBM", "WAYBACK", "WAYBACKMACHINE", "ISBN", "ISBNS", "EISBN", "ESBN", "WAYBACKED", "GB", "P", "W"]
 		for angry_word in angry_words:
-			if angry_word in intersection:
-				intersection.remove(angry_word)
+			intersection_set.discard(angry_word)
+		
 
-		score_list_that_answers_all_questions = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
-		score_list = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
+		all_board_words = good_words + bad_words
+		# print(all_board_words)
+		# ALSO WE NEED TO GET RID OF ANYTHIGN THAT CONTAINS A BOARD WORd
 
-		score_list2 = score_list.copy()
-		score_list3 = score_list.copy()
-		score_list2.sort(key= lambda x: x[1], reverse=True)
-		score_list3.sort(key= lambda x: x[2], reverse=True)
-		print("SORTED BY ORIG:", score_list2[0:5])
-		print("SORTED BY DETECT:", score_list3[0:5])
-		print("--------------")
-		score_list4 = score_list_that_answers_all_questions.copy()
-		score_list4.sort(key=lambda x: x[1], reverse=True)
-		print(score_list4[0:5])
-		#print(sorted(score_list2, key=lambda x: x[1], reverse = True)[0:5])
+		intersection_set_2 = {candidate_clue for candidate_clue in intersection_set if not any(board_word in candidate_clue or board_word == candidate_clue for board_word in all_board_words)}
+
+		# for board_word_good in good_words:
+		# 	intersection_set.discard(board_word_good)
+
+		# for board_word_bad in bad_words:
+		# 	intersection_set.discard(board_word_bad)
+
+		intersection = list(intersection_set_2)
+
+		score_list = [(candidate_clue, .2 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf) + 6 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf), .2 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), 2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf), 6 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf)) for candidate_clue in intersection]
+
+		# score_list_that_answers_all_questions = [(candidate_clue, .1 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + 3 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
+		# score_list = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc), detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
+
+		score_list.sort(key= lambda x: x[1], reverse=True)
+		# print(score_list2[0:5])
+		# print("SORTED BY ORIG:", score_list2[0:5])
+		# print("SORTED BY DETECT:", score_list3[0:5])
+		# print("--------------")
+		# score_list4 = score_list_that_answers_all_questions.copy()
+		# score_list4.sort(key=lambda x: x[1], reverse=True)
+		# print(score_list4[0:5])
+		# print(sorted(score_list2, key=lambda x: x[1], reverse = True)[0:5])
 
 		# GET THE TOP 5 FOR EACH WORD
-		all_max_scores.append((word_choice, sorted(score_list, key=lambda x: x[1], reverse = True)[0:5]))
+		print(score_list[0:5])
+		all_max_scores.append((word_choice, score_list[0:5]))
+		top_scores.append((word_choice, score_list[0]))
 
+		# STILL END UP WITH THINGS LIKE "SPINAL" AS A CLUE FOR "SPINE" AND STUFF LIKE THAT WHICH WE NEED TO FIX
+
+	
 	print(all_max_scores)
+
+	print(top_scores)
+	top_scores.sort(key = lambda x: x[1][1], reverse = True)
+	print(top_scores)
+	print(f"The best clue is {top_scores[0][1][0]} with a score of {top_scores[0][1][1]} which connects the words {top_scores[0]}")
 	print(time.time() - start_time)
 	#print(word_choices)
 	#print(sorted(score_list, key=lambda x: x[1], reverse = True)[0:10])
