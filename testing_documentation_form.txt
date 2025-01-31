@@ -1,0 +1,160 @@
+The board words are: ['PLATYPUS', 'BARK', 'CHANGE', 'TRIP', 'AUSTRALIA', 'FAN', 'MARBLE', 'CHAIR', 'GAS', 'SCIENTIST', 'BELT', 'GREEN', 'VET', 'OIL', 'LINE', 'TOWER', 'DROP', 'CRANE', 'CIRCLE', 'MARCH', 'COOK', 'PITCH', 'MOUTH', 'MODEL', 'MOSCOW']
+The good words are: ['BELT', 'OIL', 'GREEN', 'SCIENTIST', 'MOUTH', 'AUSTRALIA', 'MARCH', 'TRIP', 'CIRCLE', 'TOWER', 'MARBLE', 'PLATYPUS', 'LINE']
+The bad words are: ['PITCH', 'MODEL', 'GAS', 'FAN', 'COOK', 'MOSCOW', 'VET', 'CHAIR', 'CHANGE', 'BARK', 'CRANE', 'DROP']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is TASMANIA with a score of 32.81548194474723 which connects the words (('AUSTRALIA', 'PLATYPUS'), ('TASMANIA', 32.81548194474723)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is TASMANIA with a score of 24.799900954618955 which connects the words (('AUSTRALIA', 'PLATYPUS'), ('TASMANIA', 24.799900954618955)) 
+--------------------------
+The board words are: ['CHICK', 'ANTARCTICA', 'PAPER', 'NIGHT', 'RACKET', 'WATER', 'SEAL', 'HAND', 'MOLE', 'CANADA', 'BOX', 'AMERICA', 'CROSS', 'DEATH', 'TOOTH', 'WASHER', 'BRIDGE', 'NET', 'SATELLITE', 'COMPOUND', 'KID', 'TORCH', 'BOOM', 'MINE', 'ENGLAND']
+The good words are: ['WASHER', 'CANADA', 'CROSS', 'ANTARCTICA', 'RACKET', 'MOLE', 'PAPER', 'WATER', 'BOOM', 'NET', 'MINE', 'NIGHT', 'BRIDGE']
+The bad words are: ['KID', 'HAND', 'ENGLAND', 'DEATH', 'SATELLITE', 'TORCH', 'AMERICA', 'BOX', 'COMPOUND', 'SEAL', 'CHICK', 'TOOTH']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is EVAPORATION with a score of 28.131926980818577 which connects the words (('WASHER', 'WATER'), ('EVAPORATION', 28.131926980818577)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is EVAPORATION with a score of 22.26584566453412 which connects the words (('WASHER', 'WATER'), ('EVAPORATION', 22.26584566453412)) 
+--------------------------
+The board words are: ['BEAT', 'CHANGE', 'PORT', 'FIELD', 'MASS', 'KING', 'KNIFE', 'BOARD', 'MEXICO', 'CENTAUR', 'HAWK', 'STOCK', 'SHAKESPEARE', 'FIGHTER', 'TOOTH', 'CRASH', 'WEB', 'EMBASSY', 'MATCH', 'LION', 'CRANE', 'HOLE', 'MERCURY', 'BAR', 'EYE']
+The good words are: ['FIELD', 'MEXICO', 'MASS', 'EMBASSY', 'KNIFE', 'HAWK', 'CENTAUR', 'BAR', 'FIGHTER', 'MERCURY', 'HOLE', 'TOOTH', 'MATCH']
+The bad words are: ['LION', 'KING', 'SHAKESPEARE', 'WEB', 'CHANGE', 'STOCK', 'PORT', 'BOARD', 'CRASH', 'BEAT', 'CRANE', 'EYE']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is KNIVES with a score of 35.9208721937601 which connects the words (('KNIFE', 'TOOTH'), ('KNIVES', 35.9208721937601)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is KNIVES with a score of 26.744688243187277 which connects the words (('KNIFE', 'TOOTH'), ('KNIVES', 26.744688243187277)) 
+--------------------------
+The board words are: ['SWING', 'AMAZON', 'KNIFE', 'LAWYER', 'PLATE', 'SHADOW', 'NOTE', 'SHOT', 'STAFF', 'VET', 'CANADA', 'FENCE', 'SHOP', 'BELT', 'OIL', 'AFRICA', 'PARK', 'AIR', 'EUROPE', 'LAP', 'PENGUIN', 'GIANT', 'REVOLUTION', 'KETCHUP', 'PORT']
+The good words are: ['AMAZON', 'VET', 'BELT', 'KETCHUP', 'LAP', 'FENCE', 'PLATE', 'EUROPE', 'SHOT', 'PENGUIN', 'GIANT', 'STAFF', 'SHOP']
+The bad words are: ['LAWYER', 'SWING', 'REVOLUTION', 'NOTE', 'CANADA', 'KNIFE', 'PARK', 'AIR', 'SHADOW', 'AFRICA', 'PORT', 'OIL']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is PIZZA with a score of 22.426351521740933 which connects the words (('KETCHUP', 'SHOP'), ('PIZZA', 22.426351521740933)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is PIZZA with a score of 18.582272579374056 which connects the words (('KETCHUP', 'SHOP'), ('PIZZA', 18.582272579374056)) 
+--------------------------
+The board words are: ['LASER', 'FOREST', 'FLUTE', 'SPACE', 'CHINA', 'WATER', 'LEPRECHAUN', 'AMAZON', 'MICROSCOPE', 'MISSILE', 'BEIJING', 'HORN', 'PENGUIN', 'CYCLE', 'BUGLE', 'PRESS', 'MILLIONAIRE', 'BUFFALO', 'GLOVE', 'PIE', 'STRAW', 'AFRICA', 'PRINCESS', 'VACUUM', 'WALL']
+The good words are: ['AFRICA', 'GLOVE', 'VACUUM', 'PRINCESS', 'BUFFALO', 'MISSILE', 'CYCLE', 'WALL', 'FLUTE', 'BEIJING', 'MILLIONAIRE', 'WATER', 'PIE']
+The bad words are: ['LASER', 'FOREST', 'LEPRECHAUN', 'HORN', 'STRAW', 'PENGUIN', 'AMAZON', 'MICROSCOPE', 'BUGLE', 'PRESS', 'SPACE', 'CHINA']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is EVAPORATION with a score of 32.798580043911095 which connects the words (('VACUUM', 'WATER'), ('EVAPORATION', 32.798580043911095)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is EVAPORATION with a score of 24.9920162298867 which connects the words (('VACUUM', 'WATER'), ('EVAPORATION', 24.9920162298867)) 
+--------------------------
+The board words are: ['WAR', 'POLE', 'SPINE', 'CRICKET', 'DRAFT', 'STRIKE', 'SLUG', 'PENGUIN', 'DWARF', 'PHOENIX', 'SUIT', 'MUG', 'PIPE', 'BRIDGE', 'KID', 'SWITCH', 'TEACHER', 'MARBLE', 'KETCHUP', 'HAND', 'CRASH', 'ENGINE', 'AFRICA', 'COTTON', 'SCHOOL']
+The good words are: ['WAR', 'PENGUIN', 'SCHOOL', 'MUG', 'POLE', 'MARBLE', 'SLUG', 'PIPE', 'CRICKET', 'SWITCH', 'HAND', 'BRIDGE', 'ENGINE']
+The bad words are: ['CRASH', 'SPINE', 'STRIKE', 'TEACHER', 'KETCHUP', 'DWARF', 'SUIT', 'KID', 'PHOENIX', 'COTTON', 'AFRICA', 'DRAFT']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is FINGERS with a score of 25.434866501433245 which connects the words (('MUG', 'HAND'), ('FINGERS', 25.434866501433245)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is FINGERS with a score of 20.69327450242158 which connects the words (('MUG', 'HAND'), ('FINGERS', 20.69327450242158)) 
+--------------------------
+The board words are: ['JAM', 'PYRAMID', 'FAIR', 'AMBULANCE', 'CENTER', 'MISSILE', 'CAP', 'SOUL', 'SWING', 'KETCHUP', 'POOL', 'SCIENTIST', 'EYE', 'DATE', 'GLASS', 'POISON', 'LONDON', 'TOWER', 'DROP', 'WIND', 'STOCK', 'CHOCOLATE', 'BAT', 'PENGUIN', 'CROWN']
+The good words are: ['LONDON', 'PYRAMID', 'TOWER', 'WIND', 'AMBULANCE', 'CENTER', 'BAT', 'MISSILE', 'DROP', 'POISON', 'CHOCOLATE', 'GLASS', 'POOL']
+The bad words are: ['PENGUIN', 'SCIENTIST', 'JAM', 'CROWN', 'DATE', 'SWING', 'KETCHUP', 'CAP', 'STOCK', 'EYE', 'FAIR', 'SOUL']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is POWDERED with a score of 31.335182939203822 which connects the words (('CHOCOLATE', 'GLASS'), ('POWDERED', 31.335182939203822)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is POWDERED with a score of 23.85994720773487 which connects the words (('CHOCOLATE', 'GLASS'), ('POWDERED', 23.85994720773487)) 
+--------------------------
+The board words are: ['SERVER', 'TRAIN', 'THUMB', 'FILE', 'POINT', 'PHOENIX', 'BEAT', 'ALIEN', 'COVER', 'NEEDLE', 'BAT', 'LOG', 'GAME', 'FOREST', 'SHOE', 'TICK', 'YARD', 'RAY', 'GOLD', 'MISSILE', 'LIMOUSINE', 'MARCH', 'BERRY', 'SKYSCRAPER', 'BELT']
+The good words are: ['YARD', 'POINT', 'COVER', 'ALIEN', 'TICK', 'BELT', 'BEAT', 'MISSILE', 'LIMOUSINE', 'LOG', 'FOREST', 'RAY', 'TRAIN']
+The bad words are: ['SKYSCRAPER', 'GAME', 'FILE', 'GOLD', 'BAT', 'PHOENIX', 'MARCH', 'BERRY', 'SERVER', 'THUMB', 'SHOE', 'NEEDLE']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is PASSENGER with a score of 32.503528645333745 which connects the words (('LIMOUSINE', 'TRAIN'), ('PASSENGER', 32.503528645333745)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is PASSENGER with a score of 24.67783961123117 which connects the words (('LIMOUSINE', 'TRAIN'), ('PASSENGER', 24.67783961123117)) 
+--------------------------
+The board words are: ['HORSESHOE', 'CANADA', 'TIE', 'OIL', 'SPRING', 'AMBULANCE', 'BOOT', 'STATE', 'FRANCE', 'PORT', 'LONDON', 'PIE', 'LION', 'ROSE', 'ARM', 'SNOW', 'CHECK', 'PUMPKIN', 'GLOVE', 'SHOT', 'SPIDER', 'BAR', 'CALF', 'ORANGE', 'TAG']
+The good words are: ['ORANGE', 'PORT', 'SPIDER', 'TIE', 'OIL', 'BAR', 'ROSE', 'SNOW', 'CANADA', 'SPRING', 'TAG', 'CHECK', 'BOOT']
+The bad words are: ['ARM', 'CALF', 'GLOVE', 'LONDON', 'PIE', 'HORSESHOE', 'AMBULANCE', 'PUMPKIN', 'LION', 'FRANCE', 'STATE', 'SHOT']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is YELLOW with a score of 29.62568121952181 which connects the words (('ORANGE', 'ROSE'), ('YELLOW', 29.62568121952181)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is YELLOW with a score of 23.275207107880927 which connects the words (('ORANGE', 'ROSE'), ('YELLOW', 23.275207107880927)) 
+--------------------------
+The board words are: ['BOX', 'CHICK', 'BOOM', 'KNIFE', 'CALF', 'SCHOOL', 'SINK', 'TOOTH', 'KID', 'LIMOUSINE', 'GIANT', 'ROSE', 'APPLE', 'SHARK', 'BEIJING', 'LOG', 'MOON', 'BOARD', 'MAIL', 'CHOCOLATE', 'HONEY', 'EGYPT', 'FENCE', 'ROUND', 'BOTTLE']
+The good words are: ['BOTTLE', 'HONEY', 'GIANT', 'FENCE', 'BOOM', 'MOON', 'KID', 'CHOCOLATE', 'APPLE', 'SINK', 'MAIL', 'LIMOUSINE', 'SHARK']
+The bad words are: ['TOOTH', 'BOX', 'KNIFE', 'EGYPT', 'SCHOOL', 'ROSE', 'BOARD', 'CALF', 'LOG', 'BEIJING', 'ROUND', 'CHICK']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is CARAMEL with a score of 57.18047687127879 which connects the words (('HONEY', 'CHOCOLATE'), ('CARAMEL', 57.18047687127879)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is CARAMEL with a score of 40.231729119261274 which connects the words (('HONEY', 'CHOCOLATE'), ('CARAMEL', 40.231729119261274)) 
+--------------------------
+The board words are: ['BATTERY', 'RULER', 'BELT', 'FIGURE', 'PUPIL', 'OPERA', 'LOG', 'POLE', 'CROSS', 'COURT', 'CARD', 'SUB', 'RING', 'CYCLE', 'LEMON', 'BUGLE', 'SCHOOL', 'TURKEY', 'REVOLUTION', 'CHAIR', 'CAST', 'TRACK', 'TRUNK', 'CASINO', 'HIMALAYAS']
+The good words are: ['TRACK', 'REVOLUTION', 'TRUNK', 'BELT', 'FIGURE', 'TURKEY', 'LOG', 'CYCLE', 'CAST', 'CASINO', 'SUB', 'HIMALAYAS', 'POLE']
+The bad words are: ['CARD', 'COURT', 'LEMON', 'BATTERY', 'OPERA', 'SCHOOL', 'BUGLE', 'RULER', 'CHAIR', 'RING', 'CROSS', 'PUPIL']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is CAUCASUS with a score of 28.014431480543493 which connects the words (('TURKEY', 'HIMALAYAS'), ('CAUCASUS', 28.014431480543493)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is CAUCASUS with a score of 21.587845673755208 which connects the words (('TURKEY', 'HIMALAYAS'), ('CAUCASUS', 21.587845673755208)) 
+--------------------------
+The board words are: ['TRUNK', 'SHAKESPEARE', 'FRANCE', 'LAP', 'DIAMOND', 'SNOW', 'TRACK', 'SCHOOL', 'SMUGGLER', 'MATCH', 'BERMUDA', 'RABBIT', 'KING', 'PUMPKIN', 'GLASS', 'ALIEN', 'COTTON', 'LUCK', 'EYE', 'STOCK', 'TOKYO', 'EUROPE', 'CLOAK', 'FIGURE', 'DRAGON']
+The good words are: ['TRUNK', 'LUCK', 'GLASS', 'TOKYO', 'SMUGGLER', 'DIAMOND', 'FIGURE', 'MATCH', 'KING', 'RABBIT', 'COTTON', 'EYE', 'LAP']
+The bad words are: ['TRACK', 'PUMPKIN', 'STOCK', 'FRANCE', 'BERMUDA', 'CLOAK', 'SCHOOL', 'EUROPE', 'SHAKESPEARE', 'ALIEN', 'DRAGON', 'SNOW']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is RUBIES with a score of 27.482654759673082 which connects the words (('GLASS', 'DIAMOND'), ('RUBIES', 27.482654759673082)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is RUBIES with a score of 21.938082347305546 which connects the words (('GLASS', 'DIAMOND'), ('RUBIES', 21.938082347305546)) 
+--------------------------
+The board words are: ['SKYSCRAPER', 'PARACHUTE', 'PIT', 'MINE', 'WALL', 'STATE', 'QUEEN', 'LUCK', 'FILE', 'LIGHT', 'SWITCH', 'BATTERY', 'COMPOUND', 'NOVEL', 'SPOT', 'PLATYPUS', 'INDIA', 'PARK', 'WITCH', 'CRASH', 'KNIFE', 'TRIP', 'JET', 'TIME', 'DUCK']
+The good words are: ['STATE', 'SWITCH', 'QUEEN', 'DUCK', 'WALL', 'SKYSCRAPER', 'LIGHT', 'FILE', 'CRASH', 'BATTERY', 'MINE', 'SPOT', 'WITCH']
+The bad words are: ['JET', 'PARACHUTE', 'PLATYPUS', 'TRIP', 'COMPOUND', 'TIME', 'LUCK', 'PIT', 'PARK', 'KNIFE', 'INDIA', 'NOVEL']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is GRIMHILDE with a score of 29.052131909904507 which connects the words (('QUEEN', 'WITCH'), ('GRIMHILDE', 29.052131909904507)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is SORCERESS with a score of 21.376808232514108 which connects the words (('QUEEN', 'WITCH'), ('SORCERESS', 21.376808232514108)) 
+--------------------------
+The board words are: ['ALIEN', 'VAN', 'IRON', 'POLICE', 'STRAW', 'CHOCOLATE', 'BUCK', 'BAT', 'CAR', 'CHANGE', 'TIME', 'ENGLAND', 'ROULETTE', 'VACUUM', 'WALL', 'TEACHER', 'PIE', 'IVORY', 'SHOE', 'BATTERY', 'DICE', 'JACK', 'CAT', 'MARCH', 'GAME']
+The good words are: ['IRON', 'DICE', 'STRAW', 'ENGLAND', 'JACK', 'MARCH', 'TEACHER', 'WALL', 'GAME', 'CAR', 'VACUUM', 'CHOCOLATE', 'CHANGE']
+The bad words are: ['IVORY', 'BUCK', 'ALIEN', 'TIME', 'ROULETTE', 'BATTERY', 'SHOE', 'PIE', 'VAN', 'POLICE', 'BAT', 'CAT']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is CRAPS with a score of 32.10798927522579 which connects the words (('DICE', 'GAME'), ('CRAPS', 32.10798927522579)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is CRAPS with a score of 24.170921255109036 which connects the words (('DICE', 'GAME'), ('CRAPS', 24.170921255109036)) 
+--------------------------
+The board words are: ['WEB', 'ROOT', 'LIMOUSINE', 'CODE', 'POOL', 'SWING', 'MILLIONAIRE', 'SERVER', 'SPELL', 'FLY', 'PASTE', 'MOSCOW', 'JACK', 'LINK', 'NAIL', 'CELL', 'LIFE', 'NOVEL', 'LAWYER', 'OIL', 'CHEST', 'ORANGE', 'BLOCK', 'PAPER', 'TRIANGLE']
+The good words are: ['OIL', 'ROOT', 'SERVER', 'FLY', 'LIMOUSINE', 'WEB', 'ORANGE', 'LINK', 'NAIL', 'LIFE', 'PAPER', 'SPELL', 'BLOCK']
+The bad words are: ['CODE', 'MOSCOW', 'NOVEL', 'CELL', 'SWING', 'LAWYER', 'TRIANGLE', 'CHEST', 'POOL', 'JACK', 'PASTE', 'MILLIONAIRE']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is BROWSER with a score of 25.270232264667126 which connects the words (('SERVER', 'WEB'), ('BROWSER', 25.270232264667126)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is BROWSER with a score of 20.64058478296832 which connects the words (('SERVER', 'WEB'), ('BROWSER', 20.64058478296832)) 
+--------------------------
+The board words are: ['SMUGGLER', 'HORSESHOE', 'AIR', 'BANK', 'ROME', 'GIANT', 'ATLANTIS', 'BEAT', 'AZTEC', 'AGENT', 'LEAD', 'ROOT', 'TOOTH', 'SHIP', 'CAT', 'STREAM', 'SHOP', 'TIME', 'DROP', 'ORANGE', 'COTTON', 'FACE', 'DRESS', 'CHURCH', 'FIGHTER']
+The good words are: ['FACE', 'GIANT', 'TOOTH', 'ATLANTIS', 'LEAD', 'STREAM', 'CAT', 'FIGHTER', 'ROOT', 'AGENT', 'AIR', 'ROME', 'DRESS']
+The bad words are: ['DROP', 'BEAT', 'SHIP', 'SMUGGLER', 'COTTON', 'HORSESHOE', 'SHOP', 'CHURCH', 'ORANGE', 'TIME', 'BANK', 'AZTEC']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is COLOSSUS with a score of 27.631063560365572 which connects the words (('GIANT', 'ATLANTIS'), ('COLOSSUS', 27.631063560365572)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is COLOSSUS with a score of 21.678760151663145 which connects the words (('GIANT', 'ATLANTIS'), ('COLOSSUS', 21.678760151663145)) 
+--------------------------
+The board words are: ['WAKE', 'TOWER', 'PORT', 'BEAT', 'VAN', 'HONEY', 'WATCH', 'GOLD', 'FLUTE', 'APPLE', 'CRANE', 'PLOT', 'ROULETTE', 'HOLE', 'LUCK', 'SOCK', 'TABLET', 'CARROT', 'DROP', 'STREAM', 'KING', 'PARK', 'TIE', 'COPPER', 'YARD']
+The good words are: ['DROP', 'VAN', 'SOCK', 'WAKE', 'HONEY', 'GOLD', 'CRANE', 'YARD', 'HOLE', 'TABLET', 'FLUTE', 'BEAT', 'PLOT']
+The bad words are: ['PARK', 'COPPER', 'LUCK', 'CARROT', 'STREAM', 'ROULETTE', 'PORT', 'WATCH', 'TOWER', 'KING', 'APPLE', 'TIE']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is SILVER with a score of 24.529985313074846 which connects the words (('GOLD', 'TABLET'), ('SILVER', 24.529985313074846)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is SILVER with a score of 19.776810401242138 which connects the words (('GOLD', 'TABLET'), ('SILVER', 19.776810401242138)) 
+--------------------------
+The board words are: ['AGENT', 'AUSTRALIA', 'GREECE', 'CASINO', 'ORGAN', 'DANCE', 'AMAZON', 'SPRING', 'BEAT', 'DOG', 'SPELL', 'COLD', 'CHOCOLATE', 'CENTER', 'ENGINE', 'THEATER', 'FOOT', 'FALL', 'APPLE', 'DROP', 'STICK', 'BUFFALO', 'GREEN', 'HOOK', 'ALIEN']
+The good words are: ['CENTER', 'BEAT', 'DANCE', 'GREECE', 'DROP', 'CHOCOLATE', 'ALIEN', 'ORGAN', 'SPRING', 'HOOK', 'FOOT', 'THEATER', 'STICK']
+The bad words are: ['FALL', 'AUSTRALIA', 'AMAZON', 'CASINO', 'BUFFALO', 'GREEN', 'SPELL', 'COLD', 'ENGINE', 'DOG', 'AGENT', 'APPLE']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is DANCING with a score of 26.298020040650417 which connects the words (('DANCE', 'FOOT'), ('DANCING', 26.298020040650417)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is DANCING with a score of 21.303676729042003 which connects the words (('DANCE', 'FOOT'), ('DANCING', 21.303676729042003)) 
+--------------------------
+The board words are: ['CAR', 'TAIL', 'CHANGE', 'CIRCLE', 'IRON', 'PRINCESS', 'TEMPLE', 'LINE', 'PORT', 'SHIP', 'BANK', 'OIL', 'FIGHTER', 'STREAM', 'LINK', 'GERMANY', 'SOCK', 'COTTON', 'STAFF', 'TAG', 'KNIGHT', 'BOW', 'POST', 'PALM', 'CHINA']
+The good words are: ['POST', 'PORT', 'COTTON', 'TEMPLE', 'CHANGE', 'STREAM', 'LINK', 'BOW', 'PRINCESS', 'CIRCLE', 'SOCK', 'GERMANY', 'TAIL']
+The bad words are: ['FIGHTER', 'LINE', 'CAR', 'TAG', 'IRON', 'CHINA', 'PALM', 'KNIGHT', 'STAFF', 'OIL', 'SHIP', 'BANK']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is NOSE with a score of 26.008702816391057 which connects the words (('BOW', 'TAIL'), ('NOSE', 26.008702816391057)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is NOSE with a score of 20.629194823986523 which connects the words (('BOW', 'TAIL'), ('NOSE', 20.629194823986523)) 
+--------------------------
+The board words are: ['FOOT', 'NOVEL', 'MODEL', 'HOOK', 'SHARK', 'HEART', 'MINT', 'MOLE', 'RULER', 'HOLE', 'STATE', 'ENGINE', 'NURSE', 'CONDUCTOR', 'AIR', 'SHOT', 'FENCE', 'YARD', 'PIANO', 'OIL', 'COLD', 'WHALE', 'LIMOUSINE', 'SPY', 'FLUTE']
+The good words are: ['LIMOUSINE', 'NOVEL', 'MOLE', 'COLD', 'PIANO', 'ENGINE', 'STATE', 'MODEL', 'SHOT', 'MINT', 'HEART', 'AIR', 'NURSE']
+The bad words are: ['FENCE', 'FOOT', 'RULER', 'CONDUCTOR', 'HOOK', 'WHALE', 'OIL', 'SHARK', 'HOLE', 'FLUTE', 'YARD', 'SPY']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is NURSING with a score of 26.481780243178385 which connects the words (('HEART', 'NURSE'), ('NURSING', 26.481780243178385)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is NURSING with a score of 21.149504158396915 which connects the words (('HEART', 'NURSE'), ('NURSING', 21.149504158396915)) 
+--------------------------

@@ -1,0 +1,305 @@
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is WOMBAT with a score of 21.539345005296557 which connects the words (('KANGAROO', 'FORK'), ('WOMBAT', 21.539345005296557)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is AUSTRALIA with a score of 17.814763774784197 which connects the words (('KANGAROO', 'CANADA'), ('AUSTRALIA', 17.814763774784197)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is CAKE with a score of 24.99204534653985 which connects the words (('PIE', 'JAM'), ('CAKE', 24.99204534653985)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is CAKE with a score of 20.109074975824416 which connects the words (('PIE', 'JAM'), ('CAKE', 20.109074975824416)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is CHILI with a score of 24.909986595966174 which connects the words (('KETCHUP', 'SCORPION'), ('CHILI', 24.909986595966174)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is INTERCEPTOR with a score of 20.43138584377838 which connects the words (('FIGHTER', 'SCORPION'), ('INTERCEPTOR', 20.43138584377838)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is BARBADOS with a score of 25.633806053560757 which connects the words (('LONDON', 'BERMUDA'), ('BARBADOS', 25.633806053560757)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is BARBADOS with a score of 20.49375995176751 which connects the words (('LONDON', 'BERMUDA'), ('BARBADOS', 20.49375995176751)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is ZEALAND with a score of 31.297868048297335 which connects the words (('AUSTRALIA', 'KIWI'), ('ZEALAND', 31.297868048297335)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is ZEALAND with a score of 23.877904186290692 which connects the words (('AUSTRALIA', 'KIWI'), ('ZEALAND', 23.877904186290692)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is WEARING with a score of 34.54252688819017 which connects the words (('SUIT', 'DRESS'), ('WEARING', 34.54252688819017)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is WEARING with a score of 26.493721416269565 which connects the words (('SUIT', 'DRESS'), ('WEARING', 26.493721416269565)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is MADRAS with a score of 27.649882121126584 which connects the words (('COTTON', 'INDIA'), ('MADRAS', 27.649882121126584)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is MADRAS with a score of 21.42299305141989 which connects the words (('COTTON', 'INDIA'), ('MADRAS', 21.42299305141989)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is VERTEBRAL with a score of 31.019860381088524 which connects the words (('SPINE', 'TRUNK'), ('VERTEBRAL', 31.019860381088524)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is VERTEBRAL with a score of 23.636856985115664 which connects the words (('SPINE', 'TRUNK'), ('VERTEBRAL', 23.636856985115664)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is ASIA with a score of 43.22529104192495 which connects the words (('HIMALAYAS', 'EUROPE'), ('ASIA', 43.22529104192495)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is ASIA with a score of 31.27606815186305 which connects the words (('HIMALAYAS', 'EUROPE'), ('ASIA', 31.27606815186305)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is ONTARIO with a score of 38.00120957799892 which connects the words (('MAPLE', 'CANADA'), ('ONTARIO', 38.00120957799892)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is ONTARIO with a score of 28.616207706328037 which connects the words (('MAPLE', 'CANADA'), ('ONTARIO', 28.616207706328037)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is CAKE with a score of 33.66524876950407 which connects the words (('PASTE', 'PIE'), ('CAKE', 33.66524876950407)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is CAKE with a score of 25.939331317333895 which connects the words (('PASTE', 'PIE'), ('CAKE', 25.939331317333895)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is MICE with a score of 38.17596079055592 which connects the words (('RABBIT', 'MOUSE'), ('MICE', 38.17596079055592)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is MICE with a score of 28.214841698471133 which connects the words (('RABBIT', 'MOUSE'), ('MICE', 28.214841698471133)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is SHRIMP with a score of 18.909263847800528 which connects the words (('MOLE', 'FISH'), ('SHRIMP', 18.909263847800528)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is SHRIMP with a score of 16.674749305881438 which connects the words (('MOLE', 'FISH'), ('SHRIMP', 16.674749305881438)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is SPINAL with a score of 32.61684758840161 which connects the words (('DISEASE', 'SPINE'), ('SPINAL', 32.61684758840161)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is SPINAL with a score of 25.050203579878715 which connects the words (('DISEASE', 'SPINE'), ('SPINAL', 25.050203579878715)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is BOMBER with a score of 39.616319207656794 which connects the words (('MISSILE', 'FIGHTER'), ('BOMBER', 39.616319207656794)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is BOMBER with a score of 29.611092108470658 which connects the words (('MISSILE', 'FIGHTER'), ('BOMBER', 29.611092108470658)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is YAMATO with a score of 28.2246793170364 which connects the words (('TOKYO', 'ATLANTIS'), ('YAMATO', 28.2246793170364)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is YAMATO with a score of 22.750773756256823 which connects the words (('TOKYO', 'ATLANTIS'), ('YAMATO', 22.750773756256823)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is BIOMEDICAL with a score of 30.51998865949097 which connects the words (('LAB', 'SCIENTIST'), ('BIOMEDICAL', 30.51998865949097)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is BIOMEDICAL with a score of 23.623026433795594 which connects the words (('LAB', 'SCIENTIST'), ('BIOMEDICAL', 23.623026433795594)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is BHUTAN with a score of 25.23905596681692 which connects the words (('ENGLAND', 'HIMALAYAS'), ('BHUTAN', 25.23905596681692)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is DRAGON with a score of 20.41000698558433 which connects the words (('SCORPION', 'ANGEL'), ('DRAGON', 20.41000698558433)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is TEETH with a score of 28.948884647827924 which connects the words (('TOOTH', 'WORM'), ('TEETH', 28.948884647827924)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is TEETH with a score of 22.76952803667208 which connects the words (('TOOTH', 'WORM'), ('TEETH', 22.76952803667208)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is BHUTAN with a score of 27.085963796472527 which connects the words (('HIMALAYAS', 'CANADA'), ('BHUTAN', 27.085963796472527)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is BHUTAN with a score of 20.945587595373954 which connects the words (('HIMALAYAS', 'CANADA'), ('BHUTAN', 20.945587595373954)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is CLOTHES with a score of 29.226943983074904 which connects the words (('DRESS', 'KNIFE'), ('CLOTHES', 29.226943983074904)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is CLOTHES with a score of 23.167948846657932 which connects the words (('DRESS', 'KNIFE'), ('CLOTHES', 23.167948846657932)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is CIRCUMBINARY with a score of 25.272357139346322 which connects the words (('SATURN', 'DWARF'), ('CIRCUMBINARY', 25.272357139346322)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is CIRCUMBINARY with a score of 20.159848359156058 which connects the words (('SATURN', 'DWARF'), ('CIRCUMBINARY', 20.159848359156058)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is HAMMERSMITH with a score of 30.61926696816554 which connects the words (('TUBE', 'LONDON'), ('HAMMERSMITH', 30.61926696816554)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is HAMMERSMITH with a score of 23.951789383445707 which connects the words (('TUBE', 'LONDON'), ('HAMMERSMITH', 23.951789383445707)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is OSAKA with a score of 32.92479141140319 which connects the words (('BERLIN', 'TOKYO'), ('OSAKA', 32.92479141140319)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is OSAKA with a score of 24.93382440420774 which connects the words (('BERLIN', 'TOKYO'), ('OSAKA', 24.93382440420774)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is SILVER with a score of 28.868275336233317 which connects the words (('PAN', 'GOLD'), ('SILVER', 28.868275336233317)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is SILVER with a score of 22.982514777113224 which connects the words (('PAN', 'GOLD'), ('SILVER', 22.982514777113224)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is JARS with a score of 39.358538612050694 which connects the words (('BOTTLE', 'GLASS'), ('JARS', 39.358538612050694)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is JARS with a score of 29.103609494848314 which connects the words (('BOTTLE', 'GLASS'), ('JARS', 29.103609494848314)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is GRENADE with a score of 28.899383681791477 which connects the words (('BOTTLE', 'PISTOL'), ('GRENADE', 28.899383681791477)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is GRENADE with a score of 22.815511221778003 which connects the words (('BOTTLE', 'PISTOL'), ('GRENADE', 22.815511221778003)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is MOVIES with a score of 21.72703158051667 which connects the words (('SCREEN', 'HOLLYWOOD'), ('MOVIES', 21.72703158051667)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is MOVIES with a score of 18.370718717667476 which connects the words (('SCREEN', 'HOLLYWOOD'), ('MOVIES', 18.370718717667476)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is VEHICLE with a score of 32.02589376512416 which connects the words (('CAR', 'HELICOPTER'), ('VEHICLE', 32.02589376512416)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is VEHICLE with a score of 24.313456425219844 which connects the words (('CAR', 'HELICOPTER'), ('VEHICLE', 24.313456425219844)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is MARYLEBONE with a score of 35.63163525018824 which connects the words (('LONDON', 'CRICKET'), ('MARYLEBONE', 35.63163525018824)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is MARYLEBONE with a score of 26.96180864767544 which connects the words (('LONDON', 'CRICKET'), ('MARYLEBONE', 26.96180864767544)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is ESPIONAGE with a score of 20.90121492265584 which connects the words (('SPY', 'POISON'), ('ESPIONAGE', 20.90121492265584)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is BAMBOO with a score of 17.48316271191205 which connects the words (('STICK', 'COTTON'), ('BAMBOO', 17.48316271191205)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is PANTYHOSE with a score of 25.221440238724846 which connects the words (('PANTS', 'PLASTIC'), ('PANTYHOSE', 25.221440238724846)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is PANTYHOSE with a score of 20.144284515096068 which connects the words (('PANTS', 'PLASTIC'), ('PANTYHOSE', 20.144284515096068)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is VEHICLE with a score of 37.36387187420154 which connects the words (('AMBULANCE', 'CAR'), ('VEHICLE', 37.36387187420154)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is VEHICLE with a score of 27.877627158283985 which connects the words (('AMBULANCE', 'CAR'), ('VEHICLE', 27.877627158283985)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is FLIES with a score of 35.97403334701169 which connects the words (('BAT', 'FLY'), ('FLIES', 35.97403334701169)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is FLIES with a score of 26.8616189022718 which connects the words (('BAT', 'FLY'), ('FLIES', 26.8616189022718)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is CREAM with a score of 38.26338784355629 which connects the words (('ICE', 'CHOCOLATE'), ('CREAM', 38.26338784355629)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is CREAM with a score of 28.34138845929557 which connects the words (('ICE', 'CHOCOLATE'), ('CREAM', 28.34138845929557)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is PUPPETS with a score of 23.224778929684238 which connects the words (('ROBOT', 'SOCK'), ('PUPPETS', 23.224778929684238)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is THIEVES with a score of 19.309982914055958 which connects the words (('THIEF', 'SHADOW'), ('THIEVES', 19.309982914055958)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is PHYSICIST with a score of 29.32387939021449 which connects the words (('LASER', 'SCIENTIST'), ('PHYSICIST', 29.32387939021449)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is PHYSICIST with a score of 22.61545686532842 which connects the words (('LASER', 'SCIENTIST'), ('PHYSICIST', 22.61545686532842)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is SLOVAKIA with a score of 48.286125602587916 which connects the words (('GERMANY', 'CZECH'), ('SLOVAKIA', 48.286125602587916)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is SLOVAKIA with a score of 34.072986536108246 which connects the words (('GERMANY', 'CZECH'), ('SLOVAKIA', 34.072986536108246)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is CUCUMBER with a score of 32.219119042737354 which connects the words (('PUMPKIN', 'FISH'), ('CUCUMBER', 32.219119042737354)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is SUPERVILLAIN with a score of 25.24462334666276 which connects the words (('SPIDER', 'COMIC'), ('SUPERVILLAIN', 25.24462334666276)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is BEETHOVEN with a score of 21.438969244775443 which connects the words (('CONDUCTOR', 'VAN'), ('BEETHOVEN', 21.438969244775443)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is BEETHOVEN with a score of 17.565903950880408 which connects the words (('CONDUCTOR', 'VAN'), ('BEETHOVEN', 17.565903950880408)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is SWEETPOTATO with a score of 27.861730292310444 which connects the words (('PUMPKIN', 'ROOT'), ('SWEETPOTATO', 27.861730292310444)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is SWEETPOTATO with a score of 21.81160988130966 which connects the words (('PUMPKIN', 'ROOT'), ('SWEETPOTATO', 21.81160988130966)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is TEACHING with a score of 27.85283844855362 which connects the words (('TEACHER', 'CHAIR'), ('TEACHING', 27.85283844855362)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is TEACHING with a score of 21.787331824757004 which connects the words (('TEACHER', 'CHAIR'), ('TEACHING', 21.787331824757004)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is TREE with a score of 23.109239139667427 which connects the words (('TRUNK', 'APPLE'), ('TREE', 23.109239139667427)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is TREE with a score of 19.43239793120498 which connects the words (('TRUNK', 'APPLE'), ('TREE', 19.43239793120498)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is WHALE with a score of 29.58794311499217 which connects the words (('MAMMOTH', 'SHARK'), ('WHALE', 29.58794311499217)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is WHALE with a score of 23.051840189577554 which connects the words (('MAMMOTH', 'SHARK'), ('WHALE', 23.051840189577554)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is TURBOPROP with a score of 40.755087430237396 which connects the words (('JET', 'ENGINE'), ('TURBOPROP', 40.755087430237396)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is TURBOPROP with a score of 29.9189017317607 which connects the words (('JET', 'ENGINE'), ('TURBOPROP', 29.9189017317607)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is GRYPHON with a score of 23.29131073779703 which connects the words (('DRAGON', 'EAGLE'), ('GRYPHON', 23.29131073779703)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is GRYPHON with a score of 19.148431316273484 which connects the words (('DRAGON', 'EAGLE'), ('GRYPHON', 19.148431316273484)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is WRISTS with a score of 23.645975581172287 which connects the words (('CHEST', 'HOOD'), ('WRISTS', 23.645975581172287)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is COWL with a score of 19.34927754157568 which connects the words (('CHEST', 'HOOD'), ('COWL', 19.34927754157568)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is NOSE with a score of 29.624441829660963 which connects the words (('TAIL', 'MOUTH'), ('NOSE', 29.624441829660963)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is NOSE with a score of 23.679822305233312 which connects the words (('TAIL', 'MOUTH'), ('NOSE', 23.679822305233312)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is FINGER with a score of 36.32988395016807 which connects the words (('HAND', 'STICK'), ('FINGER', 36.32988395016807)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is FINGER with a score of 27.327122385632137 which connects the words (('HAND', 'STICK'), ('FINGER', 27.327122385632137)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is PUBLISHERS with a score of 21.109527681258854 which connects the words (('PENGUIN', 'PRESS'), ('PUBLISHERS', 21.109527681258854)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is LADYBIRD with a score of 17.74195234233204 which connects the words (('PENGUIN', 'KANGAROO'), ('LADYBIRD', 17.74195234233204)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is MCC with a score of 24.84381630785076 which connects the words (('CRICKET', 'CLUB'), ('MCC', 24.84381630785076)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is MCC with a score of 19.71803153181629 which connects the words (('CRICKET', 'CLUB'), ('MCC', 19.71803153181629)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is STUDENT with a score of 28.681227366375367 which connects the words (('SCHOOL', 'TEACHER'), ('STUDENT', 28.681227366375367)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is STUDENT with a score of 22.18374005147616 which connects the words (('SCHOOL', 'TEACHER'), ('STUDENT', 22.18374005147616)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is GRADUATE with a score of 26.888325523635352 which connects the words (('DEGREE', 'TEACHER'), ('GRADUATE', 26.888325523635352)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is GRADUATE with a score of 21.362148630651824 which connects the words (('DEGREE', 'TEACHER'), ('GRADUATE', 21.362148630651824)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is TOMATO with a score of 54.38434481952445 which connects the words (('KETCHUP', 'PUMPKIN'), ('TOMATO', 54.38434481952445)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is TOMATO with a score of 38.66825268523275 which connects the words (('KETCHUP', 'PUMPKIN'), ('TOMATO', 38.66825268523275)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is CALVES with a score of 33.64901018223503 which connects the words (('CALF', 'DOG'), ('CALVES', 33.64901018223503)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is COW with a score of 25.186116894670302 which connects the words (('CALF', 'DOG'), ('COW', 25.186116894670302)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is QUEENSLAND with a score of 31.61241249635564 which connects the words (('CANADA', 'AUSTRALIA'), ('QUEENSLAND', 31.61241249635564)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is QUEENSLAND with a score of 24.119959356284227 which connects the words (('CANADA', 'AUSTRALIA'), ('QUEENSLAND', 24.119959356284227)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is POSTAL with a score of 23.07057777470762 which connects the words (('MAIL', 'CODE'), ('POSTAL', 23.07057777470762)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is POSTAL with a score of 18.772420201997626 which connects the words (('MAIL', 'CODE'), ('POSTAL', 18.772420201997626)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is BATTERIES with a score of 26.78164805306097 which connects the words (('TORCH', 'BATTERY'), ('BATTERIES', 26.78164805306097)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is BATTERIES with a score of 20.755337846921766 which connects the words (('TORCH', 'BATTERY'), ('BATTERIES', 20.755337846921766)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is NAGASAKI with a score of 28.148894327939033 which connects the words (('TOKYO', 'BOMB'), ('NAGASAKI', 28.148894327939033)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is NAGASAKI with a score of 21.721046370290516 which connects the words (('TOKYO', 'BOMB'), ('NAGASAKI', 21.721046370290516)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is AGATE with a score of 34.34578000599468 which connects the words (('MARBLE', 'DIAMOND'), ('AGATE', 34.34578000599468)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is AGATE with a score of 25.772218107965635 which connects the words (('MARBLE', 'DIAMOND'), ('AGATE', 25.772218107965635)) 
+--------------------------
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 5, badness: 3 
+The best clue is WEAPON with a score of 24.73325856388709 which connects the words (('MISSILE', 'HAND'), ('WEAPON', 24.73325856388709)) 
+The weights for the second function are: orig scoring: 0.1, detect: 1, closeness: 3, badness: 1 
+The best clue is WEAPON with a score of 20.0629612132431 which connects the words (('MISSILE', 'HAND'), ('WEAPON', 20.0629612132431)) 
+--------------------------
