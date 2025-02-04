@@ -95,7 +95,7 @@ def original_scoring(clue, good_words_obj_bbn: dict, bad_words_obj_bbn: dict):
 
 def detect(clue: str, good_words_obj_dv: dict, bad_words_obj_dv: dict) -> float:
 	lambda_f = 2 # We will have to figre out good values for this
-	lambda_d = 2 # And this
+	lambda_d = 1.5 # And this
 
 	clue_db_obj = freq_and_vec_collection2.find_one({"word": clue})
 	if clue_db_obj:
@@ -201,13 +201,15 @@ if __name__ == "__main__":
 			# score_list_paper = [(candidate_clue, original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf)) for candidate_clue in intersection]
 			# score_list_no_paper = [(candidate_clue, 3 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf) + additional_badness(candidate_clue, bad_words_obj_dvf)) for candidate_clue in intersection]
 			orig_scale_1 = 0.1
-			orig_scale_2 = 0.1
 			detect_scale_1 = 1
-			detect_scale_2 = 1
-			additional_closeness_scale_1 = 5
+			additional_closeness_scale_1 = 4
+			additional_badness_scale_1 = 6
+
+
+			orig_scale_2 = 0.1
+			detect_scale_2 = .75
 			additional_closeness_scale_2 = 3
-			additional_badness_scale_1 = 3
-			additional_badness_scale_2 = 1
+			additional_badness_scale_2 = 3
 
 			score_list_all2 = [(candidate_clue, orig_scale_1 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + detect_scale_1 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf) + additional_closeness_scale_1 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf) + additional_badness_scale_1 * additional_badness(candidate_clue, bad_words_obj_dvf)) for candidate_clue in intersection]
 			score_list_all3 = [(candidate_clue, orig_scale_2 * original_scoring(candidate_clue, good_words_obj_cc, bad_words_obj_cc) + detect_scale_2 * detect(candidate_clue, good_words_obj_dvf, bad_words_obj_dvf) + additional_closeness_scale_2 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf) + additional_badness_scale_2 * additional_badness(candidate_clue, bad_words_obj_dvf)) for candidate_clue in intersection]
@@ -272,7 +274,7 @@ if __name__ == "__main__":
 		
 		random.shuffle(all_board_words)		
 
-		with open("testing_documentation_form.txt", "a") as output_file:
+		with open("newtest2.txt", "a") as output_file:
 			output_file.write(f"The board words are: {all_board_words}\n")
 			output_file.write(f"The good words are: {good_words}\n")
 			output_file.write(f"The bad words are: {bad_words}\n")
