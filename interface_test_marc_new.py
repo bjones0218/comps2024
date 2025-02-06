@@ -4,6 +4,7 @@ import time
 from multiprocessing import Pool
 from itertools import combinations
 from scipy.spatial.distance import cosine
+import spacy
 
 
 CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
@@ -12,6 +13,8 @@ db = client["codenames_db"]
 words_collection = db["codenames_clues"]
 freq_and_vec_db2 = client["freq_and_vec2"]
 freq_and_vec_collection2 = freq_and_vec_db2["freq_and_vec_collection2"]
+
+nlp = spacy.load("en_core_web_sm")
 
 # FIRST GET THE OBJECTS FOR GOOD WORDS AND BAD WORDS
 
@@ -49,6 +52,24 @@ def get_score(clue_obj):
 	else: 
 		return 0
 	
+def check_top_clues(clue_list):
+	bad_top_word = True
+	cur_word_index = 0
+	while bad_top_word:
+		top_word_doc = nlp(clue_list[cur_word_index][1][0])
+		top_word_lemma = top_word_doc[0].lemma_
+
+		first_word_doc = nlp(clue_list[cur_word_index][0][0])
+		second_word_doc = nlp(clue_list[cur_word_index][0][1])
+		first_word_lemma = first_word_doc[0].lemma_
+		second_word_lemma = second_word_doc[0].lemma_
+		if top_word_lemma == first_word_lemma or top_word_lemma == second_word_lemma:
+			cur_word_index += 1
+		else:
+			bad_top_word = False
+	
+	return clue_list[cur_word_index]
+
 # SMALLER VALUE MEANS CLOSER SO IF WE MAKE IT NEGATIVE AND THEN ADD TO DETECT AND ORIG FURTHER WORDS ARE PUNISHED MORE
 # WE MAYBE WANT TO MAKE IT SO IT ENCOURAGES BOTH TO BE CLOSE TO EACH OTHER NOT JUST ONE BEING REALLY CLOSE
 def additional_closeness(clue, connecting_words, good_words_dv_obj):
@@ -202,8 +223,8 @@ if __name__ == "__main__":
 			# score_list_no_paper = [(candidate_clue, 3 * additional_closeness(candidate_clue, word_choice, good_words_obj_dvf) + additional_badness(candidate_clue, bad_words_obj_dvf)) for candidate_clue in intersection]
 			orig_scale_1 = 0.1
 			detect_scale_1 = 1
-			additional_closeness_scale_1 = 4
-			additional_badness_scale_1 = 6
+			additional_closeness_scale_1 = 6
+			additional_badness_scale_1 = 4
 
 
 			orig_scale_2 = 0.1
@@ -257,6 +278,11 @@ if __name__ == "__main__":
 		top_scores_all3.sort(key = lambda x: x[1][1], reverse = True)
 
 
+		top_clue_2 = check_top_clues(top_scores_all2)
+		top_clue_3 = check_top_clues(top_scores_all3)
+
+
+
 
 		# print(top_scores_all)
 		# print(top_scores_paper)
@@ -269,18 +295,18 @@ if __name__ == "__main__":
 		# print(f"The best clue is {top_scores_all[0][1][0]} with a score of {top_scores_all[0][1][1]} which connects the words {top_scores_all[0]}")
 		# print(f"The best clue is {top_scores_paper[0][1][0]} with a score of {top_scores_paper[0][1][1]} which connects the words {top_scores_paper[0]}")
 		# print(f"The best clue is {top_scores_no_paper[0][1][0]} with a score of {top_scores_no_paper[0][1][1]} which connects the words {top_scores_no_paper[0]}")
-		print(f"The best clue is {top_scores_all2[0][1][0]} with a score of {top_scores_all2[0][1][1]} which connects the words {top_scores_all2[0]}")
-		print(f"The best clue is {top_scores_all3[0][1][0]} with a score of {top_scores_all3[0][1][1]} which connects the words {top_scores_all3[0]}")
+		print(f"The best clue is {top_clue_2[1][0]} with a score of {top_clue_2[1][1]} which connects the words {top_clue_2}")
+		print(f"The best clue is {top_clue_3[1][0]} with a score of {top_clue_3[1][1]} which connects the words {top_clue_3}")
 		
 		random.shuffle(all_board_words)		
 
-		with open("newtest2.txt", "a") as output_file:
+		with open("newtest3.txt", "a") as output_file:
 			output_file.write(f"The board words are: {all_board_words}\n")
 			output_file.write(f"The good words are: {good_words}\n")
 			output_file.write(f"The bad words are: {bad_words}\n")
 			output_file.write(f"The weights for the first function are: orig scoring: {orig_scale_1}, detect: {detect_scale_1}, closeness: {additional_closeness_scale_1}, badness: {additional_badness_scale_1} \n")
-			output_file.write(f"The best clue is {top_scores_all2[0][1][0]} with a score of {top_scores_all2[0][1][1]} which connects the words {top_scores_all2[0]} \n")
+			output_file.write(f"The best clue is {top_clue_2[1][0]} with a score of {top_clue_2[1][1]} which connects the words {top_clue_2} \n")
 			output_file.write(f"The weights for the second function are: orig scoring: {orig_scale_2}, detect: {detect_scale_2}, closeness: {additional_closeness_scale_2}, badness: {additional_badness_scale_2} \n")
-			output_file.write(f"The best clue is {top_scores_all3[0][1][0]} with a score of {top_scores_all3[0][1][1]} which connects the words {top_scores_all3[0]} \n")
+			output_file.write(f"The best clue is {top_clue_3[1][0]} with a score of {top_clue_3[1][1]} which connects the words {top_clue_3} \n")
 			output_file.write("--------------------------\n")
 		print(time.time() - start_time)

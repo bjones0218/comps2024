@@ -158,3 +158,75 @@ The best clue is BLACKBERRY with a score of 15.447402277924986 which connects th
 The weights for the second function are: orig scoring: 0.1, detect: 0.75, closeness: 3, badness: 3 
 The best clue is BLACKBERRY with a score of 17.84086213966662 which connects the words (('CARROT', 'APPLE'), ('BLACKBERRY', 17.84086213966662)) 
 --------------------------
+The board words are: ['SOUL', 'MILLIONAIRE', 'DINOSAUR', 'LEAD', 'DECK', 'FIRE', 'TRUNK', 'POST', 'BOOT', 'HAWK', 'MOUNT', 'COLD', 'LIMOUSINE', 'SINK', 'PILOT', 'PRINCESS', 'TAG', 'LAP', 'SPOT', 'BUFFALO', 'FORCE', 'MARCH', 'TIME', 'FORK', 'BUTTON']
+The good words are: ['PILOT', 'LAP', 'POST', 'MOUNT', 'MARCH', 'LIMOUSINE', 'SPOT', 'BOOT', 'FORCE', 'TIME', 'FIRE', 'SINK', 'DINOSAUR']
+The bad words are: ['COLD', 'PRINCESS', 'BUTTON', 'DECK', 'TRUNK', 'MILLIONAIRE', 'HAWK', 'FORK', 'BUFFALO', 'SOUL', 'LEAD', 'TAG']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 4, badness: 6 
+The best clue is AIRLINER with a score of 4.659236925811012 which connects the words (('PILOT', 'LIMOUSINE'), ('AIRLINER', 4.659236925811012)) 
+The weights for the second function are: orig scoring: 0.1, detect: 0.75, closeness: 3, badness: 3 
+The best clue is AIRLINER with a score of 9.791396551697535 which connects the words (('PILOT', 'LIMOUSINE'), ('AIRLINER', 9.791396551697535)) 
+--------------------------
+The board words are: ['ROME', 'SQUARE', 'JAM', 'BRIDGE', 'CHARGE', 'SPRING', 'CODE', 'DEGREE', 'TRUNK', 'KING', 'OIL', 'TOKYO', 'PLAY', 'ATLANTIS', 'AMERICA', 'ENGINE', 'DAY', 'SUIT', 'COURT', 'OPERA', 'WHALE', 'POLE', 'INDIA', 'HELICOPTER', 'ROULETTE']
+The good words are: ['ATLANTIS', 'HELICOPTER', 'SQUARE', 'ROULETTE', 'OPERA', 'WHALE', 'TOKYO', 'OIL', 'COURT', 'POLE', 'BRIDGE', 'TRUNK', 'CODE']
+The bad words are: ['DEGREE', 'DAY', 'CHARGE', 'ENGINE', 'KING', 'JAM', 'AMERICA', 'SPRING', 'SUIT', 'PLAY', 'ROME', 'INDIA']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 4, badness: 6 
+The best clue is YAMATO with a score of 7.421781720611811 which connects the words (('ATLANTIS', 'TOKYO'), ('YAMATO', 7.421781720611811)) 
+The weights for the second function are: orig scoring: 0.1, detect: 0.75, closeness: 3, badness: 3 
+The best clue is YAMATO with a score of 11.915244610604592 which connects the words (('ATLANTIS', 'TOKYO'), ('YAMATO', 11.915244610604592)) 
+--------------------------
+The board words are: ['COMIC', 'FACE', 'FORK', 'OLIVE', 'NINJA', 'PIRATE', 'ARM', 'GREEN', 'TRACK', 'RACKET', 'CHANGE', 'DUCK', 'MERCURY', 'LAP', 'HIMALAYAS', 'NEEDLE', 'DAY', 'LAB', 'BEIJING', 'HONEY', 'BELL', 'PAPER', 'HELICOPTER', 'BATTERY', 'TRIP']
+The good words are: ['FORK', 'MERCURY', 'BEIJING', 'DUCK', 'TRACK', 'LAP', 'ARM', 'DAY', 'HONEY', 'NINJA', 'PIRATE', 'BATTERY', 'HIMALAYAS']
+The bad words are: ['NEEDLE', 'FACE', 'PAPER', 'BELL', 'RACKET', 'GREEN', 'LAB', 'CHANGE', 'HELICOPTER', 'OLIVE', 'COMIC', 'TRIP']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 4, badness: 6 
+The best clue is BHUTAN with a score of 15.455327407263312 which connects the words (('BEIJING', 'HIMALAYAS'), ('BHUTAN', 15.455327407263312)) 
+The weights for the second function are: orig scoring: 0.1, detect: 0.75, closeness: 3, badness: 3 
+The best clue is BHUTAN with a score of 17.57368642701066 which connects the words (('BEIJING', 'HIMALAYAS'), ('BHUTAN', 17.57368642701066)) 
+--------------------------
+The board words are: ['ARM', 'STREAM', 'PARK', 'BEIJING', 'COOK', 'HONEY', 'LAWYER', 'NOTE', 'STAR', 'MICROSCOPE', 'CONTRACT', 'BANK', 'SPRING', 'DWARF', 'APPLE', 'PITCH', 'FLY', 'CHICK', 'INDIA', 'TIME', 'SERVER', 'PILOT', 'SCHOOL', 'KID', 'GAME']
+The good words are: ['FLY', 'ARM', 'KID', 'APPLE', 'COOK', 'PILOT', 'BANK', 'BEIJING', 'TIME', 'CHICK', 'INDIA', 'NOTE', 'PITCH']
+The bad words are: ['SPRING', 'MICROSCOPE', 'PARK', 'GAME', 'STREAM', 'SERVER', 'SCHOOL', 'LAWYER', 'HONEY', 'STAR', 'DWARF', 'CONTRACT']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 4, badness: 6 
+The best clue is CHINA with a score of 19.998224468426308 which connects the words (('BEIJING', 'INDIA'), ('CHINA', 19.998224468426308)) 
+The weights for the second function are: orig scoring: 0.1, detect: 0.75, closeness: 3, badness: 3 
+The best clue is CHINA with a score of 21.482502022003505 which connects the words (('BEIJING', 'INDIA'), ('CHINA', 21.482502022003505)) 
+--------------------------
+The board words are: ['NET', 'BUFFALO', 'THEATER', 'DRESS', 'KID', 'JET', 'STADIUM', 'DOCTOR', 'BALL', 'COMIC', 'PLATYPUS', 'MAPLE', 'VAN', 'BILL', 'OLIVE', 'POUND', 'TIME', 'CHECK', 'BELL', 'LION', 'BED', 'STREAM', 'HAWK', 'IRON', 'PIANO']
+The good words are: ['STREAM', 'BALL', 'LION', 'BUFFALO', 'DRESS', 'OLIVE', 'THEATER', 'TIME', 'MAPLE', 'JET', 'VAN', 'IRON', 'PLATYPUS']
+The bad words are: ['BED', 'DOCTOR', 'CHECK', 'PIANO', 'COMIC', 'KID', 'HAWK', 'STADIUM', 'POUND', 'NET', 'BILL', 'BELL']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 4, badness: 6 
+The best clue is WALNUT with a score of 10.738235695029921 which connects the words (('OLIVE', 'MAPLE'), ('WALNUT', 10.738235695029921)) 
+The weights for the second function are: orig scoring: 0.1, detect: 0.75, closeness: 3, badness: 3 
+The best clue is WALNUT with a score of 14.458778732789703 which connects the words (('OLIVE', 'MAPLE'), ('WALNUT', 14.458778732789703)) 
+--------------------------
+The board words are: ['BRIDGE', 'SPOT', 'STRIKE', 'BELL', 'JET', 'WAR', 'TICK', 'CRASH', 'CONTRACT', 'TABLE', 'WAKE', 'AZTEC', 'KANGAROO', 'KNIGHT', 'FAN', 'STAFF', 'NOVEL', 'DEGREE', 'SPIDER', 'VET', 'BOARD', 'BUG', 'BUCK', 'HEAD', 'ARM']
+The good words are: ['BOARD', 'CRASH', 'STAFF', 'TABLE', 'KNIGHT', 'BRIDGE', 'FAN', 'SPIDER', 'ARM', 'BUCK', 'AZTEC', 'KANGAROO', 'WAR']
+The bad words are: ['BELL', 'BUG', 'WAKE', 'STRIKE', 'TICK', 'CONTRACT', 'VET', 'SPOT', 'JET', 'HEAD', 'DEGREE', 'NOVEL']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 4, badness: 6 
+The best clue is REDBACK with a score of 4.783393718034397 which connects the words (('SPIDER', 'KANGAROO'), ('REDBACK', 4.783393718034397)) 
+The weights for the second function are: orig scoring: 0.1, detect: 0.75, closeness: 3, badness: 3 
+The best clue is REDBACK with a score of 9.719158454053387 which connects the words (('SPIDER', 'KANGAROO'), ('REDBACK', 9.719158454053387)) 
+--------------------------
+The board words are: ['DECK', 'NINJA', 'LAB', 'WHALE', 'NUT', 'CHINA', 'TAG', 'FOOT', 'PRINCESS', 'ROULETTE', 'TAIL', 'OLIVE', 'BOW', 'BEIJING', 'WORM', 'STRIKE', 'PIPE', 'SOUL', 'DUCK', 'HORSE', 'POISON', 'GROUND', 'SHARK', 'HELICOPTER', 'BERMUDA']
+The good words are: ['NINJA', 'DECK', 'WORM', 'OLIVE', 'HELICOPTER', 'HORSE', 'CHINA', 'POISON', 'BEIJING', 'BOW', 'DUCK', 'SOUL', 'TAIL']
+The bad words are: ['NUT', 'LAB', 'WHALE', 'FOOT', 'PIPE', 'BERMUDA', 'SHARK', 'ROULETTE', 'PRINCESS', 'STRIKE', 'GROUND', 'TAG']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 4, badness: 6 
+The best clue is CHENGDU with a score of 38.305044678583506 which connects the words (('CHINA', 'BEIJING'), ('CHENGDU', 38.305044678583506)) 
+The weights for the second function are: orig scoring: 0.1, detect: 0.75, closeness: 3, badness: 3 
+The best clue is CHENGDU with a score of 35.40778066722538 which connects the words (('CHINA', 'BEIJING'), ('CHENGDU', 35.40778066722538)) 
+--------------------------
+The board words are: ['PARK', 'PITCH', 'JET', 'HORSESHOE', 'CHANGE', 'CAT', 'WATER', 'YARD', 'STATE', 'AMAZON', 'CLIFF', 'SUIT', 'POINT', 'BATTERY', 'BUCK', 'LONDON', 'CLUB', 'POLE', 'BERLIN', 'BRUSH', 'DRILL', 'MARCH', 'ALPS', 'LAB', 'SCALE']
+The good words are: ['LAB', 'SCALE', 'CLUB', 'ALPS', 'LONDON', 'JET', 'BUCK', 'POLE', 'BRUSH', 'CLIFF', 'BATTERY', 'PARK', 'CAT']
+The bad words are: ['CHANGE', 'STATE', 'MARCH', 'HORSESHOE', 'BERLIN', 'PITCH', 'POINT', 'YARD', 'SUIT', 'DRILL', 'AMAZON', 'WATER']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 4, badness: 6 
+The best clue is MOUNTAIN with a score of 8.27364008118888 which connects the words (('ALPS', 'CLIFF'), ('MOUNTAIN', 8.27364008118888)) 
+The weights for the second function are: orig scoring: 0.1, detect: 0.75, closeness: 3, badness: 3 
+The best clue is MOUNTAIN with a score of 12.7937448110767 which connects the words (('ALPS', 'CLIFF'), ('MOUNTAIN', 12.7937448110767)) 
+--------------------------
+The board words are: ['PLASTIC', 'MOUSE', 'PYRAMID', 'ROBIN', 'TEMPLE', 'ROW', 'BOMB', 'POLE', 'SHAKESPEARE', 'MAPLE', 'BAND', 'CAST', 'LOCK', 'WHALE', 'BEAR', 'FILM', 'PARACHUTE', 'HAWK', 'AMBULANCE', 'DRAGON', 'MOUTH', 'TIME', 'OLYMPUS', 'TOKYO', 'CAP']
+The good words are: ['TEMPLE', 'WHALE', 'TOKYO', 'BAND', 'OLYMPUS', 'ROBIN', 'MOUTH', 'CAP', 'PLASTIC', 'HAWK', 'BEAR', 'CAST', 'LOCK']
+The bad words are: ['BOMB', 'TIME', 'SHAKESPEARE', 'MOUSE', 'DRAGON', 'AMBULANCE', 'PARACHUTE', 'MAPLE', 'POLE', 'FILM', 'ROW', 'PYRAMID']
+The weights for the first function are: orig scoring: 0.1, detect: 1, closeness: 4, badness: 6 
+The best clue is DESPOINE with a score of 6.011294404947147 which connects the words (('TEMPLE', 'OLYMPUS'), ('DESPOINE', 6.011294404947147)) 
+The weights for the second function are: orig scoring: 0.1, detect: 0.75, closeness: 3, badness: 3 
+The best clue is DESPOINE with a score of 10.631161568171386 which connects the words (('TEMPLE', 'OLYMPUS'), ('DESPOINE', 10.631161568171386)) 
+--------------------------
