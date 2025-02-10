@@ -86,6 +86,7 @@ def additional_closeness(clue, connecting_words, good_words_dv_obj):
 
 	return 4/score
 
+# IDEA: WE GET LIKE THE TOP 3 BAD WORDS OR SOMETHING
 def additional_badness(clue, bad_words_dv_obj):
 	clue_db_obj = freq_and_vec_collection2.find_one({"word": clue})
 	if clue_db_obj:
