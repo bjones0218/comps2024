@@ -1,0 +1,6 @@
+The good words are: ['HELICOPTER', 'PIANO', 'BANK', 'HOLE', 'ALPS', 'BAR', 'THEATER', 'COTTON', 'SPIDER', 'CONTRACT', 'SCREEN', 'CAP', 'KNIFE']
+The bad words are: ['LONDON', 'MOON', 'NOVEL', 'SUB', 'DRAGON', 'FORK', 'DINOSAUR', 'CYCLE', 'SHIP', 'CELL', 'NET', 'SHARK']
+All the board words are: ['HELICOPTER', 'BAR', 'CAP', 'MOON', 'THEATER', 'ALPS', 'COTTON', 'KNIFE', 'SUB', 'HOLE', 'PIANO', 'FORK', 'CYCLE', 'SHARK', 'NET', 'CELL', 'LONDON', 'DRAGON', 'SHIP', 'SPIDER', 'DINOSAUR', 'BANK', 'CONTRACT', 'SCREEN', 'NOVEL']
+The best clue is WEAPON with a score of 27.8280117935909 which connects ('SPIDER', 'KNIFE')
+The time it took to generate this clue was: 161.86608624458313 seconds
+---------------------------
