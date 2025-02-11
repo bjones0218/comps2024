@@ -299,7 +299,7 @@ if __name__ == "__main__":
 		print(f"The best clue is {top_clue_2[1][0]} with a score of {top_clue_2[1][1]} which connects the words {top_clue_2}")
 		print(f"The best clue is {top_clue_3[1][0]} with a score of {top_clue_3[1][1]} which connects the words {top_clue_3}")
 		
-		random.shuffle(all_board_words)		
+		random.shuffle(all_board_words)	
 
 		with open("newtest3.txt", "a") as output_file:
 			output_file.write(f"The board words are: {all_board_words}\n")
