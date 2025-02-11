@@ -3,8 +3,8 @@
 # THIS WAY WE CAN JUST CALL THIS FUNCTION FROM THE codenames.py AND IT WILL GIVE BACK THE CLUE
 
 
-from ai_from_paper_files.database_access import words_collection, get_word_obj_bbn, get_word_obj_dv, get_single_dv_obj, check_top_clues
-from ai_from_paper_files.scoring_functions import original_scoring, detect, additional_badness, additional_closeness
+from database_access import words_collection, get_word_obj_bbn, get_word_obj_dv, get_single_dv_obj, check_top_clues
+from scoring_functions import original_scoring, detect, additional_badness, additional_closeness
 from itertools import combinations
 import time
 from nltk import LancasterStemmer
