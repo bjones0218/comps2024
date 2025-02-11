@@ -7,6 +7,9 @@ from database_access import words_collection, get_word_obj_bbn, get_word_obj_dv,
 from scoring_functions import original_scoring, detect, additional_badness, additional_closeness
 from itertools import combinations
 import time
+from nltk import LancasterStemmer
+
+stemmer = LancasterStemmer()
 
 
 # Will need to change this to take in all the words on the board and split them up probably
@@ -16,7 +19,9 @@ def get_clue(good_words, bad_words):
 	# Check each word: if it has not been guessed and is the same color as the guessing team add it to good words and if it is not the same color add it to bad words
 	# good_words = []
 	# bad_words = []
-	# all_board_words = [] # THIS SHOULD BE JUST A LIST OF WORDS
+	all_board_words = good_words + bad_words # THIS SHOULD BE JUST A LIST OF WORDS
+
+	stemmed_board_words = [(stemmer.stem(board_word.lower()).upper(), board_word) for board_word in all_board_words]
 
 	# bad_words = ['AZTEC', 'APPLE', 'NURSE', 'SCIENTIST', 'FACE', 'FILM', 'PIN', 'CENTAUR']
 	# good_words = ['PARACHUTE', 'DICE', 'HOTEL', 'TAIL', 'FLUTE', 'MODEL', 'WASHINGTON', 'HOLLYWOOD']
@@ -25,9 +30,11 @@ def get_clue(good_words, bad_words):
 
 	good_words_obj_clues = get_word_obj_bbn(good_words)
 	bad_words_obj_clues = get_word_obj_bbn(bad_words)
-		
+
 	good_words_obj_dvf = get_word_obj_dv(good_words)
 	bad_words_obj_dvf = get_word_obj_dv(bad_words)
+
+	# NEED TO ADD CODE TO CHECK IF THERE IS ONLY ONE WORD LEFT AND GIVE A CLUE FOR THAT ONE WORD
 
 	top_scores = []
 	for word_choice in all_possible_combos:
@@ -36,8 +43,9 @@ def get_clue(good_words, bad_words):
 
 		intersection_set = word1_candidates & word2_candidates
 
-		intersection_list = list(intersection_set)
+		intersection_set = {candidate_clue for candidate_clue in intersection_set if not any(stemmed_board_word_obj[0] in candidate_clue or stemmed_board_word_obj[1] == candidate_clue for stemmed_board_word_obj in stemmed_board_words)}
 
+		intersection_list = list(intersection_set)
 
 		orig_scoring_coef = 0.1
 		detect_coef = 1

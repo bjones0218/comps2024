@@ -25,6 +25,7 @@ def get_single_dv_obj(word):
 def get_single_bbn_obj(word):
 	return words_collection.find_one({"codenames_word": word})
 
+# TEST THIS SOME MORE
 def check_top_clues(clue_list):
 	bad_top_word = True
 	cur_word_index = 0
