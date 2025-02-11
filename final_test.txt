@@ -244,3 +244,9 @@ All the board words are: ['CLUB', 'BACK', 'ALPS', 'MINT', 'STICK', 'SCIENTIST', 
 The best clue is FLASHLIGHT with a score of 26.841350560903546 which connects ('TORCH', 'TUBE')
 The time it took to generate this clue was: 191.4427719116211 seconds
 ---------------------------
+The good words are: ['ROUND', 'PUPIL', 'SCHOOL', 'MOLE', 'PANTS', 'LIFE', 'IRON', 'DRESS', 'LINK', 'LONDON', 'EYE', 'GOLD', 'OLIVE']
+The bad words are: ['HOLE', 'AUSTRALIA', 'DECK', 'BOOT', 'SUB', 'SCALE', 'INDIA', 'PASS', 'MOON', 'HAM', 'SPELL', 'CENTER']
+All the board words are: ['PANTS', 'ROUND', 'DRESS', 'LIFE', 'SCHOOL', 'LINK', 'EYE', 'AUSTRALIA', 'GOLD', 'HOLE', 'IRON', 'OLIVE', 'HAM', 'MOON', 'SUB', 'LONDON', 'BOOT', 'SCALE', 'CENTER', 'SPELL', 'MOLE', 'PUPIL', 'DECK', 'INDIA', 'PASS']
+The best clue is BLOUSE with a score of 75.5240431425274 which connects ('PANTS', 'DRESS')
+The time it took to generate this clue was: 280.09178400039673 seconds
+---------------------------
