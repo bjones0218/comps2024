@@ -3,19 +3,30 @@
 # THIS WAY WE CAN JUST CALL THIS FUNCTION FROM THE codenames.py AND IT WILL GIVE BACK THE CLUE
 
 
-from database_access import words_collection, get_word_obj_bbn, get_word_obj_dv, get_single_dv_obj, check_top_clues
-from scoring_functions import original_scoring, detect, additional_badness, additional_closeness
+from ai_from_paper_files.database_access import words_collection, get_word_obj_bbn, get_word_obj_dv, get_single_dv_obj, check_top_clues
+from ai_from_paper_files.scoring_functions import original_scoring, detect, additional_badness, additional_closeness
 from itertools import combinations
 import time
 from nltk import LancasterStemmer
+from multiprocessing import Pool
 
 stemmer = LancasterStemmer()
 
+def score_word(candidate_clue, word_choice, good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf):
+	orig_scoring_coef = 0.1
+	detect_coef = 1
+	additional_closeness_coef = 6
+	additional_badness_coef = 4
+
+	candidate_clue_dv_obj = get_single_dv_obj(candidate_clue)
+	score = orig_scoring_coef * original_scoring(candidate_clue, good_words_obj_clues, bad_words_obj_clues) + detect_coef * detect(candidate_clue_dv_obj, good_words_obj_dvf, bad_words_obj_dvf) + additional_closeness_coef * additional_closeness(candidate_clue_dv_obj, word_choice, good_words_obj_dvf) + additional_badness_coef * additional_badness(candidate_clue_dv_obj, bad_words_obj_dvf)
+	
+	return ((word_choice[0], word_choice[1]), (candidate_clue, score))
 
 # Will need to change this to take in all the words on the board and split them up probably
 # def get_clue(board_words, team):
 def get_clue(good_words, bad_words):
-	start_time = time.time()
+	# start_time = time.time()
 	# Check each word: if it has not been guessed and is the same color as the guessing team add it to good words and if it is not the same color add it to bad words
 	# good_words = []
 	# bad_words = []
@@ -46,6 +57,9 @@ def get_clue(good_words, bad_words):
 		intersection_set = {candidate_clue for candidate_clue in intersection_set if not any(stemmed_board_word_obj[0] in candidate_clue or stemmed_board_word_obj[1] == candidate_clue for stemmed_board_word_obj in stemmed_board_words)}
 
 		intersection_list = list(intersection_set)
+		new_intersection_list = []
+		for clue in intersection_list:
+			new_intersection_list.append((clue, word_choice, good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf))
 
 		orig_scoring_coef = 0.1
 		detect_coef = 1
@@ -53,10 +67,20 @@ def get_clue(good_words, bad_words):
 		additional_badness_coef = 4
 
 		score_list = []
-		for candidate_clue in intersection_list:
-			candidate_clue_dv_obj = get_single_dv_obj(candidate_clue)
-			score = orig_scoring_coef * original_scoring(candidate_clue, good_words_obj_clues, bad_words_obj_clues) + detect_coef * detect(candidate_clue_dv_obj, good_words_obj_dvf, bad_words_obj_dvf) + additional_closeness_coef * additional_closeness(candidate_clue_dv_obj, word_choice, good_words_obj_dvf) + additional_badness_coef * additional_badness(candidate_clue_dv_obj, bad_words_obj_dvf)
-			score_list.append(((word_choice[0], word_choice[1]), (candidate_clue, score)))
+
+		with Pool() as pool:
+			try:
+			#map score onto the tuples in new_intersection reading each as the args.
+				score_list = pool.starmap(score_word, new_intersection_list)
+			finally:
+				# Close worker connections after pool is done
+				pool.close()
+				pool.join()
+
+		# for candidate_clue in intersection_list:
+		# 	candidate_clue_dv_obj = get_single_dv_obj(candidate_clue)
+		# 	score = orig_scoring_coef * original_scoring(candidate_clue, good_words_obj_clues, bad_words_obj_clues) + detect_coef * detect(candidate_clue_dv_obj, good_words_obj_dvf, bad_words_obj_dvf) + additional_closeness_coef * additional_closeness(candidate_clue_dv_obj, word_choice, good_words_obj_dvf) + additional_badness_coef * additional_badness(candidate_clue_dv_obj, bad_words_obj_dvf)
+		# 	score_list.append(((word_choice[0], word_choice[1]), (candidate_clue, score)))
 		
 		score_list.sort(key= lambda x: x[1][1], reverse=True)
 

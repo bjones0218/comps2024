@@ -16,12 +16,12 @@ count = 0
 with open("dict2vec-300d.vec", "r") as vector_file:
 	next(vector_file) # skip first line
 	for line in vector_file:
-		# temp = line.split(" ")
-		# word = temp[0]
-		# vector_vals = [float(num) for num in temp[1: 301]]
-		# vector = tuple(vector_vals)
-		# freq_and_vec_collection.insert_one({"word": word.upper(), "vector": vector, "count": 0})
-		# print("INSERTED:", word)
+		temp = line.split(" ")
+		word = temp[0]
+		vector_vals = [float(num) for num in temp[1: 301]]
+		vector = tuple(vector_vals)
+		freq_and_vec_collection.insert_one({"word": word.upper(), "vector": vector, "count": 0})
+		print("INSERTED:", word)
 		count += 1
 
 print(count)
