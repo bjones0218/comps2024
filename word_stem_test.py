@@ -10,7 +10,7 @@ print(lemmatizer2.lemmatize("SPINE"))
 nlp = spacy.load("en_core_web_sm")
 
 
-text = "spine, spinal, dogs, dog, knives, knife"
+text = "spine, spinal, dogs, dog, knives, knife, HOTELS, HOTEL"
 
 # Process the text with spaCy
 doc = nlp(text)

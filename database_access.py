@@ -1,0 +1,44 @@
+from pymongo import MongoClient
+import spacy
+
+
+CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
+client = MongoClient(CONNECTION_STRING)
+
+codenames_db = client["codenames_db"]
+words_collection = codenames_db["codenames_clues"]
+
+freq_and_vec_db = client["freq_and_vec2"]
+freq_and_vec_collection = freq_and_vec_db["freq_and_vec_collection2"]
+
+nlp = spacy.load("en_core_web_sm")
+
+def get_word_obj_bbn(words):
+	return {word: words_collection.find_one({"codenames_word": word}) for word in words}
+
+def get_word_obj_dv(words):
+	return {word: freq_and_vec_collection.find_one({"word": word}) for word in words}
+
+def get_single_dv_obj(word):
+	return freq_and_vec_collection.find_one({"word": word})
+
+def get_single_bbn_obj(word):
+	return words_collection.find_one({"codenames_word": word})
+
+def check_top_clues(clue_list):
+	bad_top_word = True
+	cur_word_index = 0
+	while bad_top_word:
+		top_word_doc = nlp(clue_list[cur_word_index][1][0].lower())
+		top_word_lemma = top_word_doc[0].lemma_
+
+		first_word_doc = nlp(clue_list[cur_word_index][0][0].lower())
+		second_word_doc = nlp(clue_list[cur_word_index][0][1].lower())
+		first_word_lemma = first_word_doc[0].lemma_
+		second_word_lemma = second_word_doc[0].lemma_
+		if top_word_lemma == first_word_lemma or top_word_lemma == second_word_lemma:
+			cur_word_index += 1
+		else:
+			bad_top_word = False
+	
+	return clue_list[cur_word_index]
