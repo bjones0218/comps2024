@@ -1,6 +1,6 @@
 import random
 import time
-from ai_cluegiver import get_clue
+from ai_cluegiver_orig import get_clue
 
 def get_random_strings():
 	with open("word_list_copy.txt", 'r') as file:
