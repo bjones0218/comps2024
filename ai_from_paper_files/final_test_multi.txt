@@ -1,0 +1,270 @@
+The good words are: ['STREAM', 'BANK', 'FAN', 'INDIA', 'WHIP', 'ROBOT', 'LONDON', 'CHAIR', 'UNDERTAKER', 'ROCK', 'LINE', 'NOTE', 'DAY']
+The bad words are: ['FIGURE', 'MAPLE', 'REVOLUTION', 'BUFFALO', 'PASTE', 'PIPE', 'BOOM', 'BERMUDA', 'WASHER', 'PARACHUTE', 'CODE', 'KNIFE']
+All the board words are: ['PIPE', 'BERMUDA', 'ROCK', 'ROBOT', 'LONDON', 'WHIP', 'REVOLUTION', 'KNIFE', 'BANK', 'NOTE', 'PARACHUTE', 'FAN', 'MAPLE', 'BUFFALO', 'STREAM', 'WASHER', 'UNDERTAKER', 'INDIA', 'DAY', 'CHAIR', 'CODE', 'LINE', 'PASTE', 'FIGURE', 'BOOM']
+The best clue is R with a score of 12.007084083712536 which connects ('LONDON', 'ROCK')
+The time it took to generate this clue was: 217.1478078365326 seconds
+---------------------------
+The good words are: ['CHECK', 'AMBULANCE', 'THUMB', 'CROSS', 'JACK', 'SPOT', 'NIGHT', 'SHAKESPEARE', 'SWING', 'QUEEN', 'CHAIR', 'WAVE', 'TOOTH']
+The bad words are: ['TUBE', 'NUT', 'VACUUM', 'BALL', 'PRINCESS', 'OIL', 'OLYMPUS', 'ROCK', 'CHEST', 'COPPER', 'SNOW', 'SPINE']
+All the board words are: ['SWING', 'TUBE', 'CHAIR', 'CHEST', 'CROSS', 'OLYMPUS', 'TOOTH', 'SNOW', 'NUT', 'COPPER', 'JACK', 'WAVE', 'SPOT', 'ROCK', 'BALL', 'PRINCESS', 'CHECK', 'QUEEN', 'THUMB', 'AMBULANCE', 'VACUUM', 'SPINE', 'SHAKESPEARE', 'NIGHT', 'OIL']
+The best clue is BONE with a score of 21.047678986671563 which connects ('SPOT', 'TOOTH')
+The time it took to generate this clue was: 20.192771673202515 seconds
+---------------------------
+The good words are: ['SLIP', 'RAY', 'SPIDER', 'TUBE', 'ROOT', 'LOG', 'MAPLE', 'SPOT', 'SHOP', 'PLOT', 'HORSE', 'SERVER', 'EMBASSY']
+The bad words are: ['POOL', 'FLY', 'CAST', 'SHIP', 'VAN', 'PRESS', 'DUCK', 'BELL', 'GERMANY', 'LOCK', 'AZTEC', 'GLASS']
+All the board words are: ['GLASS', 'DUCK', 'FLY', 'LOG', 'POOL', 'SHIP', 'TUBE', 'SLIP', 'HORSE', 'PLOT', 'SPOT', 'BELL', 'LOCK', 'SPIDER', 'CAST', 'VAN', 'SERVER', 'EMBASSY', 'RAY', 'AZTEC', 'ROOT', 'GERMANY', 'SHOP', 'MAPLE', 'PRESS']
+The best clue is HARNESS with a score of 27.05760153553593 which connects ('SPIDER', 'HORSE')
+The time it took to generate this clue was: 16.90035080909729 seconds
+---------------------------
+The good words are: ['CAP', 'FORK', 'GREEN', 'ICE', 'TRUNK', 'INDIA', 'NINJA', 'EUROPE', 'CRANE', 'CONDUCTOR', 'CENTER', 'COTTON', 'NAIL']
+The bad words are: ['WATCH', 'VACUUM', 'THIEF', 'LOCK', 'MOUSE', 'BOW', 'HORSESHOE', 'HONEY', 'ROOT', 'KIWI', 'BOTTLE', 'TOWER']
+All the board words are: ['KIWI', 'CENTER', 'VACUUM', 'CAP', 'TOWER', 'THIEF', 'EUROPE', 'ICE', 'WATCH', 'NINJA', 'LOCK', 'INDIA', 'CONDUCTOR', 'FORK', 'NAIL', 'HONEY', 'MOUSE', 'TRUNK', 'BOTTLE', 'COTTON', 'GREEN', 'BOW', 'ROOT', 'HORSESHOE', 'CRANE']
+The best clue is ANDHRA with a score of 21.810593916976703 which connects ('ICE', 'INDIA')
+The time it took to generate this clue was: 22.709946393966675 seconds
+---------------------------
+The good words are: ['EUROPE', 'SHIP', 'KNIGHT', 'POLICE', 'WATCH', 'WHIP', 'KIWI', 'OCTOPUS', 'SATELLITE', 'SPRING', 'TIME', 'SUPERHERO', 'MEXICO']
+The bad words are: ['LASER', 'PYRAMID', 'JUPITER', 'NET', 'RAY', 'OLYMPUS', 'GROUND', 'WEB', 'RACKET', 'ROW', 'TABLE', 'PILOT']
+All the board words are: ['WHIP', 'EUROPE', 'KIWI', 'JUPITER', 'SHIP', 'RAY', 'PYRAMID', 'TABLE', 'SATELLITE', 'NET', 'OCTOPUS', 'MEXICO', 'TIME', 'KNIGHT', 'SUPERHERO', 'RACKET', 'OLYMPUS', 'PILOT', 'GROUND', 'WEB', 'LASER', 'ROW', 'WATCH', 'POLICE', 'SPRING']
+The best clue is NICARAGUA with a score of 24.57290136224841 which connects ('EUROPE', 'MEXICO')
+The time it took to generate this clue was: 23.865295886993408 seconds
+---------------------------
+The good words are: ['BUFFALO', 'JACK', 'GROUND', 'POOL', 'SHOP', 'CRASH', 'JUPITER', 'CHURCH', 'MINT', 'AZTEC', 'TIE', 'SHARK', 'PARK']
+The bad words are: ['KEY', 'WHALE', 'DUCK', 'CROSS', 'HAM', 'LAB', 'MOON', 'COOK', 'GRASS', 'FLY', 'PANTS', 'CODE']
+All the board words are: ['GROUND', 'BUFFALO', 'WHALE', 'JUPITER', 'CHURCH', 'AZTEC', 'LAB', 'FLY', 'COOK', 'MINT', 'SHOP', 'CROSS', 'GRASS', 'MOON', 'POOL', 'PARK', 'PANTS', 'JACK', 'KEY', 'DUCK', 'CRASH', 'SHARK', 'TIE', 'CODE', 'HAM']
+The best clue is COLLISION with a score of 19.303097702504324 which connects ('CRASH', 'TIE')
+The time it took to generate this clue was: 23.292577505111694 seconds
+---------------------------
+The good words are: ['NEEDLE', 'MOLE', 'KANGAROO', 'BOND', 'PHOENIX', 'VAN', 'WIND', 'SLUG', 'FOOT', 'PLAY', 'SOCK', 'COMPOUND', 'BEAT']
+The bad words are: ['GERMANY', 'HOOK', 'MEXICO', 'POLE', 'CLIFF', 'MOSCOW', 'LOG', 'ANGEL', 'SHARK', 'POLICE', 'ROSE', 'CALF']
+All the board words are: ['HOOK', 'COMPOUND', 'SOCK', 'SHARK', 'POLE', 'ROSE', 'MEXICO', 'VAN', 'ANGEL', 'CLIFF', 'SLUG', 'PLAY', 'GERMANY', 'MOLE', 'MOSCOW', 'CALF', 'NEEDLE', 'WIND', 'KANGAROO', 'BEAT', 'BOND', 'PHOENIX', 'POLICE', 'FOOT', 'LOG']
+The best clue is INTERLOCK with a score of 18.698312304959988 which connects ('NEEDLE', 'BOND')
+The time it took to generate this clue was: 24.27084183692932 seconds
+---------------------------
+The good words are: ['BALL', 'QUEEN', 'EUROPE', 'SPIDER', 'ICE', 'FIELD', 'DOG', 'KNIGHT', 'ORANGE', 'PAN', 'PUPIL', 'WEB', 'GIANT']
+The bad words are: ['FILE', 'SHADOW', 'SPACE', 'BAR', 'SKYSCRAPER', 'THIEF', 'BOX', 'CLIFF', 'NAIL', 'CROSS', 'PYRAMID', 'PORT']
+All the board words are: ['SHADOW', 'DOG', 'EUROPE', 'PORT', 'PAN', 'QUEEN', 'GIANT', 'WEB', 'SPACE', 'PYRAMID', 'ORANGE', 'CLIFF', 'SKYSCRAPER', 'KNIGHT', 'SPIDER', 'BOX', 'ICE', 'BAR', 'PUPIL', 'BALL', 'FILE', 'FIELD', 'CROSS', 'NAIL', 'THIEF']
+The best clue is VIOLET with a score of 24.99314670786825 which connects ('SPIDER', 'ORANGE')
+The time it took to generate this clue was: 31.88052201271057 seconds
+---------------------------
+The good words are: ['BEAT', 'GENIUS', 'FORCE', 'THUMB', 'PLANE', 'TURKEY', 'SHOP', 'GAS', 'THIEF', 'BUCK', 'KNIFE', 'SCIENTIST', 'CZECH']
+The bad words are: ['RAY', 'ROUND', 'HOSPITAL', 'DATE', 'ROOT', 'FIGURE', 'FAN', 'SHOT', 'MODEL', 'BOND', 'BACK', 'PIN']
+All the board words are: ['BUCK', 'HOSPITAL', 'FORCE', 'SCIENTIST', 'SHOP', 'GAS', 'THIEF', 'RAY', 'BOND', 'FIGURE', 'ROOT', 'TURKEY', 'BACK', 'CZECH', 'PIN', 'GENIUS', 'ROUND', 'PLANE', 'KNIFE', 'DATE', 'MODEL', 'THUMB', 'FAN', 'BEAT', 'SHOT']
+The best clue is ARMENIA with a score of 22.658894205360767 which connects ('TURKEY', 'CZECH')
+The time it took to generate this clue was: 21.28648829460144 seconds
+---------------------------
+The good words are: ['FIELD', 'SWITCH', 'SCORPION', 'STOCK', 'MOON', 'LIFE', 'STATE', 'WIND', 'CAP', 'MODEL', 'BEIJING', 'SEAL', 'UNICORN']
+The bad words are: ['ALIEN', 'WAKE', 'BOLT', 'SATELLITE', 'TAP', 'CHINA', 'WATER', 'INDIA', 'DAY', 'BAND', 'HORN', 'ORGAN']
+All the board words are: ['MOON', 'BOLT', 'CAP', 'SATELLITE', 'SWITCH', 'STATE', 'LIFE', 'SEAL', 'FIELD', 'HORN', 'CHINA', 'TAP', 'WAKE', 'BEIJING', 'INDIA', 'BAND', 'DAY', 'WIND', 'ORGAN', 'MODEL', 'SCORPION', 'WATER', 'ALIEN', 'UNICORN', 'STOCK']
+The best clue is CREST with a score of 20.819604284391655 which connects ('CAP', 'SEAL')
+The time it took to generate this clue was: 31.147424936294556 seconds
+---------------------------
+The good words are: ['GERMANY', 'COPPER', 'EMBASSY', 'BOOM', 'SUPERHERO', 'ATLANTIS', 'PUMPKIN', 'PASTE', 'AIR', 'CLIFF', 'SWITCH', 'OCTOPUS', 'DISEASE']
+The bad words are: ['CZECH', 'STREAM', 'MOSCOW', 'PIRATE', 'DIAMOND', 'SHIP', 'STOCK', 'LAP', 'SPIDER', 'TIME', 'RACKET', 'TRIANGLE']
+All the board words are: ['AIR', 'RACKET', 'COPPER', 'SUPERHERO', 'CZECH', 'SWITCH', 'PUMPKIN', 'DISEASE', 'CLIFF', 'EMBASSY', 'TRIANGLE', 'ATLANTIS', 'DIAMOND', 'SHIP', 'BOOM', 'MOSCOW', 'SPIDER', 'OCTOPUS', 'GERMANY', 'PASTE', 'TIME', 'PIRATE', 'LAP', 'STREAM', 'STOCK']
+The best clue is HONEY with a score of 21.395965657642158 which connects ('PUMPKIN', 'PASTE')
+The time it took to generate this clue was: 22.586684703826904 seconds
+---------------------------
+The good words are: ['MOUTH', 'PLOT', 'PIT', 'DRAGON', 'CODE', 'GIANT', 'THEATER', 'FLY', 'SERVER', 'KID', 'ENGLAND', 'JET', 'POLICE']
+The bad words are: ['TIE', 'KIWI', 'HONEY', 'MOSCOW', 'PITCH', 'DEGREE', 'STAR', 'AZTEC', 'BOOT', 'ROBOT', 'CAR', 'TAIL']
+All the board words are: ['THEATER', 'FLY', 'CAR', 'TAIL', 'POLICE', 'KID', 'DRAGON', 'KIWI', 'JET', 'TIE', 'PLOT', 'DEGREE', 'MOUTH', 'ENGLAND', 'SERVER', 'STAR', 'PIT', 'PITCH', 'HONEY', 'BOOT', 'CODE', 'MOSCOW', 'AZTEC', 'ROBOT', 'GIANT']
+The best clue is SPIDEY with a score of 19.504781844620656 which connects ('DRAGON', 'GIANT')
+The time it took to generate this clue was: 24.906028985977173 seconds
+---------------------------
+The good words are: ['RING', 'VAN', 'TRUNK', 'COLD', 'CAR', 'OPERA', 'SWING', 'PILOT', 'POINT', 'CRICKET', 'GREEN', 'FALL', 'BACK']
+The bad words are: ['PIE', 'ROSE', 'KEY', 'HOOD', 'ORGAN', 'BELT', 'COOK', 'GAME', 'CASINO', 'ROME', 'ROW', 'EUROPE']
+All the board words are: ['PIE', 'CAR', 'COLD', 'GREEN', 'TRUNK', 'POINT', 'BACK', 'SWING', 'RING', 'KEY', 'ROME', 'COOK', 'OPERA', 'HOOD', 'CASINO', 'ORGAN', 'BELT', 'VAN', 'GAME', 'CRICKET', 'ROW', 'ROSE', 'EUROPE', 'FALL', 'PILOT']
+The best clue is TIRE with a score of 18.592544302391634 which connects ('TRUNK', 'CAR')
+The time it took to generate this clue was: 29.947575092315674 seconds
+---------------------------
+The good words are: ['THUMB', 'SUIT', 'GRASS', 'FILM', 'PIANO', 'SERVER', 'HOLLYWOOD', 'DANCE', 'TRIP', 'STRAW', 'BOW', 'CZECH', 'CHEST']
+The bad words are: ['BARK', 'OPERA', 'MEXICO', 'QUEEN', 'TABLET', 'KNIGHT', 'MOUTH', 'TURKEY', 'PARACHUTE', 'CHARGE', 'SCORPION', 'FIGHTER']
+All the board words are: ['BOW', 'SCORPION', 'PARACHUTE', 'PIANO', 'THUMB', 'KNIGHT', 'MEXICO', 'MOUTH', 'GRASS', 'QUEEN', 'TURKEY', 'FIGHTER', 'TABLET', 'BARK', 'TRIP', 'OPERA', 'SUIT', 'CZECH', 'STRAW', 'FILM', 'DANCE', 'CHARGE', 'CHEST', 'HOLLYWOOD', 'SERVER']
+The best clue is KEATON with a score of 24.3634616800458 which connects ('FILM', 'HOLLYWOOD')
+The time it took to generate this clue was: 21.23056149482727 seconds
+---------------------------
+The good words are: ['GHOST', 'AMAZON', 'NOVEL', 'SHADOW', 'HAND', 'MICROSCOPE', 'BOW', 'FORK', 'BOLT', 'NET', 'CAP', 'HONEY', 'CENTAUR']
+The bad words are: ['UNICORN', 'BUG', 'FACE', 'WAKE', 'DWARF', 'CONTRACT', 'TAIL', 'TEACHER', 'DOCTOR', 'PIRATE', 'SINK', 'MINT']
+All the board words are: ['NET', 'CONTRACT', 'DWARF', 'AMAZON', 'PIRATE', 'NOVEL', 'GHOST', 'MICROSCOPE', 'HAND', 'TEACHER', 'UNICORN', 'BOLT', 'MINT', 'FORK', 'SHADOW', 'FACE', 'CAP', 'DOCTOR', 'TAIL', 'SINK', 'BUG', 'BOW', 'HONEY', 'WAKE', 'CENTAUR']
+The best clue is URSA with a score of 21.269907539615254 which connects ('MICROSCOPE', 'CENTAUR')
+The time it took to generate this clue was: 26.46412467956543 seconds
+---------------------------
+The good words are: ['WIND', 'SHARK', 'DRAFT', 'ROCK', 'BALL', 'CHINA', 'FLY', 'THUMB', 'BERRY', 'TRUNK', 'KEY', 'STRIKE', 'TRACK']
+The bad words are: ['UNICORN', 'OLYMPUS', 'FOREST', 'TOOTH', 'COVER', 'SUIT', 'BARK', 'GAME', 'MODEL', 'VACUUM', 'ENGINE', 'LION']
+All the board words are: ['THUMB', 'FLY', 'BALL', 'BERRY', 'OLYMPUS', 'STRIKE', 'WIND', 'TRACK', 'LION', 'DRAFT', 'TRUNK', 'ROCK', 'ENGINE', 'UNICORN', 'MODEL', 'SHARK', 'FOREST', 'KEY', 'GAME', 'COVER', 'BARK', 'SUIT', 'TOOTH', 'CHINA', 'VACUUM']
+The best clue is HITTERS with a score of 22.982382068203336 which connects ('BALL', 'STRIKE')
+The time it took to generate this clue was: 28.591314792633057 seconds
+---------------------------
+The good words are: ['GRACE', 'LIMOUSINE', 'BOLT', 'DRILL', 'CZECH', 'FLY', 'PARK', 'BLOCK', 'FILM', 'CROWN', 'CANADA', 'THEATER', 'EGYPT']
+The bad words are: ['NOTE', 'WORM', 'GLASS', 'GROUND', 'SCALE', 'BOND', 'TRAIN', 'COMIC', 'RULER', 'POLICE', 'STRING', 'CHOCOLATE']
+All the board words are: ['THEATER', 'GRACE', 'FILM', 'WORM', 'LIMOUSINE', 'CZECH', 'DRILL', 'STRING', 'FLY', 'BLOCK', 'BOND', 'GLASS', 'EGYPT', 'CROWN', 'COMIC', 'TRAIN', 'SCALE', 'CANADA', 'PARK', 'CHOCOLATE', 'RULER', 'POLICE', 'BOLT', 'GROUND', 'NOTE']
+The best clue is ARMENIA with a score of 21.165649597047405 which connects ('CZECH', 'EGYPT')
+The time it took to generate this clue was: 24.836277961730957 seconds
+---------------------------
+The good words are: ['UNICORN', 'FOOT', 'VAN', 'SCORPION', 'LEPRECHAUN', 'EMBASSY', 'CAPITAL', 'CENTAUR', 'OLYMPUS', 'DOG', 'FENCE', 'AGENT', 'LINE']
+The bad words are: ['ARM', 'SATURN', 'HONEY', 'GREEN', 'FIGURE', 'BUTTON', 'BRIDGE', 'FAIR', 'YARD', 'FALL', 'CANADA', 'BACK']
+All the board words are: ['AGENT', 'SATURN', 'UNICORN', 'CANADA', 'YARD', 'CAPITAL', 'LEPRECHAUN', 'LINE', 'BUTTON', 'GREEN', 'OLYMPUS', 'FOOT', 'SCORPION', 'HONEY', 'FIGURE', 'FENCE', 'BACK', 'EMBASSY', 'CENTAUR', 'BRIDGE', 'DOG', 'ARM', 'FAIR', 'FALL', 'VAN']
+The best clue is ARTEMIS with a score of 28.982146507692146 which connects ('UNICORN', 'CENTAUR')
+The time it took to generate this clue was: 23.602062463760376 seconds
+---------------------------
+The good words are: ['WATCH', 'FORK', 'MERCURY', 'CELL', 'ROBOT', 'DATE', 'MARBLE', 'HIMALAYAS', 'MOON', 'CZECH', 'EGYPT', 'DOG', 'SERVER']
+The bad words are: ['TEMPLE', 'SOUL', 'BOARD', 'STICK', 'POST', 'HOOD', 'CHARGE', 'TIE', 'PLASTIC', 'LASER', 'RACKET', 'BOTTLE']
+All the board words are: ['BOARD', 'POST', 'TIE', 'LASER', 'FORK', 'HOOD', 'WATCH', 'MERCURY', 'STICK', 'CHARGE', 'DOG', 'PLASTIC', 'DATE', 'SERVER', 'ROBOT', 'CELL', 'SOUL', 'TEMPLE', 'CZECH', 'MARBLE', 'BOTTLE', 'HIMALAYAS', 'MOON', 'RACKET', 'EGYPT']
+The best clue is APHRODITE with a score of 24.23539812899456 which connects ('MERCURY', 'MOON')
+The time it took to generate this clue was: 25.040546655654907 seconds
+---------------------------
+The good words are: ['KING', 'HOSPITAL', 'PAN', 'CROWN', 'SHOT', 'BOND', 'PUPIL', 'DISEASE', 'CHINA', 'BEAT', 'TICK', 'NIGHT', 'WAKE']
+The bad words are: ['CYCLE', 'AZTEC', 'TABLET', 'QUEEN', 'BUGLE', 'WHALE', 'CIRCLE', 'MERCURY', 'PLANE', 'SCIENTIST', 'VACUUM', 'POST']
+All the board words are: ['PAN', 'BEAT', 'VACUUM', 'WHALE', 'AZTEC', 'CIRCLE', 'BUGLE', 'QUEEN', 'CYCLE', 'NIGHT', 'KING', 'PLANE', 'TABLET', 'TICK', 'POST', 'WAKE', 'DISEASE', 'HOSPITAL', 'BOND', 'SCIENTIST', 'CROWN', 'CHINA', 'SHOT', 'MERCURY', 'PUPIL']
+The best clue is MACULAR with a score of 19.06972108210893 which connects ('PUPIL', 'DISEASE')
+The time it took to generate this clue was: 25.783368587493896 seconds
+---------------------------
+The good words are: ['DUCK', 'POISON', 'CIRCLE', 'PLAY', 'LASER', 'MINT', 'SWITCH', 'FRANCE', 'TABLET', 'HELICOPTER', 'WALL', 'SHOE', 'CHEST']
+The bad words are: ['PLATE', 'KID', 'MARBLE', 'MOSCOW', 'BALL', 'SPINE', 'STADIUM', 'SHOP', 'BEAT', 'STATE', 'TAIL', 'EMBASSY']
+All the board words are: ['KID', 'FRANCE', 'PLATE', 'LASER', 'MINT', 'TABLET', 'POISON', 'SHOP', 'CIRCLE', 'HELICOPTER', 'SWITCH', 'MOSCOW', 'EMBASSY', 'STADIUM', 'MARBLE', 'PLAY', 'STATE', 'SPINE', 'SHOE', 'WALL', 'TAIL', 'BEAT', 'DUCK', 'BALL', 'CHEST']
+The best clue is SPHERICAL with a score of 22.548220285025916 which connects ('CIRCLE', 'LASER')
+The time it took to generate this clue was: 22.799973249435425 seconds
+---------------------------
+The good words are: ['PANTS', 'PART', 'CHEST', 'DICE', 'CHURCH', 'LONDON', 'POINT', 'PHOENIX', 'WALL', 'HOLE', 'TRIANGLE', 'THIEF', 'MOLE']
+The bad words are: ['CZECH', 'ROBOT', 'ENGINE', 'TEACHER', 'WASHER', 'FORCE', 'ARM', 'BERLIN', 'VET', 'EMBASSY', 'FALL', 'FIGURE']
+All the board words are: ['DICE', 'PART', 'VET', 'THIEF', 'CHURCH', 'BERLIN', 'MOLE', 'LONDON', 'EMBASSY', 'POINT', 'PHOENIX', 'ROBOT', 'WASHER', 'TEACHER', 'TRIANGLE', 'ARM', 'PANTS', 'CZECH', 'CHEST', 'ENGINE', 'FORCE', 'FIGURE', 'FALL', 'HOLE', 'WALL']
+The best clue is BRENT with a score of 19.22917883927316 which connects ('LONDON', 'PHOENIX')
+The time it took to generate this clue was: 25.14653515815735 seconds
+---------------------------
+The good words are: ['DUCK', 'LIGHT', 'ICE', 'EGYPT', 'HONEY', 'CLIFF', 'MAPLE', 'GREECE', 'PASTE', 'COVER', 'TOOTH', 'SCHOOL', 'SPIDER']
+The bad words are: ['SNOWMAN', 'WORM', 'BUFFALO', 'ALIEN', 'WATCH', 'CHOCOLATE', 'LOG', 'LEAD', 'MODEL', 'FAN', 'FRANCE', 'SOUL']
+All the board words are: ['LOG', 'PASTE', 'HONEY', 'COVER', 'CHOCOLATE', 'MAPLE', 'GREECE', 'BUFFALO', 'SNOWMAN', 'CLIFF', 'WATCH', 'DUCK', 'SPIDER', 'LIGHT', 'EGYPT', 'SOUL', 'FAN', 'LEAD', 'ICE', 'FRANCE', 'WORM', 'SCHOOL', 'ALIEN', 'MODEL', 'TOOTH']
+The best clue is ARMENIA with a score of 31.148004327577695 which connects ('EGYPT', 'GREECE')
+The time it took to generate this clue was: 24.564780235290527 seconds
+---------------------------
+The good words are: ['HEAD', 'CYCLE', 'MOSCOW', 'MAIL', 'FACE', 'BAR', 'CONDUCTOR', 'COMPOUND', 'LEMON', 'DRAFT', 'HAM', 'GAS', 'CONTRACT']
+The bad words are: ['PAN', 'ROBOT', 'COVER', 'THIEF', 'CHARGE', 'COTTON', 'TICK', 'WHALE', 'MILLIONAIRE', 'CIRCLE', 'SHARK', 'DEGREE']
+All the board words are: ['CHARGE', 'SHARK', 'ROBOT', 'DEGREE', 'MOSCOW', 'MAIL', 'HAM', 'CONTRACT', 'COTTON', 'DRAFT', 'MILLIONAIRE', 'LEMON', 'COVER', 'CIRCLE', 'CYCLE', 'THIEF', 'CONDUCTOR', 'FACE', 'PAN', 'GAS', 'TICK', 'COMPOUND', 'HEAD', 'BAR', 'WHALE']
+The best clue is COMBUSTION with a score of 27.886402772499494 which connects ('CYCLE', 'GAS')
+The time it took to generate this clue was: 25.911414623260498 seconds
+---------------------------
+The good words are: ['CASINO', 'TEMPLE', 'DAY', 'AMBULANCE', 'PRINCESS', 'ROULETTE', 'GRACE', 'LAWYER', 'BAT', 'ROCK', 'TRIP', 'CAP', 'POLE']
+The bad words are: ['LEAD', 'STREAM', 'CAT', 'PYRAMID', 'NOTE', 'SPRING', 'SPIKE', 'SLUG', 'UNICORN', 'WAKE', 'SHARK', 'ROUND']
+All the board words are: ['PRINCESS', 'ROUND', 'UNICORN', 'PYRAMID', 'CASINO', 'LAWYER', 'TRIP', 'AMBULANCE', 'CAP', 'SPRING', 'LEAD', 'WAKE', 'GRACE', 'SPIKE', 'CAT', 'NOTE', 'STREAM', 'SLUG', 'TEMPLE', 'BAT', 'ROCK', 'DAY', 'ROULETTE', 'POLE', 'SHARK']
+The best clue is WIFE with a score of 22.076980242848244 which connects ('PRINCESS', 'LAWYER')
+The time it took to generate this clue was: 23.35369086265564 seconds
+---------------------------
+The good words are: ['GAS', 'NURSE', 'SPELL', 'SCORPION', 'CROSS', 'VAN', 'CAST', 'LIGHT', 'SOUND', 'BEIJING', 'BOARD', 'POLICE', 'SUB']
+The bad words are: ['WAVE', 'BAND', 'SEAL', 'CONCERT', 'EGYPT', 'SUPERHERO', 'ENGINE', 'CONTRACT', 'DRESS', 'GLASS', 'NET', 'PASS']
+All the board words are: ['BEIJING', 'PASS', 'WAVE', 'CROSS', 'SPELL', 'GLASS', 'DRESS', 'ENGINE', 'BOARD', 'BAND', 'CONTRACT', 'SUPERHERO', 'GAS', 'CONCERT', 'NURSE', 'NET', 'SOUND', 'SCORPION', 'SEAL', 'POLICE', 'LIGHT', 'CAST', 'SUB', 'EGYPT', 'VAN']
+The best clue is ADVISORY with a score of 21.02737171934615 which connects ('BOARD', 'SUB')
+The time it took to generate this clue was: 24.888137578964233 seconds
+---------------------------
+The good words are: ['SPELL', 'FISH', 'EGYPT', 'FORK', 'ROME', 'MOLE', 'SLUG', 'FAIR', 'BOOM', 'PASTE', 'TURKEY', 'DOG', 'FENCE']
+The bad words are: ['RULER', 'WHIP', 'CARD', 'DECK', 'BUTTON', 'STATE', 'DICE', 'BOLT', 'CHOCOLATE', 'ALIEN', 'WEB', 'SHOP']
+All the board words are: ['DECK', 'CHOCOLATE', 'PASTE', 'FISH', 'RULER', 'FORK', 'MOLE', 'EGYPT', 'STATE', 'SHOP', 'CARD', 'SPELL', 'DOG', 'BOLT', 'WHIP', 'ALIEN', 'FAIR', 'BUTTON', 'DICE', 'BOOM', 'FENCE', 'WEB', 'TURKEY', 'ROME', 'SLUG']
+The best clue is ARMENIA with a score of 32.246001089238504 which connects ('EGYPT', 'TURKEY')
+The time it took to generate this clue was: 24.15041160583496 seconds
+---------------------------
+The good words are: ['HORSE', 'PISTOL', 'ROBOT', 'FLY', 'HAWK', 'DRESS', 'LIGHT', 'CZECH', 'NEEDLE', 'BEIJING', 'STAFF', 'BERRY', 'CARROT']
+The bad words are: ['GHOST', 'PIPE', 'COMPOUND', 'DRAGON', 'BAR', 'GREEN', 'CRANE', 'AMERICA', 'NINJA', 'PILOT', 'KANGAROO', 'MINE']
+All the board words are: ['KANGAROO', 'PISTOL', 'AMERICA', 'BAR', 'HAWK', 'ROBOT', 'DRESS', 'GREEN', 'NINJA', 'CRANE', 'CARROT', 'DRAGON', 'LIGHT', 'BEIJING', 'PILOT', 'BERRY', 'HORSE', 'CZECH', 'COMPOUND', 'PIPE', 'GHOST', 'STAFF', 'FLY', 'MINE', 'NEEDLE']
+The best clue is SLOVENE with a score of 19.333064286795477 which connects ('CZECH', 'STAFF')
+The time it took to generate this clue was: 22.60647201538086 seconds
+---------------------------
+The good words are: ['HOTEL', 'HOOD', 'CZECH', 'COTTON', 'DRILL', 'LONDON', 'WAVE', 'PRESS', 'PANTS', 'POST', 'BERLIN', 'CHARGE', 'MEXICO']
+The bad words are: ['BOMB', 'SOLDIER', 'LOG', 'DROP', 'SPELL', 'FOREST', 'WASHINGTON', 'MISSILE', 'SPACE', 'SUIT', 'BUCK', 'TEMPLE']
+All the board words are: ['SOLDIER', 'BERLIN', 'SUIT', 'PANTS', 'SPELL', 'HOOD', 'WAVE', 'CHARGE', 'HOTEL', 'CZECH', 'POST', 'BUCK', 'LONDON', 'TEMPLE', 'PRESS', 'SPACE', 'DROP', 'FOREST', 'MEXICO', 'DRILL', 'COTTON', 'BOMB', 'WASHINGTON', 'LOG', 'MISSILE']
+The best clue is EGON with a score of 23.562512163892528 which connects ('CZECH', 'BERLIN')
+The time it took to generate this clue was: 25.42374014854431 seconds
+---------------------------
+The good words are: ['WAKE', 'LAWYER', 'ROULETTE', 'SUB', 'APPLE', 'BALL', 'PORT', 'PUPIL', 'SATURN', 'BLOCK', 'STICK', 'BUTTON', 'WAVE']
+The bad words are: ['HOSPITAL', 'FACE', 'MILLIONAIRE', 'PUMPKIN', 'WHALE', 'SNOWMAN', 'MINT', 'HELICOPTER', 'SHADOW', 'TAG', 'CARD', 'CHECK']
+All the board words are: ['HOSPITAL', 'FACE', 'SATURN', 'BALL', 'STICK', 'PUPIL', 'SUB', 'PUMPKIN', 'TAG', 'WAKE', 'MINT', 'PORT', 'BLOCK', 'HELICOPTER', 'SHADOW', 'BUTTON', 'ROULETTE', 'WHALE', 'CHECK', 'MILLIONAIRE', 'LAWYER', 'SNOWMAN', 'APPLE', 'CARD', 'WAVE']
+The best clue is TOUCH with a score of 17.48483871322548 which connects ('BALL', 'STICK')
+The time it took to generate this clue was: 26.41527509689331 seconds
+---------------------------
+The good words are: ['MICROSCOPE', 'SCREEN', 'CAT', 'SATELLITE', 'BRUSH', 'BOND', 'SQUARE', 'MINT', 'SNOWMAN', 'SPRING', 'AUSTRALIA', 'MAMMOTH', 'FISH']
+The bad words are: ['CAST', 'MOON', 'HEART', 'TOOTH', 'HORSE', 'SCORPION', 'MOLE', 'SOLDIER', 'EMBASSY', 'DIAMOND', 'GLOVE', 'BERLIN']
+All the board words are: ['BRUSH', 'MICROSCOPE', 'MOON', 'MINT', 'TOOTH', 'MAMMOTH', 'HORSE', 'DIAMOND', 'SNOWMAN', 'MOLE', 'CAST', 'SPRING', 'SQUARE', 'FISH', 'SATELLITE', 'SCORPION', 'HEART', 'SOLDIER', 'SCREEN', 'GLOVE', 'CAT', 'BOND', 'AUSTRALIA', 'BERLIN', 'EMBASSY']
+The best clue is MEAT with a score of 25.036903962295845 which connects ('MINT', 'FISH')
+The time it took to generate this clue was: 25.168949365615845 seconds
+---------------------------
+The good words are: ['MERCURY', 'ROUND', 'TOOTH', 'DINOSAUR', 'SUB', 'CYCLE', 'ANTARCTICA', 'OCTOPUS', 'SOUND', 'CIRCLE', 'LUCK', 'KIWI', 'WALL']
+The bad words are: ['SLIP', 'EAGLE', 'LEPRECHAUN', 'GOLD', 'PIT', 'CRANE', 'MOON', 'GRACE', 'HELICOPTER', 'CALF', 'BEAR', 'BARK']
+All the board words are: ['LEPRECHAUN', 'CRANE', 'GOLD', 'MOON', 'WALL', 'SUB', 'LUCK', 'CIRCLE', 'MERCURY', 'SLIP', 'BARK', 'TOOTH', 'ANTARCTICA', 'BEAR', 'GRACE', 'CALF', 'PIT', 'KIWI', 'HELICOPTER', 'OCTOPUS', 'DINOSAUR', 'ROUND', 'CYCLE', 'SOUND', 'EAGLE']
+The best clue is OSSEOUS with a score of 18.71306006977239 which connects ('TOOTH', 'OCTOPUS')
+The time it took to generate this clue was: 22.884060859680176 seconds
+---------------------------
+The good words are: ['APPLE', 'DUCK', 'WAR', 'TRIANGLE', 'TRAIN', 'ICE', 'DRILL', 'SHOT', 'JUPITER', 'TOKYO', 'DECK', 'POLE', 'HELICOPTER']
+The bad words are: ['STATE', 'COVER', 'CLUB', 'HAM', 'BOTTLE', 'BOX', 'AGENT', 'EYE', 'WIND', 'MUG', 'MOUSE', 'CLOAK']
+All the board words are: ['WIND', 'COVER', 'MUG', 'SHOT', 'BOX', 'DUCK', 'AGENT', 'POLE', 'BOTTLE', 'HAM', 'DECK', 'EYE', 'CLOAK', 'TRAIN', 'HELICOPTER', 'DRILL', 'APPLE', 'MOUSE', 'TOKYO', 'STATE', 'JUPITER', 'WAR', 'CLUB', 'ICE', 'TRIANGLE']
+The best clue is CENTAURUS with a score of 22.326351703276046 which connects ('TRIANGLE', 'JUPITER')
+The time it took to generate this clue was: 23.367316722869873 seconds
+---------------------------
+The good words are: ['WALL', 'NIGHT', 'PITCH', 'COMIC', 'SPOT', 'CARD', 'NAIL', 'INDIA', 'DRAFT', 'WASHER', 'ENGLAND', 'CRANE', 'SHAKESPEARE']
+The bad words are: ['CLIFF', 'DECK', 'BOTTLE', 'HOOK', 'MOLE', 'RACKET', 'MEXICO', 'DISEASE', 'TIME', 'FORK', 'PIRATE', 'HORSESHOE']
+All the board words are: ['HORSESHOE', 'FORK', 'WALL', 'MOLE', 'BOTTLE', 'SHAKESPEARE', 'MEXICO', 'NAIL', 'CARD', 'PITCH', 'DISEASE', 'COMIC', 'DRAFT', 'CRANE', 'DECK', 'WASHER', 'SPOT', 'HOOK', 'RACKET', 'CLIFF', 'TIME', 'INDIA', 'NIGHT', 'ENGLAND', 'PIRATE']
+The best clue is KENYA with a score of 24.2168205896255 which connects ('INDIA', 'ENGLAND')
+The time it took to generate this clue was: 21.659914255142212 seconds
+---------------------------
+The good words are: ['SHOP', 'PILOT', 'SLIP', 'GREEN', 'PIE', 'EYE', 'MEXICO', 'COOK', 'GENIUS', 'POUND', 'BEAT', 'PUMPKIN', 'WELL']
+The bad words are: ['ANGEL', 'MOON', 'DROP', 'DRESS', 'ORANGE', 'LITTER', 'OPERA', 'YARD', 'BERRY', 'MOUTH', 'ALIEN', 'SOLDIER']
+All the board words are: ['EYE', 'POUND', 'YARD', 'BEAT', 'ORANGE', 'MOON', 'MEXICO', 'ALIEN', 'MOUTH', 'WELL', 'BERRY', 'COOK', 'DRESS', 'SHOP', 'PIE', 'GENIUS', 'DROP', 'OPERA', 'GREEN', 'SLIP', 'PUMPKIN', 'PILOT', 'ANGEL', 'LITTER', 'SOLDIER']
+The best clue is PASO with a score of 17.207735247624154 which connects ('PILOT', 'MEXICO')
+The time it took to generate this clue was: 25.625552892684937 seconds
+---------------------------
+The good words are: ['GRASS', 'PAN', 'PLAY', 'GAS', 'CODE', 'MOUSE', 'SATURN', 'FENCE', 'KETCHUP', 'CALF', 'PHOENIX', 'SOLDIER', 'SHARK']
+The bad words are: ['SHOE', 'LAWYER', 'WAR', 'LAP', 'MASS', 'SHOT', 'CHEST', 'FISH', 'JACK', 'WATER', 'NIGHT', 'PRINCESS']
+All the board words are: ['MASS', 'MOUSE', 'JACK', 'CODE', 'NIGHT', 'SHARK', 'LAP', 'SHOT', 'SOLDIER', 'SATURN', 'PRINCESS', 'LAWYER', 'CALF', 'PLAY', 'SHOE', 'FISH', 'CHEST', 'FENCE', 'PAN', 'KETCHUP', 'GRASS', 'WATER', 'PHOENIX', 'GAS', 'WAR']
+The best clue is CONDIMENT with a score of 25.994699665731225 which connects ('GAS', 'KETCHUP')
+The time it took to generate this clue was: 27.153807163238525 seconds
+---------------------------
+The good words are: ['FISH', 'CLOAK', 'CLUB', 'HOOK', 'CALF', 'BUCK', 'WATCH', 'POLICE', 'STATE', 'CHOCOLATE', 'GREEN', 'LITTER', 'SMUGGLER']
+The bad words are: ['TAIL', 'HEAD', 'AFRICA', 'MARCH', 'SPINE', 'RABBIT', 'BALL', 'KIWI', 'MILLIONAIRE', 'EUROPE', 'UNICORN', 'CONDUCTOR']
+All the board words are: ['WATCH', 'MARCH', 'CLUB', 'POLICE', 'CLOAK', 'EUROPE', 'GREEN', 'TAIL', 'STATE', 'LITTER', 'BALL', 'FISH', 'RABBIT', 'CONDUCTOR', 'AFRICA', 'UNICORN', 'KIWI', 'BUCK', 'HEAD', 'SPINE', 'HOOK', 'CALF', 'SMUGGLER', 'CHOCOLATE', 'MILLIONAIRE']
+The best clue is PINNIPEDS with a score of 24.183660710068537 which connects ('FISH', 'CALF')
+The time it took to generate this clue was: 24.015099048614502 seconds
+---------------------------
+The good words are: ['OLIVE', 'DICE', 'CHOCOLATE', 'COMIC', 'LEPRECHAUN', 'TORCH', 'ALIEN', 'MILLIONAIRE', 'BOLT', 'CAST', 'STICK', 'FLY', 'CARROT']
+The bad words are: ['DANCE', 'SATURN', 'BUCK', 'CLUB', 'ICE', 'BAT', 'BILL', 'SHIP', 'CARD', 'CELL', 'ROME', 'GLASS']
+All the board words are: ['CAST', 'CELL', 'BAT', 'MILLIONAIRE', 'CLUB', 'CARD', 'BOLT', 'STICK', 'DANCE', 'BILL', 'ICE', 'LEPRECHAUN', 'GLASS', 'SATURN', 'CHOCOLATE', 'BUCK', 'CARROT', 'ROME', 'TORCH', 'SHIP', 'DICE', 'OLIVE', 'ALIEN', 'COMIC', 'FLY']
+The best clue is PISTON with a score of 21.41608095939307 which connects ('BOLT', 'FLY')
+The time it took to generate this clue was: 21.9742591381073 seconds
+---------------------------
+The good words are: ['PLASTIC', 'TOWER', 'SPY', 'FACE', 'AFRICA', 'SHADOW', 'TRUNK', 'CELL', 'CHEST', 'WAVE', 'ANTARCTICA', 'LOG', 'LINE']
+The bad words are: ['EYE', 'LAP', 'CARROT', 'FISH', 'PRESS', 'IVORY', 'COMIC', 'BOTTLE', 'GERMANY', 'BATTERY', 'CHAIR', 'JACK']
+All the board words are: ['FACE', 'LAP', 'TOWER', 'BOTTLE', 'TRUNK', 'EYE', 'BATTERY', 'SPY', 'WAVE', 'ANTARCTICA', 'IVORY', 'PRESS', 'CARROT', 'LINE', 'FISH', 'LOG', 'CHAIR', 'AFRICA', 'PLASTIC', 'CHEST', 'JACK', 'GERMANY', 'CELL', 'SHADOW', 'COMIC']
+The best clue is ABDOMENS with a score of 23.410751695044986 which connects ('TRUNK', 'CHEST')
+The time it took to generate this clue was: 24.456634044647217 seconds
+---------------------------
+The good words are: ['CRASH', 'POLICE', 'PIE', 'GERMANY', 'BELT', 'PILOT', 'MINE', 'SNOW', 'HEART', 'PUMPKIN', 'LOCK', 'SMUGGLER', 'HOOK']
+The bad words are: ['NUT', 'FACE', 'PIPE', 'CASINO', 'BAND', 'MAIL', 'MATCH', 'LEAD', 'STREAM', 'BEIJING', 'SHOP', 'CHINA']
+All the board words are: ['STREAM', 'SHOP', 'SMUGGLER', 'BEIJING', 'BAND', 'NUT', 'MATCH', 'HOOK', 'BELT', 'HEART', 'PIPE', 'FACE', 'LEAD', 'SNOW', 'PUMPKIN', 'LOCK', 'CASINO', 'MINE', 'CRASH', 'PIE', 'CHINA', 'POLICE', 'PILOT', 'GERMANY', 'MAIL']
+The best clue is ORE with a score of 17.967515739801065 which connects ('MINE', 'PUMPKIN')
+The time it took to generate this clue was: 28.45791220664978 seconds
+---------------------------
+The good words are: ['BOTTLE', 'SINK', 'BOX', 'POLICE', 'IVORY', 'MEXICO', 'PAPER', 'GRASS', 'PART', 'SPINE', 'MERCURY', 'MAMMOTH', 'HORN']
+The bad words are: ['AUSTRALIA', 'MOUTH', 'FENCE', 'ROCK', 'PIANO', 'FAN', 'DECK', 'ROW', 'MICROSCOPE', 'BOOM', 'CLIFF', 'PUMPKIN']
+All the board words are: ['FENCE', 'POLICE', 'ROCK', 'BOX', 'ROW', 'PUMPKIN', 'BOOM', 'AUSTRALIA', 'CLIFF', 'MOUTH', 'PAPER', 'HORN', 'DECK', 'PIANO', 'SINK', 'MAMMOTH', 'MICROSCOPE', 'IVORY', 'PART', 'GRASS', 'MERCURY', 'FAN', 'SPINE', 'MEXICO', 'BOTTLE']
+The best clue is ARIZONA with a score of 28.043530707552 which connects ('MEXICO', 'MAMMOTH')
+The time it took to generate this clue was: 130.3818438053131 seconds
+---------------------------
+The good words are: ['CASINO', 'LEAD', 'PIE', 'LOG', 'COTTON', 'STRIKE', 'SATURN', 'STAR', 'VAN', 'CAT', 'FORCE', 'PISTOL', 'WATCH']
+The bad words are: ['AIR', 'TOWER', 'PIRATE', 'CHARGE', 'ANGEL', 'POLE', 'JACK', 'MATCH', 'CROWN', 'LASER', 'ORGAN', 'GERMANY']
+All the board words are: ['STAR', 'ANGEL', 'JACK', 'POLE', 'AIR', 'CASINO', 'ORGAN', 'WATCH', 'PIRATE', 'CHARGE', 'PIE', 'LEAD', 'LASER', 'TOWER', 'GERMANY', 'STRIKE', 'CROWN', 'FORCE', 'CAT', 'PISTOL', 'VAN', 'SATURN', 'LOG', 'COTTON', 'MATCH']
+The best clue is PLANET with a score of 35.697740742090545 which connects ('SATURN', 'STAR')
+The time it took to generate this clue was: 164.57387971878052 seconds
+---------------------------
+The good words are: ['PISTOL', 'OIL', 'EUROPE', 'CROSS', 'PLATYPUS', 'RING', 'POINT', 'SOCK', 'TABLET', 'SCALE', 'SATURN', 'STAR', 'AGENT']
+The bad words are: ['LINE', 'PARACHUTE', 'GHOST', 'ROME', 'GAME', 'TURKEY', 'SHOP', 'BELL', 'SKYSCRAPER', 'DICE', 'CARD', 'CHURCH']
+All the board words are: ['TURKEY', 'PLATYPUS', 'DICE', 'POINT', 'GAME', 'SOCK', 'GHOST', 'EUROPE', 'BELL', 'SATURN', 'TABLET', 'CROSS', 'AGENT', 'OIL', 'SCALE', 'LINE', 'CARD', 'RING', 'CHURCH', 'STAR', 'ROME', 'SHOP', 'PISTOL', 'SKYSCRAPER', 'PARACHUTE']
+The best clue is PLANET with a score of 36.02395916263447 which connects ('SATURN', 'STAR')
+The time it took to generate this clue was: 144.5067753791809 seconds
+---------------------------
+The good words are: ['SPOT', 'EAGLE', 'HOOK', 'PASS', 'ATLANTIS', 'FACE', 'BEIJING', 'COOK', 'DWARF', 'UNDERTAKER', 'LOG', 'SOCK', 'IRON']
+The bad words are: ['THUMB', 'RULER', 'COVER', 'VET', 'SUIT', 'SWING', 'CENTER', 'JAM', 'CONCERT', 'HOTEL', 'TEACHER', 'HELICOPTER']
+All the board words are: ['UNDERTAKER', 'TEACHER', 'LOG', 'RULER', 'SPOT', 'COVER', 'HELICOPTER', 'CENTER', 'DWARF', 'COOK', 'HOOK', 'SUIT', 'SWING', 'BEIJING', 'HOTEL', 'EAGLE', 'VET', 'CONCERT', 'IRON', 'JAM', 'THUMB', 'PASS', 'FACE', 'SOCK', 'ATLANTIS']
+The best clue is MYSTERIO with a score of 35.062310719931965 which connects ('ATLANTIS', 'UNDERTAKER')
+The time it took to generate this clue was: 145.85264015197754 seconds
+---------------------------
+The good words are: ['HAND', 'AMBULANCE', 'FIELD', 'MAIL', 'PAPER', 'LION', 'CONTRACT', 'EAGLE', 'SCORPION', 'STAFF', 'PAN', 'LIMOUSINE', 'CROWN']
+The bad words are: ['RULER', 'SWITCH', 'CLUB', 'APPLE', 'BAR', 'TELESCOPE', 'PUMPKIN', 'SATELLITE', 'SHOP', 'AGENT', 'GAME', 'ALPS']
+All the board words are: ['LION', 'CROWN', 'TELESCOPE', 'FIELD', 'MAIL', 'SCORPION', 'SHOP', 'CONTRACT', 'PUMPKIN', 'CLUB', 'GAME', 'APPLE', 'SWITCH', 'ALPS', 'RULER', 'PAN', 'HAND', 'LIMOUSINE', 'AMBULANCE', 'PAPER', 'EAGLE', 'BAR', 'SATELLITE', 'AGENT', 'STAFF']
+The best clue is CAR with a score of 37.46536337507393 which connects ('AMBULANCE', 'LIMOUSINE')
+The time it took to generate this clue was: 163.77355337142944 seconds
+---------------------------

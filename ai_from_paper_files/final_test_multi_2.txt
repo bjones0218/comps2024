@@ -1,0 +1,18 @@
+The good words are: ['SOUL', 'GENIUS', 'CENTER', 'POUND', 'LUCK', 'RULER', 'CHAIR', 'CHURCH', 'LITTER', 'BED', 'LIFE', 'SCIENTIST', 'ROBIN']
+The bad words are: ['FALL', 'LEPRECHAUN', 'WASHER', 'LOCK', 'CRICKET', 'LEAD', 'MICROSCOPE', 'CAP', 'ROSE', 'SNOWMAN', 'BAND', 'BUG']
+All the board words are: ['CHAIR', 'LOCK', 'CENTER', 'WASHER', 'CAP', 'BUG', 'LUCK', 'CRICKET', 'LEAD', 'POUND', 'LITTER', 'MICROSCOPE', 'RULER', 'LEPRECHAUN', 'LIFE', 'SCIENTIST', 'BED', 'SOUL', 'ROBIN', 'BAND', 'SNOWMAN', 'ROSE', 'GENIUS', 'CHURCH', 'FALL']
+The best clue is SPIRIT with a score of 33.76290577123071 which connects ('SOUL', 'GENIUS')
+The time it took to generate this clue was: 163.25014472007751 seconds
+---------------------------
+The good words are: ['GENIUS', 'DEATH', 'LAB', 'PIN', 'ICE', 'FLUTE', 'THUMB', 'WATER', 'LEAD', 'OIL', 'DAY', 'LOCK', 'PANTS']
+The bad words are: ['CZECH', 'TAIL', 'LIGHT', 'GIANT', 'SEAL', 'ALPS', 'REVOLUTION', 'BAND', 'HEAD', 'PLAY', 'ARM', 'PAPER']
+All the board words are: ['LOCK', 'ARM', 'CZECH', 'PANTS', 'SEAL', 'GIANT', 'LEAD', 'ICE', 'LIGHT', 'WATER', 'HEAD', 'LAB', 'TAIL', 'REVOLUTION', 'ALPS', 'DEATH', 'GENIUS', 'FLUTE', 'PAPER', 'PLAY', 'OIL', 'PIN', 'DAY', 'THUMB', 'BAND']
+The best clue is LIQUID with a score of 31.553458634977815 which connects ('WATER', 'OIL')
+The time it took to generate this clue was: 166.7097041606903 seconds
+---------------------------
+The good words are: ['NIGHT', 'CALF', 'PORT', 'MERCURY', 'CODE', 'BUFFALO', 'RULER', 'TELESCOPE', 'LIGHT', 'COOK', 'PIN', 'PILOT', 'LUCK']
+The bad words are: ['CRANE', 'HELICOPTER', 'NOVEL', 'COURT', 'LAB', 'TURKEY', 'CHANGE', 'BANK', 'ROULETTE', 'BOX', 'REVOLUTION', 'BOND']
+All the board words are: ['LAB', 'CRANE', 'BOND', 'BANK', 'ROULETTE', 'LUCK', 'TURKEY', 'COURT', 'LIGHT', 'PORT', 'NIGHT', 'COOK', 'CODE', 'TELESCOPE', 'PIN', 'BOX', 'CHANGE', 'PILOT', 'RULER', 'CALF', 'REVOLUTION', 'HELICOPTER', 'MERCURY', 'BUFFALO', 'NOVEL']
+The best clue is REFRACTING with a score of 36.40759563284442 which connects ('TELESCOPE', 'LIGHT')
+The time it took to generate this clue was: 157.97807145118713 seconds
+---------------------------

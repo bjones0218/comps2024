@@ -3,7 +3,7 @@ import time
 from ai_cluegiver import get_clue
 
 def get_random_strings():
-	with open("word_list_copy.txt", 'r') as file:
+	with open("../codenames_game_files/word_list_copy.txt", 'r') as file:
 		lines = file.readlines()
 	return random.sample(lines, 25)
 
@@ -21,7 +21,7 @@ def split_words(words, good_words, bad_words):
 
 
 if __name__ == "__main__":
-	for _ in range(1):
+	for _ in range(40):
 		board_words = get_random_strings()
 		good_words = []
 		bad_words = []
@@ -34,7 +34,7 @@ if __name__ == "__main__":
 		start_time = time.time()
 		clue_obj = get_clue(good_words, bad_words)
 		end_time = time.time()
-		with open("final_test.txt", "a") as output_file:
+		with open("final_test_multi_2.txt", "a") as output_file:
 			output_file.write(f"The good words are: {good_words}\n")
 			output_file.write(f"The bad words are: {bad_words}\n")
 			output_file.write(f"All the board words are: {all_words}\n")
