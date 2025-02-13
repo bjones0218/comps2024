@@ -34,7 +34,7 @@ if __name__ == "__main__":
 		start_time = time.time()
 		clue_obj = get_clue(good_words, bad_words)
 		end_time = time.time()
-		with open("../clue_output_files/final_test2.txt", "a") as output_file:
+		with open("../clue_output_files/final_test3.txt", "a") as output_file:
 			output_file.write(f"The good words are: {good_words}\n")
 			output_file.write(f"The bad words are: {bad_words}\n")
 			output_file.write(f"All the board words are: {all_words}\n")
