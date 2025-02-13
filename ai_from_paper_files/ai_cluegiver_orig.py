@@ -3,8 +3,8 @@
 # THIS WAY WE CAN JUST CALL THIS FUNCTION FROM THE codenames.py AND IT WILL GIVE BACK THE CLUE
 
 
-from ai_from_paper_files.database_access import words_collection, get_word_obj_bbn, get_word_obj_dv, get_single_dv_obj, check_top_clues
-from ai_from_paper_files.scoring_functions import original_scoring, detect, additional_badness, additional_closeness
+from database_access import words_collection, get_word_obj_bbn, get_word_obj_dv, get_single_dv_obj, check_top_clues
+from scoring_functions_orig import original_scoring, detect, additional_badness, additional_closeness
 from itertools import combinations
 import time
 from nltk import LancasterStemmer
@@ -50,14 +50,18 @@ def get_clue(good_words, bad_words):
 		orig_scoring_coef = 0.1
 		detect_coef = 1
 		additional_closeness_coef = 6
-		additional_badness_coef = 4
+		additional_badness_coef = 3
 
 		score_list = []
+		start_time = time.time()
 		for candidate_clue in intersection_list:
 			candidate_clue_dv_obj = get_single_dv_obj(candidate_clue)
 			score = orig_scoring_coef * original_scoring(candidate_clue, good_words_obj_clues, bad_words_obj_clues) + detect_coef * detect(candidate_clue_dv_obj, good_words_obj_dvf, bad_words_obj_dvf) + additional_closeness_coef * additional_closeness(candidate_clue_dv_obj, word_choice, good_words_obj_dvf) + additional_badness_coef * additional_badness(candidate_clue_dv_obj, bad_words_obj_dvf)
 			score_list.append(((word_choice[0], word_choice[1]), (candidate_clue, score)))
-		
+		end_time = time.time()
+
+		print(end_time - start_time)
+
 		score_list.sort(key= lambda x: x[1][1], reverse=True)
 
 		top_scores.append(check_top_clues(score_list))

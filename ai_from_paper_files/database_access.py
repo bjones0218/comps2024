@@ -25,6 +25,18 @@ def get_single_dv_obj(word):
 def get_single_bbn_obj(word):
 	return words_collection.find_one({"codenames_word": word})
 
+def get_dv_objs(words):
+	client2 = MongoClient(CONNECTION_STRING)
+	freq_and_vec_db2 = client2["freq_and_vec2"]
+	freq_and_vec_collection2 = freq_and_vec_db2["freq_and_vec_collection2"]
+
+	to_return = []
+	for word in words:
+		to_return.append((word, freq_and_vec_collection2.find_one({"word": word})))
+
+	return to_return
+
+
 # TEST THIS SOME MORE
 def check_top_clues(clue_list):
 	bad_top_word = True
