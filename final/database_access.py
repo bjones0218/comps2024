@@ -49,11 +49,13 @@ def get_dv_objs(client, words):
 	return to_return
 
 
-# TEST THIS SOME MORE
-def check_top_clues(clue_list):
+# TEST THIS SOME MORE ACTUALLY GOTTA DO THIS
+def check_top_clues(clue_list, previous_words):
 	bad_top_word = True
 	cur_word_index = 0
 	while bad_top_word:
+		print(top_word_clue)
+		top_word_clue = clue_list[cur_word_index][1][0]
 		top_word_doc = nlp(clue_list[cur_word_index][1][0].lower())
 		top_word_lemma = top_word_doc[0].lemma_
 
@@ -61,9 +63,12 @@ def check_top_clues(clue_list):
 		second_word_doc = nlp(clue_list[cur_word_index][0][1].lower())
 		first_word_lemma = first_word_doc[0].lemma_
 		second_word_lemma = second_word_doc[0].lemma_
-		if top_word_lemma == first_word_lemma or top_word_lemma == second_word_lemma:
+		if top_word_lemma == first_word_lemma or top_word_lemma == second_word_lemma or top_word_clue in previous_words:
+			print("WOULD HAVE BEEN A BAD CLUE")
 			cur_word_index += 1
 		else:
 			bad_top_word = False
 	
 	return clue_list[cur_word_index]
+
+

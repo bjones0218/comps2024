@@ -225,40 +225,79 @@ class Game():
         print("Red Team will go first:")
         print()
 
+
         self.playing = True
+
+        red_given_clues = []
+        blue_given_clues = []
 
         ready = ""
         clue = ""
         while self.playing:
-            if ai_status_red:
-                clue = get_clue(split_board(self.board, self.turn.lower()))
-            else: 
-                #cluegiver stage
-                ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
-                print()
-
-                while ready.lower() != "yes":
-                    ready = input("When ready, please enter yes: ") 
+            if self.turn == "Red":
+                if ai_status_red:
+                    clue_obj = get_clue(split_board(self.board, self.turn.lower()), red_given_clues)
+                    clue = clue_obj[1][0]
+                    prompted_words = clue_obj[0]
+                else: 
+                    #cluegiver stage
+                    ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
                     print()
 
-                #clear terminal
-                if os.name == 'nt': #For Windows
-                    os.system('cls')
-                else:  # For macOS and Linux
-                    os.system('clear')
-                self.board.print_board_color()
-                clue = input(self.turn + " Team please enter your clue: ")
-                print()
-                
-                while self.check_clue(clue) != 0:
-                    clue_status = self.check_clue(clue)
-                    if clue_status == 1:
-                        clue = input(self.turn + " Team, please ensure that your clue is one word: ")
-                        print()
-                    elif clue_status == 2:
-                        clue = input(self.turn + " Team, please ensure that your clue is not a word on the board: ")
+                    while ready.lower() != "yes":
+                        ready = input("When ready, please enter yes: ") 
                         print()
 
+                    #clear terminal
+                    if os.name == 'nt': #For Windows
+                        os.system('cls')
+                    else:  # For macOS and Linux
+                        os.system('clear')
+                    self.board.print_board_color()
+                    clue = input(self.turn + " Team please enter your clue: ")
+                    print()
+                    
+                    while self.check_clue(clue) != 0:
+                        clue_status = self.check_clue(clue)
+                        if clue_status == 1:
+                            clue = input(self.turn + " Team, please ensure that your clue is one word: ")
+                            print()
+                        elif clue_status == 2:
+                            clue = input(self.turn + " Team, please ensure that your clue is not a word on the board: ")
+                            print()
+                red_given_clues.append(clue)
+            else:
+                if ai_status_blue:
+                    clue_obj = get_clue(split_board(self.board, self.turn.lower()), blue_given_clues)
+                    clue = clue_obj[1][0]
+                    prompted_words = clue_obj[0]
+                else: 
+                    #cluegiver stage
+                    ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
+                    print()
+
+                    while ready.lower() != "yes":
+                        ready = input("When ready, please enter yes: ") 
+                        print()
+
+                    #clear terminal
+                    if os.name == 'nt': #For Windows
+                        os.system('cls')
+                    else:  # For macOS and Linux
+                        os.system('clear')
+                    self.board.print_board_color()
+                    clue = input(self.turn + " Team please enter your clue: ")
+                    print()
+                    
+                    while self.check_clue(clue) != 0:
+                        clue_status = self.check_clue(clue)
+                        if clue_status == 1:
+                            clue = input(self.turn + " Team, please ensure that your clue is one word: ")
+                            print()
+                        elif clue_status == 2:
+                            clue = input(self.turn + " Team, please ensure that your clue is not a word on the board: ")
+                            print()
+                blue_given_clues.append(clue)
 
             #clear terminal
             if os.name == 'nt': #For Windows
@@ -302,6 +341,7 @@ class Game():
                     self.board.print_board_plain()
                     if self.turn == "Blue" and self.red_words_left != 0:
                         print("You guessed the other team's word. Your turn is now over. \n")
+                        print("The clue was prompting for: ", prompted_words)
                         turn_complete = True
                         self.turn = "Red"
                     else:
@@ -313,6 +353,7 @@ class Game():
                     print("You guessed a blue word. \n")
                     if self.turn == "Red" and self.blue_words_left != 0:
                         print("You guessed the other team's word. Your turn is now over. \n")
+                        print("The clue was prompting for: ", prompted_words)
                         turn_complete = True
                         self.turn = "Blue"
                     else:
@@ -348,6 +389,7 @@ class Game():
                     else:
                         if turn_complete == False:
                             print(self.turn + " Team, you have now guessed twice. Your turn is over. \n")
+                            print("The clue was prompting for: ", prompted_words)
                             turn_complete = True
 
                             if self.turn == "Red":

@@ -15,7 +15,7 @@ stemmer = LancasterStemmer()
 
 CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
 
-def calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words):
+def calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words, previous_words):
 	client = MongoClient(CONNECTION_STRING)
 	
 	top_scores = []
@@ -45,7 +45,7 @@ def calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj
 
 		score_list.sort(key= lambda x: x[1][1], reverse=True)
 
-		top_scores.append(check_top_clues(score_list))
+		top_scores.append(check_top_clues(score_list, previous_words))
 
 	client.close()
 	
@@ -74,7 +74,7 @@ def split_board(board, team):
 
 # Will need to change this to take in all the words on the board and split them up probably
 # def get_clue(board_words, team):
-def get_clue(words_obj):
+def get_clue(words_obj, given_clues):
 	good_words = words_obj[0]
 	bad_words = words_obj[1]
 	start_time = time.time()
@@ -101,7 +101,7 @@ def get_clue(words_obj):
 	# top_scores = calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words)
 	# NEED TO ADD CODE TO CHECK IF THERE IS ONLY ONE WORD LEFT AND GIVE A CLUE FOR THAT ONE WORD
 	start_time = time.time()
-	calculate_best_clue_list_of_lists = [(all_possible_combos[i:i+4], good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words) for i in range(0, len(all_possible_combos), 4)]
+	calculate_best_clue_list_of_lists = [(all_possible_combos[i:i+4], good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words, given_clues) for i in range(0, len(all_possible_combos), 4)]
 	with Pool() as pool:
 		try:
 			top_scores = pool.starmap(calculate_best_clue, calculate_best_clue_list_of_lists)
@@ -115,10 +115,11 @@ def get_clue(words_obj):
 
 	overall_scores_list.sort(key = lambda x: x[1][1], reverse = True)
 
+
 	# print(top_scores)
 	print("-------------------")
 	print(end_time - start_time)
 	print(overall_scores_list[0][1][0])
 	# Will need to change to just return the clue but for simulation this is what we want
-	return overall_scores_list[0][1][0]
+	return overall_scores_list[0]
 
