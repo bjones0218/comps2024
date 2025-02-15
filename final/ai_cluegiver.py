@@ -3,7 +3,7 @@
 # THIS WAY WE CAN JUST CALL THIS FUNCTION FROM THE codenames.py AND IT WILL GIVE BACK THE CLUE
 
 
-from database_access import get_words_collection, get_word_obj_bbn, get_word_obj_dv, get_single_dv_obj, check_top_clues, client_global
+from database_access import get_words_collection, get_word_obj_bbn, get_word_obj_dv, get_single_dv_obj, check_top_clues, get_single_bbn_obj, client_global
 from scoring_functions import original_scoring, detect, additional_badness, additional_closeness
 from itertools import combinations
 import time
@@ -30,7 +30,7 @@ def calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj
 
 		orig_scoring_coef = 0.1
 		detect_coef = 1
-		additional_closeness_coef = 6
+		additional_closeness_coef = 4
 		additional_badness_coef = 3
 
 		score_list = []
@@ -41,7 +41,7 @@ def calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj
 			score_list.append(((word_choice[0], word_choice[1]), (candidate_clue, score)))
 		end_time = time.time()
 
-		print(end_time - start_time)
+		# print(end_time - start_time)
 
 		score_list.sort(key= lambda x: x[1][1], reverse=True)
 
@@ -56,7 +56,7 @@ def calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj
 def split_board(board, team):
 	good_words = []
 	bad_words = []
-	print(board.board)
+	# print(board.board)
 	for card_list in board.board:
 		for card in card_list:
 			# print(team)
@@ -89,37 +89,79 @@ def get_clue(words_obj, given_clues):
 	# bad_words = ['AZTEC', 'APPLE', 'NURSE', 'SCIENTIST', 'FACE', 'FILM', 'PIN', 'CENTAUR']
 	# good_words = ['PARACHUTE', 'DICE', 'HOTEL', 'TAIL', 'FLUTE', 'MODEL', 'WASHINGTON', 'HOLLYWOOD']
 
-	all_possible_combos = list(combinations(good_words, r=2))
-
 	good_words_obj_clues = get_word_obj_bbn(good_words)
 	bad_words_obj_clues = get_word_obj_bbn(bad_words)
 
 	good_words_obj_dvf = get_word_obj_dv(good_words)
 	bad_words_obj_dvf = get_word_obj_dv(bad_words)
 
+	if len(good_words) == 1:
+		client = MongoClient(CONNECTION_STRING)
 
-	# top_scores = calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words)
-	# NEED TO ADD CODE TO CHECK IF THERE IS ONLY ONE WORD LEFT AND GIVE A CLUE FOR THAT ONE WORD
-	start_time = time.time()
-	calculate_best_clue_list_of_lists = [(all_possible_combos[i:i+4], good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words, given_clues) for i in range(0, len(all_possible_combos), 4)]
-	with Pool() as pool:
-		try:
-			top_scores = pool.starmap(calculate_best_clue, calculate_best_clue_list_of_lists)
-		finally:
-			pool.close()
-	end_time = time.time()
+		# NEED TO CHECK HERE IF THERE IS ONLY ONE CLUE LEFT
+		# IF SO GET THE WORDS IN THE GRAPH AND FIND THE CLOSEST ONE BASED ON VECTOR
 
-	overall_scores_list = []
-	for temp_list in top_scores:
-		overall_scores_list = overall_scores_list + temp_list
+		word_for_clue = good_words[0]
 
-	overall_scores_list.sort(key = lambda x: x[1][1], reverse = True)
+		candidate_clues = get_single_bbn_obj(word_for_clue).get("single_word_clues")
+
+		intersection_set = {key for key in candidate_clues}
+
+		intersection_list = [candidate_clue for candidate_clue in intersection_set if not any(stemmed_board_word_obj[0] in candidate_clue or stemmed_board_word_obj[1] == candidate_clue for stemmed_board_word_obj in stemmed_board_words)]
+
+		score_list = []
+		start_time = time.time()
+		for candidate_clue in intersection_list:
+			candidate_clue_dv_obj = get_single_dv_obj(client, candidate_clue)
+			score = additional_closeness(candidate_clue_dv_obj, [word_for_clue], good_words_obj_dvf)
+			score_list.append(((word_for_clue), (candidate_clue, score)))
+		end_time = time.time()
+
+		score_list.sort(key= lambda x: x[1][1], reverse=True)
+
+		with open("test_output.txt", "a") as output_file:
+			# output_file.write(f"The candidate clue list is: {candidate_clues}\n")
+			# output_file.write(f"The intersection list is: {intersection_list}\n")
+			output_file.write(f"The score list is: {score_list[0:10]}\n")
+
+		# print(end_time - start_time)
+		# print(score_list)
 
 
-	# print(top_scores)
-	print("-------------------")
-	print(end_time - start_time)
-	print(overall_scores_list[0][1][0])
-	# Will need to change to just return the clue but for simulation this is what we want
-	return overall_scores_list[0]
+		return check_top_clues(score_list, given_clues)
+
+
+	else:
+		
+
+	# NEED TO CHECK HERE IF THERE IS ONLY ONE CLUE LEFT
+	# IF SO GET THE WORDS IN THE GRAPH AND FIND THE CLOSEST ONE BASED ON VECTORS
+
+		all_possible_combos = list(combinations(good_words, r=2))
+
+
+		# top_scores = calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words)
+		# NEED TO ADD CODE TO CHECK IF THERE IS ONLY ONE WORD LEFT AND GIVE A CLUE FOR THAT ONE WORD
+		start_time = time.time()
+		calculate_best_clue_list_of_lists = [(all_possible_combos[i:i+4], good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words, given_clues) for i in range(0, len(all_possible_combos), 4)]
+		with Pool() as pool:
+			try:
+				top_scores = pool.starmap(calculate_best_clue, calculate_best_clue_list_of_lists)
+			finally:
+				pool.close()
+		end_time = time.time()
+
+		overall_scores_list = []
+		for temp_list in top_scores:
+			overall_scores_list = overall_scores_list + temp_list
+
+		overall_scores_list.sort(key = lambda x: x[1][1], reverse = True)
+
+
+		# print(top_scores)
+		# print("-------------------")
+		# print(end_time - start_time)
+		# print(overall_scores_list[0][1][0])
+		# Will need to change to just return the clue but for simulation this is what we want
+		return overall_scores_list[0]
 

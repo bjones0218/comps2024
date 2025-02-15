@@ -234,6 +234,7 @@ class Game():
         ready = ""
         clue = ""
         while self.playing:
+            prompted_words = None
             if self.turn == "Red":
                 if ai_status_red:
                     clue_obj = get_clue(split_board(self.board, self.turn.lower()), red_given_clues)
@@ -341,7 +342,8 @@ class Game():
                     self.board.print_board_plain()
                     if self.turn == "Blue" and self.red_words_left != 0:
                         print("You guessed the other team's word. Your turn is now over. \n")
-                        print("The clue was prompting for: ", prompted_words)
+                        if prompted_words:
+                            print("The clue was prompting for: ", prompted_words)
                         turn_complete = True
                         self.turn = "Red"
                     else:
@@ -353,7 +355,8 @@ class Game():
                     print("You guessed a blue word. \n")
                     if self.turn == "Red" and self.blue_words_left != 0:
                         print("You guessed the other team's word. Your turn is now over. \n")
-                        print("The clue was prompting for: ", prompted_words)
+                        if prompted_words:
+                            print("The clue was prompting for: ", prompted_words)
                         turn_complete = True
                         self.turn = "Blue"
                     else:
@@ -389,7 +392,8 @@ class Game():
                     else:
                         if turn_complete == False:
                             print(self.turn + " Team, you have now guessed twice. Your turn is over. \n")
-                            print("The clue was prompting for: ", prompted_words)
+                            if prompted_words:
+                                print("The clue was prompting for: ", prompted_words)
                             turn_complete = True
 
                             if self.turn == "Red":
@@ -398,7 +402,7 @@ class Game():
                                 self.turn = "Red"
 
 def main():
-    game = Game(5,4)
+    game = Game(5,5)
     game.start_game()
 
 if __name__ == "__main__":
