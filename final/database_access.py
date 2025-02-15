@@ -1,5 +1,7 @@
 from pymongo import MongoClient
 import spacy
+from nltk import LancasterStemmer
+
 
 
 CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
@@ -12,6 +14,7 @@ freq_and_vec_db_global = client_global["freq_and_vec2"]
 freq_and_vec_collection_global = freq_and_vec_db_global["freq_and_vec_collection2"]
 
 nlp = spacy.load("en_core_web_sm")
+stemmer = LancasterStemmer()
 
 def get_words_collection(client, both_words):
 	codenames_db = client["codenames_db"]
@@ -49,21 +52,28 @@ def get_dv_objs(client, words):
 	return to_return
 
 
-# TEST THIS SOME MORE
-def check_top_clues(clue_list):
+# TEST THIS SOME MORE ACTUALLY GOTTA DO THIS
+def check_top_clues(clue_list, previous_words):
 	bad_top_word = True
 	cur_word_index = 0
 	while bad_top_word:
+		# print(top_word_clue)
+		top_word_clue = clue_list[cur_word_index][1][0]
 		top_word_doc = nlp(clue_list[cur_word_index][1][0].lower())
 		top_word_lemma = top_word_doc[0].lemma_
+		top_word_stem = stemmer.stem(top_word_clue)
 
 		first_word_doc = nlp(clue_list[cur_word_index][0][0].lower())
 		second_word_doc = nlp(clue_list[cur_word_index][0][1].lower())
 		first_word_lemma = first_word_doc[0].lemma_
 		second_word_lemma = second_word_doc[0].lemma_
-		if top_word_lemma == first_word_lemma or top_word_lemma == second_word_lemma:
+		# NEED TO WORK ON THIS FUNCTION BECAUSE NOW YOU CAN GIVE LIKE DOG AS A CLUE AND THEN DOGS AS A CLUE LATER
+		if top_word_lemma == first_word_lemma or top_word_lemma == second_word_lemma or top_word_clue in previous_words or any(top_word_stem in given_clue for given_clue in previous_words):
+			print(f"{top_word_clue} WOULD HAVE BEEN A BAD CLUE")
 			cur_word_index += 1
 		else:
 			bad_top_word = False
 	
 	return clue_list[cur_word_index]
+
+
