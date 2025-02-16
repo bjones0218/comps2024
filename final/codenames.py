@@ -7,6 +7,7 @@ from ai_cluegiver import get_clue, split_board
 # when guess wrong word to end game, change print statement
 # add jokes
 # maybe instead of saying yes everytime to guess a word you just type "d" to mark end of turn
+# CHANGE PRINT OUTPUT WHEN YOU GUESS THE MAX NUMBER OF GUESSES
 
 
 class Card:
