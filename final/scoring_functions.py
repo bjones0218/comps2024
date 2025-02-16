@@ -29,7 +29,7 @@ def additional_closeness(clue_obj, connecting_words, good_words_dv_obj):
 			freq_val = -1
 
 
-		return 1/(dist(clue_vec, word1_vec)**2) + freq_val
+		return 1/(dist(clue_vec, word1_vec)**3) + freq_val
 	
 	# MAYBE ALSO GET dISTANCE BETWEeN TWO WORDS ITS TRYING TO CLUE
 	else:
