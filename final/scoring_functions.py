@@ -39,7 +39,7 @@ def additional_closeness(clue_obj, connecting_words, good_words_dv_obj):
 
 		score = dist(clue_vec, word1_vec)**3 + dist(clue_vec, word2_vec)**3 + dist(clue_vec, word3_vec)**3
 
-		return 15/score
+		return 18/score
 
 	else:
 		word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")

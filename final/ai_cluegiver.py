@@ -10,6 +10,7 @@ import time
 from nltk import LancasterStemmer
 from multiprocessing import Pool
 from pymongo import MongoClient
+import math
 
 stemmer = LancasterStemmer()
 
@@ -168,14 +169,16 @@ def get_clue(words_obj, given_clues):
 
 		all_possible_combos = list(combinations(good_words, r=2))
 		if len(good_words) > 2:
-			all_possible_combos_2 = list(combinations(good_words, r=3)) + all_possible_combos
+			all_possible_combos = list(combinations(good_words, r=3)) + all_possible_combos
+			print(all_possible_combos)
 
 
 
 		# top_scores = calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words)
 		# NEED TO ADD CODE TO CHECK IF THERE IS ONLY ONE WORD LEFT AND GIVE A CLUE FOR THAT ONE WORD
 		start_time = time.time()
-		calculate_best_clue_list_of_lists = [(all_possible_combos[i:i+4], good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words, given_clues) for i in range(0, len(all_possible_combos), len(all_possible_combos)/20)]
+		num_per_pool = math.ceil(len(all_possible_combos)/20)
+		calculate_best_clue_list_of_lists = [(all_possible_combos[i:i+num_per_pool], good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words, given_clues) for i in range(0, len(all_possible_combos), num_per_pool)]
 		with Pool() as pool:
 			try:
 				top_scores = pool.starmap(calculate_best_clue, calculate_best_clue_list_of_lists)

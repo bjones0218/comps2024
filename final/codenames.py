@@ -7,6 +7,8 @@ from ai_cluegiver import get_clue, split_board
 # when guess wrong word to end game, change print statement
 # add jokes
 # maybe instead of saying yes everytime to guess a word you just type "d" to mark end of turn
+# CHANGE PRINT OUTPUT WHEN YOU GUESS THE MAX NUMBER OF GUESSES
+# WHEN ONLY ONE WORD COMES BACK AS CLUE ITS GIVING THE NUMBER OF LETTERS IN THE WORD
 
 
 class Card:
@@ -425,7 +427,7 @@ class Game():
                                 self.turn = "Red"
 
 def main():
-    game = Game(7,7)
+    game = Game(5,5)
     game.start_game()
 
 if __name__ == "__main__":

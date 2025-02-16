@@ -17,12 +17,22 @@ nlp = spacy.load("en_core_web_sm")
 stemmer = LancasterStemmer()
 
 def get_words_collection(client, both_words):
-	codenames_db = client["codenames_db"]
-	words_collection = codenames_db["codenames_clues"]
-	first_word_list = list(words_collection.find_one({"codenames_word": both_words[0]}).get("single_word_clues").keys())
-	second_word_list = list(words_collection.find_one({"codenames_word": both_words[1]}).get("single_word_clues").keys())
+	if len(both_words) == 2:
+		codenames_db = client["codenames_db"]
+		words_collection = codenames_db["codenames_clues"]
+		first_word_list = list(words_collection.find_one({"codenames_word": both_words[0]}).get("single_word_clues").keys())
+		second_word_list = list(words_collection.find_one({"codenames_word": both_words[1]}).get("single_word_clues").keys())
 
-	return (first_word_list, second_word_list)
+		return (first_word_list, second_word_list)
+	else:
+		codenames_db = client["codenames_db"]
+		words_collection = codenames_db["codenames_clues"]
+		first_word_list = list(words_collection.find_one({"codenames_word": both_words[0]}).get("single_word_clues").keys())
+		second_word_list = list(words_collection.find_one({"codenames_word": both_words[1]}).get("single_word_clues").keys())
+		third_word_list = list(words_collection.find_one({"codenames_word": both_words[2]}).get("single_word_clues").keys())
+
+
+		return (first_word_list, second_word_list, third_word_list)
 
 
 def get_word_obj_bbn(words):
