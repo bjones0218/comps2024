@@ -404,7 +404,7 @@ class Game():
                                 self.turn = "Red"
 
 def main():
-    game = Game(7,7)
+    game = Game(5,5)
     game.start_game()
 
 if __name__ == "__main__":
