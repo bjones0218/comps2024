@@ -11,12 +11,34 @@ def additional_closeness(clue_obj, connecting_words, good_words_dv_obj):
 	else:
 		clue_vec = None
 
-	word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
-	word2_vec = good_words_dv_obj.get(connecting_words[1]).get("vector")
+	# print(connecting_words)
 
-	score = dist(clue_vec, word1_vec)**2 + dist(clue_vec, word2_vec)**2
+	if len(connecting_words) == 1:
+		# print("LAST CLUE")
+		word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
+		word1_freq = good_words_dv_obj.get(connecting_words[0]).get("count")
 
-	return 4/score
+		alpha = 1800000
+
+		if word1_freq < alpha: # Word is too rare
+			if word1_freq < 30: # WORD IS WAYYYYY TOO RARE
+				freq_val = -3
+			else:
+				freq_val = -.5
+		else: # Word is too common
+			freq_val = -1
+
+
+		return 1/(dist(clue_vec, word1_vec)**2) + freq_val
+	
+	# MAYBE ALSO GET dISTANCE BETWEeN TWO WORDS ITS TRYING TO CLUE
+	else:
+		word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
+		word2_vec = good_words_dv_obj.get(connecting_words[1]).get("vector")
+
+		score = dist(clue_vec, word1_vec)**3 + dist(clue_vec, word2_vec)**3
+
+		return 10/score
 
 
 
@@ -27,9 +49,16 @@ def additional_badness(clue_obj, bad_words_dv_obj):
 	else:
 		clue_vec = None
 	bad_score_array = [dist(clue_vec, bad_word_obj.get("vector")) for bad_word_obj in bad_words_dv_obj.values()]
-	bad_score = max(bad_score_array)
+	bad_score_array.sort(reverse=True)
+	if len(bad_score_array) >= 3:
+		bad_score = bad_score_array[0]**2 + bad_score_array[1]**2 + bad_score_array[2]**2
+	elif len(bad_score_array) == 2:
+			bad_score = bad_score_array[0]**2 + bad_score_array[1]**2
+	else:
+		bad_score = bad_score_array[0]**2
+	# bad_score = max(bad_score_array)
 
-	return -4/bad_score
+	return -6/bad_score
 
 
 def original_scoring(clue, good_words_obj_bbn: dict, bad_words_obj_bbn: dict):
