@@ -32,6 +32,15 @@ def additional_closeness(clue_obj, connecting_words, good_words_dv_obj):
 		return 1/(dist(clue_vec, word1_vec)**3) + freq_val
 	
 	# MAYBE ALSO GET dISTANCE BETWEeN TWO WORDS ITS TRYING TO CLUE
+	elif len(connecting_words) == 3:
+		word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
+		word2_vec = good_words_dv_obj.get(connecting_words[1]).get("vector")
+		word3_vec = good_words_dv_obj.get(connecting_words[2]).get("vector")
+
+		score = dist(clue_vec, word1_vec)**3 + dist(clue_vec, word2_vec)**3 + dist(clue_vec, word3_vec)**3
+
+		return 15/score
+
 	else:
 		word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
 		word2_vec = good_words_dv_obj.get(connecting_words[1]).get("vector")
