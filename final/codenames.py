@@ -4,7 +4,9 @@ from ai_cluegiver import get_clue, split_board
 
 # TODO: NOTES TO FIX: 
 # IF YOU DONT SAY YES BUT WANT TO GUESS AGAIN WEIRD THINGS AHPPEN 
-
+# when guess wrong word to end game, change print statement
+# add jokes
+# maybe instead of saying yes everytime to guess a word you just type "d" to mark end of turn
 
 
 class Card:
