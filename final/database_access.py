@@ -69,7 +69,7 @@ def check_top_clues(clue_list, previous_words):
 		second_word_lemma = second_word_doc[0].lemma_
 		# NEED TO WORK ON THIS FUNCTION BECAUSE NOW YOU CAN GIVE LIKE DOG AS A CLUE AND THEN DOGS AS A CLUE LATER
 		if top_word_lemma == first_word_lemma or top_word_lemma == second_word_lemma or top_word_clue in previous_words or any(top_word_stem in given_clue for given_clue in previous_words):
-			print(f"{top_word_clue} WOULD HAVE BEEN A BAD CLUE")
+			# print(f"{top_word_clue} WOULD HAVE BEEN A BAD CLUE")
 			cur_word_index += 1
 		else:
 			bad_top_word = False
