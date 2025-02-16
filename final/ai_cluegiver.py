@@ -20,32 +20,61 @@ def calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj
 	
 	top_scores = []
 	for word_choice in all_possible_combos:
-		words_candidates = get_words_collection(client, word_choice)
+		if len(word_choice) == 3:
+			words_candidates = get_words_collection(client, word_choice)
 
-		intersection_set = {key for key in words_candidates[0]} & {key for key in words_candidates[1]}
+			intersection_set = {key for key in words_candidates[0]} & {key for key in words_candidates[1]} & {key for key in words_candidates[2]}
 
-		intersection_set = {candidate_clue for candidate_clue in intersection_set if not any(stemmed_board_word_obj[0] in candidate_clue or stemmed_board_word_obj[1] == candidate_clue for stemmed_board_word_obj in stemmed_board_words)}
+			intersection_set = {candidate_clue for candidate_clue in intersection_set if not any(stemmed_board_word_obj[0] in candidate_clue or stemmed_board_word_obj[1] == candidate_clue for stemmed_board_word_obj in stemmed_board_words)}
 
-		intersection_list = list(intersection_set)
+			intersection_list = list(intersection_set)
 
-		orig_scoring_coef = 0.1
-		detect_coef = 1
-		additional_closeness_coef = 4
-		additional_badness_coef = 3
+			orig_scoring_coef = 0.1
+			detect_coef = 1
+			additional_closeness_coef = 4
+			additional_badness_coef = 3
 
-		score_list = []
-		start_time = time.time()
-		for candidate_clue in intersection_list:
-			candidate_clue_dv_obj = get_single_dv_obj(client, candidate_clue)
-			score = orig_scoring_coef * original_scoring(candidate_clue, good_words_obj_clues, bad_words_obj_clues) + detect_coef * detect(candidate_clue_dv_obj, good_words_obj_dvf, bad_words_obj_dvf) + additional_closeness_coef * additional_closeness(candidate_clue_dv_obj, word_choice, good_words_obj_dvf) + additional_badness_coef * additional_badness(candidate_clue_dv_obj, bad_words_obj_dvf)
-			score_list.append(((word_choice[0], word_choice[1]), (candidate_clue, score)))
-		end_time = time.time()
+			score_list = []
+			start_time = time.time()
+			for candidate_clue in intersection_list:
+				candidate_clue_dv_obj = get_single_dv_obj(client, candidate_clue)
+				score = orig_scoring_coef * original_scoring(candidate_clue, good_words_obj_clues, bad_words_obj_clues) + detect_coef * detect(candidate_clue_dv_obj, good_words_obj_dvf, bad_words_obj_dvf) + additional_closeness_coef * additional_closeness(candidate_clue_dv_obj, word_choice, good_words_obj_dvf) + additional_badness_coef * additional_badness(candidate_clue_dv_obj, bad_words_obj_dvf)
+				score_list.append(((word_choice[0], word_choice[1], word_choice[2]), (candidate_clue, score)))
+			end_time = time.time()
 
-		# print(end_time - start_time)
+			# print(end_time - start_time)
 
-		score_list.sort(key= lambda x: x[1][1], reverse=True)
+			score_list.sort(key= lambda x: x[1][1], reverse=True)
 
-		top_scores.append(check_top_clues(score_list, previous_words))
+			top_scores.append(check_top_clues(score_list, previous_words))
+		else: 
+
+			words_candidates = get_words_collection(client, word_choice)
+
+			intersection_set = {key for key in words_candidates[0]} & {key for key in words_candidates[1]}
+
+			intersection_set = {candidate_clue for candidate_clue in intersection_set if not any(stemmed_board_word_obj[0] in candidate_clue or stemmed_board_word_obj[1] == candidate_clue for stemmed_board_word_obj in stemmed_board_words)}
+
+			intersection_list = list(intersection_set)
+
+			orig_scoring_coef = 0.1
+			detect_coef = 1
+			additional_closeness_coef = 4
+			additional_badness_coef = 3
+
+			score_list = []
+			start_time = time.time()
+			for candidate_clue in intersection_list:
+				candidate_clue_dv_obj = get_single_dv_obj(client, candidate_clue)
+				score = orig_scoring_coef * original_scoring(candidate_clue, good_words_obj_clues, bad_words_obj_clues) + detect_coef * detect(candidate_clue_dv_obj, good_words_obj_dvf, bad_words_obj_dvf) + additional_closeness_coef * additional_closeness(candidate_clue_dv_obj, word_choice, good_words_obj_dvf) + additional_badness_coef * additional_badness(candidate_clue_dv_obj, bad_words_obj_dvf)
+				score_list.append(((word_choice[0], word_choice[1]), (candidate_clue, score)))
+			end_time = time.time()
+
+			# print(end_time - start_time)
+
+			score_list.sort(key= lambda x: x[1][1], reverse=True)
+
+			top_scores.append(check_top_clues(score_list, previous_words))
 
 	client.close()
 	
@@ -138,6 +167,9 @@ def get_clue(words_obj, given_clues):
 	# IF SO GET THE WORDS IN THE GRAPH AND FIND THE CLOSEST ONE BASED ON VECTORS
 
 		all_possible_combos = list(combinations(good_words, r=2))
+
+		all_possible_combos_2 = list(combinations(good_words, r=3)) + all_possible_combos
+
 
 
 		# top_scores = calculate_best_clue(all_possible_combos, good_words_obj_clues, bad_words_obj_clues, good_words_obj_dvf, bad_words_obj_dvf, stemmed_board_words)

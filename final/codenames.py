@@ -241,6 +241,7 @@ class Game():
                 if ai_status_red:
                     clue_obj = get_clue(split_board(self.board, self.turn.lower()), red_given_clues)
                     clue = clue_obj[1][0]
+                    number = len(clue_obj[0])
                     prompted_words = clue_obj[0]
                 else: 
                     #cluegiver stage
@@ -268,11 +269,22 @@ class Game():
                         elif clue_status == 2:
                             clue = input(self.turn + " Team, please ensure that your clue is not a word on the board: ")
                             print()
+                    #number = int(input(self.turn + " Team please enter the number of words you want to connect: "))
+
+                    while True:
+                        try:
+                            number = int(input(self.turn + " Team please enter the number of words you want to connect: "))
+                            break  # Exit loop if input is a valid integer
+                        except ValueError:
+                            print("Invalid input. Please enter a valid integer.")
+
+
                 red_given_clues.append(clue)
             else:
                 if ai_status_blue:
                     clue_obj = get_clue(split_board(self.board, self.turn.lower()), blue_given_clues)
                     clue = clue_obj[1][0]
+                    number = len(clue_obj[0])
                     prompted_words = clue_obj[0]
                 else: 
                     #cluegiver stage
@@ -300,6 +312,15 @@ class Game():
                         elif clue_status == 2:
                             clue = input(self.turn + " Team, please ensure that your clue is not a word on the board: ")
                             print()
+                    #number = int(input(self.turn + " Team please enter the number of words you want to connect: "))
+
+                    while True:
+                        try:
+                            number = int(input(self.turn + " Team please enter the number of words you want to connect: "))
+                            break  # Exit loop if input is a valid integer
+                        except ValueError:
+                            print("Invalid input. Please enter a valid integer.")
+
                 blue_given_clues.append(clue)
 
             #clear terminal
@@ -319,7 +340,7 @@ class Game():
                     os.system('clear')
 
                 self.board.print_board_plain()
-                print("The clue your teammate gave is \"" + clue + "\"\n")
+                print("The clue your teammate gave is \"" + clue + " for " + str(number) + "\"\n")
 
                 guess = input(self.turn + " Team's Guesser, what word would you like to guess: ").upper()
                 print()
@@ -374,7 +395,7 @@ class Game():
                     turn_complete = True
                     self.playing = False
                 else:
-                    if num_guesses < 2 and turn_complete == False:
+                    if num_guesses < number + 1 and turn_complete == False:
                         guess_again = input(self.turn + " Team, would you like to guess another word? (Enter \"yes\" if so, \"no\" if not): ")
                         print()
 
@@ -393,7 +414,7 @@ class Game():
                                 self.turn = "Red"
                     else:
                         if turn_complete == False:
-                            print(self.turn + " Team, you have now guessed twice. Your turn is over. \n")
+                            print(self.turn + " Team, you have now used all your guesses. Your turn is over. \n")
                             if prompted_words:
                                 print("The clue was prompting for: ", prompted_words)
                             turn_complete = True
