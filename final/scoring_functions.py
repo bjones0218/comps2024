@@ -1,4 +1,5 @@
 from scipy.spatial.distance import cosine
+import math
 
 
 # HERE WE GO TO THE DB FOR THE CLUE OBJECT MULTIPLE TIMES. WE CAN DO THAT ONLY ONCE AND PASS A CLUE OBJECT INTO THE FUNCTION RATHER THAN THE STRING
@@ -31,19 +32,32 @@ def additional_closeness(clue_obj, connecting_words, good_words_dv_obj):
 
 		return 1/(dist(clue_vec, word1_vec)**3) + freq_val
 	
-	# MAYBE ALSO GET dISTANCE BETWEeN TWO WORDS ITS TRYING TO CLUE
-	elif len(connecting_words) == 3:
-		word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
-		word2_vec = good_words_dv_obj.get(connecting_words[1]).get("vector")
-		word3_vec = good_words_dv_obj.get(connecting_words[2]).get("vector")
+	# Commented code for 3 word clues
+	# elif len(connecting_words) == 3:
+	# 	word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
+	# 	word2_vec = good_words_dv_obj.get(connecting_words[1]).get("vector")
+	# 	word3_vec = good_words_dv_obj.get(connecting_words[2]).get("vector")
 
-		score = dist(clue_vec, word1_vec)**3 + dist(clue_vec, word2_vec)**3 + dist(clue_vec, word3_vec)**3
+	# 	distOne = dist(clue_vec, word1_vec)
+	# 	distTwo = dist(clue_vec, word2_vec)
+	# 	distThree = dist(clue_vec, word3_vec)
 
-		return 18/score
+	# 	array = [] 
+	# 	array.extend([distOne,distTwo,distThree])
+	# 	array.sort()
+	# 	score = array[0]**3 + array[1]**3 + array[2]**4
+
+	# 	# score = dist(clue_vec, word1_vec)**4 + dist(clue_vec, word2_vec)**4 + dist(clue_vec, word3_vec)**4
+
+	# 	return 17/score
 
 	else:
 		word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
 		word2_vec = good_words_dv_obj.get(connecting_words[1]).get("vector")
+
+		distOne = dist(clue_vec, word1_vec)
+		distTwo = dist(clue_vec, word2_vec)
+
 
 		score = dist(clue_vec, word1_vec)**3 + dist(clue_vec, word2_vec)**3
 
@@ -51,7 +65,6 @@ def additional_closeness(clue_obj, connecting_words, good_words_dv_obj):
 
 
 
-# IDEA: WE GET LIKE THE TOP 3 BAD WORDS OR SOMETHING
 def additional_badness(clue_obj, bad_words_dv_obj):
 	if clue_obj:
 		clue_vec = clue_obj.get("vector")
