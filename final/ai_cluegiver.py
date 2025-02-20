@@ -168,9 +168,9 @@ def get_clue(words_obj, given_clues):
 	# IF SO GET THE WORDS IN THE GRAPH AND FIND THE CLOSEST ONE BASED ON VECTORS
 
 		all_possible_combos = list(combinations(good_words, r=2))
-		if len(good_words) > 2:
-			all_possible_combos = list(combinations(good_words, r=3)) + all_possible_combos
-			print(all_possible_combos)
+		# if len(good_words) > 2:
+		# 	all_possible_combos = list(combinations(good_words, r=3)) + all_possible_combos
+		# 	#print(all_possible_combos)
 
 
 
