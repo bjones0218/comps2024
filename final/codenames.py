@@ -1,6 +1,7 @@
 import random
 import os
 from ai_cluegiver import get_clue, split_board
+from Samtry import get_clue as get_clue2, split_board as split_board2
 
 # TODO: NOTES TO FIX: 
 # IF YOU DONT SAY YES BUT WANT TO GUESS AGAIN WEIRD THINGS AHPPEN 
@@ -216,7 +217,7 @@ class Game():
         
         if ai_status_str_red == "yes":
             red_ai = input("Red Team, would you like to play with cluegiver 1 or 2: ")
-            while red_ai != "1" and red_ai != 2:
+            while red_ai != "1" and red_ai != "2":
                 red_ai = input("Please enter 1 or 2: ")
             ai_status_red = True
         else:
@@ -228,7 +229,7 @@ class Game():
         
         if ai_status_str_blue == "yes":
             blue_ai = input("Blue Team, would you like to play with cluegiver 1 or 2: ")
-            while blue_ai != "1" and blue_ai != 2:
+            while blue_ai != "1" and blue_ai != "2":
                 blue_ai = input("Please enter 1 or 2: ")
             ai_status_blue = True
         else:
@@ -258,8 +259,11 @@ class Game():
                             number = 1
                         prompted_words = clue_obj[0]
                     elif red_ai == "2":
-                        # INSERT CODE HERE FOR SAM'S AI
-                        pass
+                        words_obj = split_board2(self.board, self.turn.lower())
+                        clue_obj = get_clue2(words_obj, red_given_clues, self.board)
+                        clue = clue_obj[0]
+                        number = clue_obj[1]
+                        prompted_words = clue_obj[2]
                 else: 
                     #cluegiver stage
                     ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
@@ -308,8 +312,11 @@ class Game():
                             number = 1
                         prompted_words = clue_obj[0]
                     elif blue_ai == "2":
-                        # ENTER CODE FOR SAMS AI HERE
-                        pass
+                        words_obj = split_board2(self.board, self.turn.lower())
+                        clue_obj = get_clue2(words_obj, blue_given_clues, self.board)
+                        clue = clue_obj[0]
+                        number = clue_obj[1]
+                        prompted_words = clue_obj[2]
                 else: 
                     #cluegiver stage
                     ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
