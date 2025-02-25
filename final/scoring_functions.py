@@ -12,10 +12,8 @@ def additional_closeness(clue_obj, connecting_words, good_words_dv_obj):
 	else:
 		clue_vec = None
 
-	# print(connecting_words)
-
+	# When there is one word left
 	if len(connecting_words) == 1:
-		# print("LAST CLUE")
 		word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
 		word1_freq = good_words_dv_obj.get(connecting_words[0]).get("count")
 
@@ -71,14 +69,13 @@ def additional_badness(clue_obj, bad_words_dv_obj):
 	else:
 		clue_vec = None
 	bad_score_array = [dist(clue_vec, bad_word_obj.get("vector")) for bad_word_obj in bad_words_dv_obj.values()]
-	bad_score_array.sort(reverse=True)
+	bad_score_array.sort()
 	if len(bad_score_array) >= 3:
 		bad_score = bad_score_array[0]**2 + bad_score_array[1]**2 + bad_score_array[2]**2
 	elif len(bad_score_array) == 2:
 			bad_score = bad_score_array[0]**2 + bad_score_array[1]**2
 	else:
 		bad_score = bad_score_array[0]**2
-	# bad_score = max(bad_score_array)
 
 	return -6/bad_score
 
@@ -99,8 +96,8 @@ def original_scoring(clue, good_words_obj_bbn: dict, bad_words_obj_bbn: dict):
 
 
 def detect(clue_obj, good_words_obj_dv: dict, bad_words_obj_dv: dict) -> float:
-	lambda_f = 2 # We will have to figre out good values for this
-	lambda_d = 1.5 # And this
+	lambda_f = 2 
+	lambda_d = 1.5
 
 	if clue_obj:
 		clue_vec = clue_obj.get("vector")
@@ -124,10 +121,6 @@ def detect(clue_obj, good_words_obj_dv: dict, bad_words_obj_dv: dict) -> float:
 	good_word_distances = [1 - dist(clue_vec, good_word.get("vector")) for good_word in good_words_obj_dv.values()]
 	good_words_val = sum(good_word_distances)
 
-	# bad_word_distances = [1 - dist(clue_vec, bad_word.get("vector")) for bad_word in bad_words_obj_dv.values()]
-	# bad_words_val = max(bad_word_distances)
-
-	# dict_val = lambda_d * (good_words_val - bad_words_val)
 	dict_val = lambda_d * good_words_val
 
 	return freq_score + dict_val
