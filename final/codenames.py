@@ -208,11 +208,16 @@ class Game():
         print()
         print("This program was created by Blake Jones, Marc Eidelhoch, Luke Wharton and Sam Zacks")
         print()
+
+        # Check if either team wants to play with the AI cluegiver and which cluegiver they choose
         ai_status_str_red = input("Red Team, would you like to play with an AI cluegiver? Enter \"yes\" or \"no\": ")
         while ai_status_str_red != "yes" and ai_status_str_red != "no":
             ai_status_str_red = input("Please enter \"yes\" or \"no\": ")
         
         if ai_status_str_red == "yes":
+            red_ai = input("Red Team, would you like to play with cluegiver 1 or 2: ")
+            while red_ai != "1" and red_ai != 2:
+                red_ai = input("Please enter 1 or 2: ")
             ai_status_red = True
         else:
             ai_status_red = False
@@ -222,6 +227,9 @@ class Game():
             ai_status_str_blue = input("Please enter \"yes\" or \"no\": ")
         
         if ai_status_str_blue == "yes":
+            blue_ai = input("Blue Team, would you like to play with cluegiver 1 or 2: ")
+            while blue_ai != "1" and blue_ai != 2:
+                blue_ai = input("Please enter 1 or 2: ")
             ai_status_blue = True
         else:
             ai_status_blue = False
@@ -241,10 +249,17 @@ class Game():
             prompted_words = None
             if self.turn == "Red":
                 if ai_status_red:
-                    clue_obj = get_clue(split_board(self.board, self.turn.lower()), red_given_clues)
-                    clue = clue_obj[1][0]
-                    number = len(clue_obj[0])
-                    prompted_words = clue_obj[0]
+                    if red_ai == "1":
+                        clue_obj = get_clue(split_board(self.board, self.turn.lower()), red_given_clues)
+                        clue = clue_obj[1][0]
+                        if type(clue_obj[0]) == tuple:
+                            number = len(clue_obj[0])
+                        elif type(clue_obj[0]) == str:
+                            number = 1
+                        prompted_words = clue_obj[0]
+                    elif red_ai == "2":
+                        # INSERT CODE HERE FOR SAM'S AI
+                        pass
                 else: 
                     #cluegiver stage
                     ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
@@ -284,10 +299,17 @@ class Game():
                 red_given_clues.append(clue)
             else:
                 if ai_status_blue:
-                    clue_obj = get_clue(split_board(self.board, self.turn.lower()), blue_given_clues)
-                    clue = clue_obj[1][0]
-                    number = len(clue_obj[0])
-                    prompted_words = clue_obj[0]
+                    if blue_ai == "1":
+                        clue_obj = get_clue(split_board(self.board, self.turn.lower()), blue_given_clues)
+                        clue = clue_obj[1][0]
+                        if type(clue_obj[0]) == tuple:
+                            number = len(clue_obj[0])
+                        elif type(clue_obj[0]) == str:
+                            number = 1
+                        prompted_words = clue_obj[0]
+                    elif blue_ai == "2":
+                        # ENTER CODE FOR SAMS AI HERE
+                        pass
                 else: 
                     #cluegiver stage
                     ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
@@ -367,8 +389,8 @@ class Game():
                     self.board.print_board_plain()
                     if self.turn == "Blue" and self.red_words_left != 0:
                         print("You guessed the other team's word. Your turn is now over. \n")
-                        # if prompted_words:
-                        #     print("The clue was prompting for: ", prompted_words)
+                        if prompted_words:
+                            print("The clue was prompting for: ", prompted_words)
                         turn_complete = True
                         self.turn = "Red"
                     else:
@@ -380,8 +402,8 @@ class Game():
                     print("You guessed a blue word. \n")
                     if self.turn == "Red" and self.blue_words_left != 0:
                         print("You guessed the other team's word. Your turn is now over. \n")
-                        # if prompted_words:
-                        #     print("The clue was prompting for: ", prompted_words)
+                        if prompted_words:
+                            print("The clue was prompting for: ", prompted_words)
                         turn_complete = True
                         self.turn = "Blue"
                     else:
@@ -410,15 +432,17 @@ class Game():
 
                         else:
                             turn_complete = True
+                            if prompted_words:
+                                print("The clue was prompting for: ", prompted_words)
                             if self.turn == "Red":
                                 self.turn = "Blue"
                             else:
                                 self.turn = "Red"
                     else:
                         if turn_complete == False:
-                            print(self.turn + " Team, you have now guessed twice. Your turn is over. \n")
-                            # if prompted_words:
-                            #     print("The clue was prompting for: ", prompted_words)
+                            print(self.turn + f" Team, you have now guessed {num_guesses} times. Your turn is over. \n")
+                            if prompted_words:
+                                print("The clue was prompting for: ", prompted_words)
                             turn_complete = True
 
                             if self.turn == "Red":
@@ -427,7 +451,7 @@ class Game():
                                 self.turn = "Red"
 
 def main():
-    game = Game(5,4)
+    game = Game(3,3)
     game.start_game()
 
 if __name__ == "__main__":
