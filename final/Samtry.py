@@ -118,4 +118,4 @@ def get_clue(words_obj, given_clues, board):
         return "No valid clue found", 1
     
     print(f"Final Best Clue: {best_clue}")
-    return best_clue, 2
+    return (best_clue, 2, (w1, w2))
