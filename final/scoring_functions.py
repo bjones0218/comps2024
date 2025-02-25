@@ -124,10 +124,11 @@ def detect(clue_obj, good_words_obj_dv: dict, bad_words_obj_dv: dict) -> float:
 	good_word_distances = [1 - dist(clue_vec, good_word.get("vector")) for good_word in good_words_obj_dv.values()]
 	good_words_val = sum(good_word_distances)
 
-	bad_word_distances = [1 - dist(clue_vec, bad_word.get("vector")) for bad_word in bad_words_obj_dv.values()]
-	bad_words_val = max(bad_word_distances)
+	# bad_word_distances = [1 - dist(clue_vec, bad_word.get("vector")) for bad_word in bad_words_obj_dv.values()]
+	# bad_words_val = max(bad_word_distances)
 
-	dict_val = lambda_d * (good_words_val - bad_words_val)
+	# dict_val = lambda_d * (good_words_val - bad_words_val)
+	dict_val = lambda_d * good_words_val
 
 	return freq_score + dict_val
 
