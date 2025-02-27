@@ -271,6 +271,7 @@ class Game():
             if self.turn == "Red":
                 # Check to see if red is playing with an AI and if so which one
                 if ai_status_red:
+                    print("The AI is thinking...")
                     if red_ai == "1":
                         clue_obj = get_clue(split_board(self.board, self.turn.lower()), red_given_clues)
                         clue = clue_obj[1][0]
@@ -284,7 +285,7 @@ class Game():
                         clue_obj = get_clue2(words_obj, red_given_clues, self.board)
                         clue = clue_obj[0]
                         number = clue_obj[1]
-                        prompted_words = clue_obj[2]
+                        # prompted_words = clue_obj[2]
                 else: 
                     # Cluegiver stage if human player
                     ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
@@ -326,6 +327,7 @@ class Game():
             else:
                 # Check if blue is playing with an AI and if so which one
                 if ai_status_blue:
+                    print("The AI is thinking...")
                     if blue_ai == "1":
                         clue_obj = get_clue(split_board(self.board, self.turn.lower()), blue_given_clues)
                         clue = clue_obj[1][0]
@@ -339,7 +341,7 @@ class Game():
                         clue_obj = get_clue2(words_obj, blue_given_clues, self.board)
                         clue = clue_obj[0]
                         number = clue_obj[1]
-                        prompted_words = clue_obj[2]
+                        # prompted_words = clue_obj[2]
                 else: 
                     # Cluegiver stage
                     ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
@@ -491,7 +493,7 @@ class Game():
                                 self.turn = "Red"
 
 def main():
-    game = Game(5,5)
+    game = Game(3,3)
     game.start_game()
 
 if __name__ == "__main__":
