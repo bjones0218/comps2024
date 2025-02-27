@@ -2,8 +2,6 @@ from pymongo import MongoClient
 import spacy
 from nltk import LancasterStemmer
 
-
-
 CONNECTION_STRING = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2"
 client_global = MongoClient(CONNECTION_STRING)
 
@@ -16,6 +14,9 @@ freq_and_vec_collection_global = freq_and_vec_db_global["freq_and_vec_collection
 nlp = spacy.load("en_core_web_sm")
 stemmer = LancasterStemmer()
 
+'''
+Get the babelnet information from the MongoDB database for words that are going to be connected with client passed in
+'''
 def get_words_collection(client, both_words):
 	if len(both_words) == 2:
 		codenames_db = client["codenames_db"]
@@ -35,23 +36,36 @@ def get_words_collection(client, both_words):
 
 	# 	return (first_word_list, second_word_list, third_word_list)
 
-
+'''
+Gets babelnet information from MongoDB for a list of words using global client
+'''
 def get_word_obj_bbn(words):
 	return {word: words_collection_global.find_one({"codenames_word": word}) for word in words}
 
+'''
+Gets babelnet informatino from MongoDB for a single word using global client
+'''
 def get_single_bbn_obj(word):
 	return words_collection_global.find_one({"codenames_word": word})
 
+'''
+Gets Dict2Vec and frequency information from MongoDB for a list of words using global client
+'''
 def get_word_obj_dv(words):
 	return {word: freq_and_vec_collection_global.find_one({"word": word}) for word in words}
 
+''''
+Gets Dict2Vec and frequency information from MongoDB for a single word with client passed in
+'''
 def get_single_dv_obj(client, word):
 	freq_and_vec_db = client["freq_and_vec2"]
 	freq_and_vec_collection = freq_and_vec_db["freq_and_vec_collection2"]
 
 	return freq_and_vec_collection.find_one({"word": word})
 
-
+'''
+Gets Dict2Vec and frequency information from MongoDB for a list of words with client passed in
+'''
 def get_dv_objs(client, words):
 	freq_and_vec_db = client["freq_and_vec2"]
 	freq_and_vec_collection = freq_and_vec_db["freq_and_vec_collection2"]
@@ -62,25 +76,26 @@ def get_dv_objs(client, words):
 
 	return to_return
 
-
-# TEST THIS SOME MORE ACTUALLY GOTTA DO THIS
+'''
+For a list of clues it uses lemmatization to make sure that the clue is valid and is not already given in teh game
+'''
 def check_top_clues(clue_list, previous_words):
 	bad_top_word = True
 	cur_word_index = 0
 	while bad_top_word:
-		# print(top_word_clue)
+		# Get information about the top word
 		top_word_clue = clue_list[cur_word_index][1][0]
 		top_word_doc = nlp(clue_list[cur_word_index][1][0].lower())
 		top_word_lemma = top_word_doc[0].lemma_
 		top_word_stem = stemmer.stem(top_word_clue)
 
+		# Get information for the words it is trying to connect
 		first_word_doc = nlp(clue_list[cur_word_index][0][0].lower())
 		second_word_doc = nlp(clue_list[cur_word_index][0][1].lower())
 		first_word_lemma = first_word_doc[0].lemma_
 		second_word_lemma = second_word_doc[0].lemma_
-		# NEED TO WORK ON THIS FUNCTION BECAUSE NOW YOU CAN GIVE LIKE DOG AS A CLUE AND THEN DOGS AS A CLUE LATER
+		# If the clue would have been invalid move on to the next word
 		if top_word_lemma == first_word_lemma or top_word_lemma == second_word_lemma or top_word_clue in previous_words or any(top_word_stem in given_clue for given_clue in previous_words):
-			# print(f"{top_word_clue} WOULD HAVE BEEN A BAD CLUE")
 			cur_word_index += 1
 		else:
 			bad_top_word = False

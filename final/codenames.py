@@ -3,15 +3,9 @@ import os
 from ai_cluegiver import get_clue, split_board
 from Samtry import get_clue as get_clue2, split_board as split_board2
 
-# TODO: NOTES TO FIX: 
-# IF YOU DONT SAY YES BUT WANT TO GUESS AGAIN WEIRD THINGS AHPPEN 
-# when guess wrong word to end game, change print statement
-# add jokes
-# maybe instead of saying yes everytime to guess a word you just type "d" to mark end of turn
-# CHANGE PRINT OUTPUT WHEN YOU GUESS THE MAX NUMBER OF GUESSES
-# WHEN ONLY ONE WORD COMES BACK AS CLUE ITS GIVING THE NUMBER OF LETTERS IN THE WORD
-
-
+'''
+Class to define each card which is one word on the board
+'''
 class Card:
     def __init__(self, word, color):
         self.word = word
@@ -28,6 +22,9 @@ class Card:
     def get_word(self):
         return self.word
 
+'''
+Class to define board made up of cards
+'''
 class Board:
     card_locations = {}
 
@@ -39,16 +36,22 @@ class Board:
         self.valid_words = set()
         self.board = [["" for _ in range(cols)] for _ in range(rows)]
 
+    '''
+    Gets the words for the game
+    '''
     def get_random_strings(self):
         with open(self.word_list_file, 'r') as file:
             lines = file.readlines()
         return random.sample(lines, self.num_words)
     
+    '''
+    Create the cards based on the words in the game
+    '''
     def create_cards(self, words):
-
         unvisited = set(range(len(words)))
         for i in range(len(words)):
-            if i % 2 == 0: #this cause red to have one more in odd num sized boards
+            # Red will have one more word in boards with an odd number of words
+            if i % 2 == 0: 
                 color = "red"
             else:
                 color = "blue"
@@ -60,6 +63,9 @@ class Board:
         
         return words
 
+    '''
+    Generate the board
+    '''
     def init_board(self, cards):
         curr = 0
         for i in range(len(self.board)):
@@ -69,13 +75,15 @@ class Board:
                 self.card_locations[cards[curr].word] = (i, j)
                 curr += 1
 
+    '''
+    Print the board where the cards are colored for a human clue giver
+    '''
     def print_board_color(self):
         RED = "\033[31m"
         BLUE = "\033[34m"
         BOLD = "\u001b[1m"
         DEFAULT = "\033[0m"
         STRIKE = "\33[9m"
-        
 
         longest_word = self.get_longest_word()
 
@@ -116,7 +124,9 @@ class Board:
         print(row_sep)
         print()
 
-    # Returns a tuple of the lenght of the longest word in the board, and the longest row in the board
+    '''
+    Returns a tuple of the lenght of the longest word in the board, and the longest row in the board
+    '''
     def get_longest_word(self):
         longest_word = 0
         for row in self.board:
@@ -127,7 +137,9 @@ class Board:
                     longest_word = len(card.get_word())
         return longest_word
 
-
+    '''
+    Print the board where the cards are not colored for the guesser
+    '''
     def print_board_plain(self):
         line = ""
         DEFAULT = "\033[0m"
@@ -171,6 +183,9 @@ class Board:
         print(row_sep)
         print()
 
+'''
+Code to define the actual playing of the game
+'''
 class Game():
     playing = False
     turn = "Red"
@@ -190,13 +205,18 @@ class Game():
 
     # Returns a number based on what is wrong with the clue
     def check_clue(self, clue):
+        # If the clue is more than one word
         if " " in clue:
             return 1
+        # If the clue is on the board
         elif clue.upper() in self.board.valid_words:
             return 2
         else:
             return 0
 
+    '''
+    Code to run the game
+    '''
     def start_game(self):
         #clear terminal
         if os.name == 'nt': #For Windows
@@ -249,6 +269,7 @@ class Game():
         while self.playing:
             prompted_words = None
             if self.turn == "Red":
+                # Check to see if red is playing with an AI and if so which one
                 if ai_status_red:
                     if red_ai == "1":
                         clue_obj = get_clue(split_board(self.board, self.turn.lower()), red_given_clues)
@@ -265,7 +286,7 @@ class Game():
                         number = clue_obj[1]
                         prompted_words = clue_obj[2]
                 else: 
-                    #cluegiver stage
+                    # Cluegiver stage if human player
                     ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
                     print()
 
@@ -282,6 +303,7 @@ class Game():
                     clue = input(self.turn + " Team please enter your clue: ")
                     print()
                     
+                    # Ensure the clue is valid
                     while self.check_clue(clue) != 0:
                         clue_status = self.check_clue(clue)
                         if clue_status == 1:
@@ -290,7 +312,6 @@ class Game():
                         elif clue_status == 2:
                             clue = input(self.turn + " Team, please ensure that your clue is not a word on the board: ")
                             print()
-                    #number = int(input(self.turn + " Team please enter the number of words you want to connect: "))
 
                     while True:
                         try:
@@ -299,9 +320,11 @@ class Game():
                         except ValueError:
                             print("Invalid input. Please enter a valid integer.")
 
-
+                # Keep track of the clues that have been given
                 red_given_clues.append(clue)
+
             else:
+                # Check if blue is playing with an AI and if so which one
                 if ai_status_blue:
                     if blue_ai == "1":
                         clue_obj = get_clue(split_board(self.board, self.turn.lower()), blue_given_clues)
@@ -318,7 +341,7 @@ class Game():
                         number = clue_obj[1]
                         prompted_words = clue_obj[2]
                 else: 
-                    #cluegiver stage
+                    # Cluegiver stage
                     ready = input(self.turn + " Team, is you cluegiver ready to see the board? Enter \"yes\" when ready: ")
                     print()
 
@@ -331,10 +354,12 @@ class Game():
                         os.system('cls')
                     else:  # For macOS and Linux
                         os.system('clear')
+
                     self.board.print_board_color()
                     clue = input(self.turn + " Team please enter your clue: ")
                     print()
                     
+                    # Check to ensure the clue is valid
                     while self.check_clue(clue) != 0:
                         clue_status = self.check_clue(clue)
                         if clue_status == 1:
@@ -343,7 +368,6 @@ class Game():
                         elif clue_status == 2:
                             clue = input(self.turn + " Team, please ensure that your clue is not a word on the board: ")
                             print()
-                    #number = int(input(self.turn + " Team please enter the number of words you want to connect: "))
 
                     while True:
                         try:
@@ -360,7 +384,7 @@ class Game():
             else:  # For macOS and Linux
                 os.system('clear')
 
-            #guesser stage
+            # Guesser stage
             turn_complete = False
             num_guesses = 0
             while not turn_complete:
@@ -375,11 +399,14 @@ class Game():
 
                 guess = input(self.turn + " Team's Guesser, what word would you like to guess: ").upper()
                 print()
+
+                # Ensure the guess is on the board
                 if guess not in self.board.valid_words:
                     while guess not in self.board.valid_words:
                         guess = input(self.turn + " Team's Guesser, please enter a word on the board: ").upper()
                         print()
                     
+                # Ensure that guessed words are marked
                 num_guesses += 1
                 guess_location = self.board.card_locations[guess]
                 guessed_card = self.board.board[guess_location[0]][guess_location[1]]
@@ -394,6 +421,7 @@ class Game():
                 if guessed_card.color == "red":
                     self.red_words_left -= 1
                     self.board.print_board_plain()
+                    # Check if you guesed your teams word or the other teams word
                     if self.turn == "Blue" and self.red_words_left != 0:
                         print("You guessed the other team's word. Your turn is now over. \n")
                         # if prompted_words:
@@ -407,6 +435,7 @@ class Game():
                     self.blue_words_left -= 1
                     self.board.print_board_plain()
                     print("You guessed a blue word. \n")
+                    # Check if you guesed your teams word or the other teams word
                     if self.turn == "Red" and self.blue_words_left != 0:
                         print("You guessed the other team's word. Your turn is now over. \n")
                         # if prompted_words:
@@ -417,6 +446,7 @@ class Game():
                         print("Well done, you guessed correctly")
                         print()
                 
+                # Check if either team has won the game
                 if self.red_words_left == 0:
                     print("Red Team wins!")
                     turn_complete = True
@@ -425,6 +455,8 @@ class Game():
                     print("Blue Team wins!")
                     turn_complete = True
                     self.playing = False
+                
+                # If you have guesses left ask if you want to guess again
                 else:
                     if num_guesses < number + 1 and turn_complete == False:
                         guess_again = input(self.turn + " Team, would you like to guess another word? (Enter \"yes\" if so, \"no\" if not): ")
@@ -445,6 +477,7 @@ class Game():
                                 self.turn = "Blue"
                             else:
                                 self.turn = "Red"
+                    # If you have no more guesses then it is the other teams turn 
                     else:
                         if turn_complete == False:
                             print(self.turn + f" Team, you have now guessed {num_guesses} times. Your turn is over. \n")
