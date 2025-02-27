@@ -12,6 +12,7 @@ def additional_closeness(clue_obj, connecting_words, good_words_dv_obj):
 	else:
 		clue_vec = None
 
+
 	# To deal with clues for only one word
 	if len(connecting_words) == 1:
 		word1_vec = good_words_dv_obj.get(connecting_words[0]).get("vector")
@@ -76,9 +77,8 @@ def additional_badness(clue_obj, bad_words_dv_obj):
 		clue_vec = None
 
 	bad_score_array = [dist(clue_vec, bad_word_obj.get("vector")) for bad_word_obj in bad_words_dv_obj.values()]
-	bad_score_array.sort(reverse=True)
-	
 	# Depending on the number of bad words we get the top 3 if possible or fewer if that's all we have
+	bad_score_array.sort()
 	if len(bad_score_array) >= 3:
 		bad_score = bad_score_array[0]**2 + bad_score_array[1]**2 + bad_score_array[2]**2
 	elif len(bad_score_array) == 2:
@@ -116,7 +116,7 @@ def detect(clue_obj, good_words_obj_dv):
 	lambda_f = 2 
 	lambda_d = 1.5 
 
-	# Check that the the clue exists
+  # Check that the the clue exists
 	if clue_obj:
 		clue_vec = clue_obj.get("vector")
 		frequency = clue_obj.get("count")
