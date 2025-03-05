@@ -2,28 +2,15 @@ from nltk.stem import WordNetLemmatizer, PorterStemmer, LancasterStemmer
 
 import spacy  
 
-lemmatizer2 = WordNetLemmatizer()
-
-stemmer = PorterStemmer()
-stemmer2 = LancasterStemmer()
-
-print(stemmer2.stem("teaching"))
-print(stemmer2.stem("teacher"))
-print(stemmer2.stem("knife"))
-print(stemmer2.stem("knives"))
-
-
-print(lemmatizer2.lemmatize("teaching"))
-print(lemmatizer2.lemmatize("teacher"))
-
+stemmer = LancasterStemmer()
 nlp = spacy.load("en_core_web_sm")
 
+original_text = ["teach", "teacher", "teaching", "knife", "knives", "speak", "spoken", "speaker"]
 
-text = "spine, spinal, dogs, dog, knives, knife, HOTELS, HOTEL, hotel, hotels, teaching, teacher, TEACHING, TEACHER"
+stemmed_text = [stemmer.stem(word) for word in original_text]
 
-# Process the text with spaCy
-doc = nlp(text)
-
-# Extract the lemmatized form of each token
-for token in doc:
-    print(token.lemma_)
+process = nlp(" ".join(original_text))
+lemmatized_text = [word.lemma_ for word in process]
+print("The original words are: ", original_text)
+print("The stemmed words are: ", stemmed_text)
+print("The lemmatized words are: ", lemmatized_text)

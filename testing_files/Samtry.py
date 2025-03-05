@@ -69,6 +69,7 @@ def compute_best_pair(word_vectors, good_words, bad_words):
             best_score, best_pair = score, (w1, w2)
     
     return best_pair
+
 def get_clue(words_obj, given_clues, board):
     """Main function to find and return the best AI-generated clue given the board."""
     # print("Current Board:")
@@ -86,39 +87,9 @@ def get_clue(words_obj, given_clues, board):
     client.close()
     
     # print(f"Fetched {len(word_vectors)} word vectors.")
-    
-    # Handle the case where only one word remains
-    if len(good_words) == 1:
-        target_word = good_words[0]
-        target_vector = np.array(word_vectors.get(target_word))
-
-        if target_vector is None:
-            return "No valid clue found", 1
-
-        client = MongoClient(CONNECTION_STRING)
-        dict2vec_collection = client["dict2vec"]["dict2vec_collection"]
-        
-        closest_word, min_distance = None, float('inf')
-        for doc in dict2vec_collection.find():
-            word, vector = doc["word"], np.array(doc["vector"])
-            if word == target_word:
-                continue
-            
-            distance = cosine(vector, target_vector)
-            if distance < min_distance and len(word) > 1:
-                min_distance, closest_word = distance, word
-
-        client.close()
-        
-        if not closest_word or len(closest_word) < 2:
-            return "No valid clue found", 1
-        
-        return (closest_word, 1, None) # Since it's for one word
-
-    # Normal case: choose the best word pair
     best_pair = compute_best_pair(word_vectors, good_words, bad_words)
     if not best_pair:
-        print("No valid word pair found.")
+        # print("No valid word pair found.")
         return "No valid clue found", 1
     
     w1, w2 = best_pair
@@ -130,22 +101,21 @@ def get_clue(words_obj, given_clues, board):
     
     best_clue, min_distance = None, float('inf')
     # print(f"Computing best clue for words: {w1}, {w2}")
-    
     for doc in dict2vec_collection.find():
         word, vector = doc["word"], np.array(doc["vector"])
         if word in {w1, w2} or any(w in word for w in {w1, w2}):
             continue
         
         distance = cosine(vector, midpoint_vec)
-        if distance < min_distance and len(word) > 1 and word not in given_clues:  # Ensure unique clue
+        if distance < min_distance and len(word) > 1:
             min_distance, best_clue = distance, word
             # print(f"New Best Clue: {best_clue}, Distance: {min_distance:.4f}")
-
+    
     client.close()
     
     if not best_clue or len(best_clue) < 2:
         print("Invalid clue generated, returning fallback.")
         return "No valid clue found", 1
     
-    # print(f"Final Best Clue: {best_clue}")
+    print(f"Final Best Clue: {best_clue}")
     return (best_clue, 2, (w1, w2))
